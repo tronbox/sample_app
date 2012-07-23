@@ -3,7 +3,7 @@ class CreateActivos < ActiveRecord::Migration
     create_table :activos do |t|
       t.string :clave
       t.string :descripcion
-      t.double :costo_revision
+      t.float :costo_revision
 
       t.timestamps
     end
