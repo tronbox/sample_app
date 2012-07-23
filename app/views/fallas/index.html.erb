@@ -1,0 +1,28 @@
+<h1>Listado de Fallas</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Clave</th>
+      <th>Descripcion</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+  <% @fallas.each do |falla| %>
+    <tr>
+      <td><%= falla.clave %></td>
+      <td><%= falla.descripcion %></td>
+      <td><%= link_to 'Mostrar', falla %></td>
+      <td><%= link_to 'Editar', edit_falla_path(falla) %></td>
+      <td><%= link_to 'Eliminar', falla, confirm: '¿Está usted seguro?', method: :delete %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+
+<br />
+<%= link_to 'Nueva Falla', new_falla_path %>

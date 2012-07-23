@@ -1,0 +1,28 @@
+<h1>Listado de Categorias</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Clave</th>
+      <th>Descripcion</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+  <% @categorias.each do |categoria| %>
+    <tr>
+      <td><%= categoria.clave %></td>
+      <td><%= categoria.descripcion %></td>
+      <td><%= link_to 'Mostrar', categoria %></td>
+      <td><%= link_to 'Editar', edit_categoria_path(categoria) %></td>
+      <td><%= link_to 'Eliminar', categoria, confirm: '¿Está usted seguro?', method: :delete %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+
+<br />
+<%= link_to 'Nueva Categoria', new_categoria_path %>

@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Clave:</b>
+  <%= @activo.clave %>
+</p>
+
+<p>
+  <b>Descripcion:</b>
+  <%= @activo.descripcion %>
+</p>
+
+<p>
+  <b>Costo revision:</b>
+  <%= @activo.costo_revision %>
+</p>
+
+<%= link_to 'Editar', edit_activo_path(@activo) %> |
+<%= link_to 'Listado', activos_path %>

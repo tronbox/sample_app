@@ -1,0 +1,19 @@
+<%= form_for(@activo) do |f| %>
+  <%= render 'error_messages', target: @activo %>
+
+  <div class="field">
+    <%= f.label :clave %><br />
+    <%= f.text_field :clave %>
+  </div>
+  <div class="field">
+    <%= f.label :descripcion %><br />
+    <%= f.text_field :descripcion %>
+  </div>
+  <div class="field">
+    <%= f.label :costo_revision %><br />
+    <%= f.text_field :costo_revision %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>
