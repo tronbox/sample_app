@@ -1,4 +1,6 @@
 class ActivosController < ApplicationController
+  load_and_authorize_resource
+
   # GET /activos
   # GET /activos.json
   def index

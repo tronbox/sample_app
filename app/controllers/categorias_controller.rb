@@ -1,4 +1,5 @@
 class CategoriasController < ApplicationController
+  load_and_authorize_resource
   # GET /categorias
   # GET /categorias.json
   def index

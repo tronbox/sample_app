@@ -1,4 +1,5 @@
 class FallasController < ApplicationController
+  load_and_authorize_resource
   # GET /fallas
   # GET /fallas.json
   def index
