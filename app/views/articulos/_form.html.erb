@@ -1,0 +1,19 @@
+<%= form_for(@articulo) do |f| %>
+  <%= render 'error_messages', target: @articulo %>
+
+  <div class="field">
+    <%= f.label :clave %><br />
+    <%= f.text_field :clave %>
+  </div>
+  <div class="field">
+    <%= f.label :descripcion %><br />
+    <%= f.text_field :descripcion %>
+  </div>
+  <div class="field">
+    <%= f.label :descripcion_larga %><br />
+    <%= f.text_field :descripcion_larga %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

@@ -1,0 +1,51 @@
+<%= form_for(@area) do |f| %>
+  <%= render 'error_messages', target: @area %>
+
+  <div class="field">
+    <%= f.label :clave %><br />
+    <%= f.text_field :clave %>
+  </div>
+  <div class="field">
+    <%= f.label :descripcion %><br />
+    <%= f.text_field :descripcion %>
+  </div>
+  <div class="field">
+    <%= f.label :calle %><br />
+    <%= f.text_field :calle %>
+  </div>
+  <div class="field">
+    <%= f.label :numero_exterior %><br />
+    <%= f.text_field :numero_exterior %>
+  </div>
+  <div class="field">
+    <%= f.label :numero_interior %><br />
+    <%= f.text_field :numero_interior %>
+  </div>
+  <div class="field">
+    <%= f.label :colonia %><br />
+    <%= f.text_field :colonia %>
+  </div>
+  <div class="field">
+    <%= f.label :localidad %><br />
+    <%= f.text_field :localidad %>
+  </div>
+  <div class="field">
+    <%= f.label :municipio %><br />
+    <%= f.text_field :municipio %>
+  </div>
+  <div class="field">
+    <%= f.label :codigo_postal %><br />
+    <%= f.text_field :codigo_postal %>
+  </div>
+  <div class="field">
+    <%= f.label :telefono %><br />
+    <%= f.text_field :telefono %>
+  </div>
+  <div class="field">
+    <%= f.label :correo_electronico %><br />
+    <%= f.text_field :correo_electronico %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

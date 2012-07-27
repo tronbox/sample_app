@@ -1,0 +1,59 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Clave:</b>
+  <%= @area.clave %>
+</p>
+
+<p>
+  <b>Descripcion:</b>
+  <%= @area.descripcion %>
+</p>
+
+<p>
+  <b>Calle:</b>
+  <%= @area.calle %>
+</p>
+
+<p>
+  <b>Numero exterior:</b>
+  <%= @area.numero_exterior %>
+</p>
+
+<p>
+  <b>Numero interior:</b>
+  <%= @area.numero_interior %>
+</p>
+
+<p>
+  <b>Colonia:</b>
+  <%= @area.colonia %>
+</p>
+
+<p>
+  <b>Localidad:</b>
+  <%= @area.localidad %>
+</p>
+
+<p>
+  <b>Municipio:</b>
+  <%= @area.municipio %>
+</p>
+
+<p>
+  <b>Codigo postal:</b>
+  <%= @area.codigo_postal %>
+</p>
+
+<p>
+  <b>Telefono:</b>
+  <%= @area.telefono %>
+</p>
+
+<p>
+  <b>Correo electronico:</b>
+  <%= @area.correo_electronico %>
+</p>
+
+<%= link_to 'Editar', edit_area_path(@area) %> |
+<%= link_to 'Listado', areas_path %>

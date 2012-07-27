@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Clave:</b>
+  <%= @articulo.clave %>
+</p>
+
+<p>
+  <b>Descripcion:</b>
+  <%= @articulo.descripcion %>
+</p>
+
+<p>
+  <b>Descripcion larga:</b>
+  <%= @articulo.descripcion_larga %>
+</p>
+
+<%= link_to 'Editar', edit_articulo_path(@articulo) %> |
+<%= link_to 'Listado', articulos_path %>

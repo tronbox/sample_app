@@ -1,0 +1,46 @@
+<h1>Listado de Areas</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Clave</th>
+      <th>Descripcion</th>
+      <th>Calle</th>
+      <th>Numero exterior</th>
+      <th>Numero interior</th>
+      <th>Colonia</th>
+      <th>Localidad</th>
+      <th>Municipio</th>
+      <th>Codigo postal</th>
+      <th>Telefono</th>
+      <th>Correo electronico</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+  <% @areas.each do |area| %>
+    <tr>
+      <td><%= area.clave %></td>
+      <td><%= area.descripcion %></td>
+      <td><%= area.calle %></td>
+      <td><%= area.numero_exterior %></td>
+      <td><%= area.numero_interior %></td>
+      <td><%= area.colonia %></td>
+      <td><%= area.localidad %></td>
+      <td><%= area.municipio %></td>
+      <td><%= area.codigo_postal %></td>
+      <td><%= area.telefono %></td>
+      <td><%= area.correo_electronico %></td>
+      <td><%= link_to 'Mostrar', area %></td>
+      <td><%= link_to 'Editar', edit_area_path(area) %></td>
+      <td><%= link_to 'Eliminar', area, confirm: '¿Está usted seguro?', method: :delete %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+
+<br />
+<%= link_to 'Nueva Area', new_area_path %>

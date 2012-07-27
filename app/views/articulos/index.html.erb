@@ -1,0 +1,30 @@
+<h1>Listado de Articulos</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Clave</th>
+      <th>Descripcion</th>
+      <th>Descripcion larga</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+  <% @articulos.each do |articulo| %>
+    <tr>
+      <td><%= articulo.clave %></td>
+      <td><%= articulo.descripcion %></td>
+      <td><%= articulo.descripcion_larga %></td>
+      <td><%= link_to 'Mostrar', articulo %></td>
+      <td><%= link_to 'Editar', edit_articulo_path(articulo) %></td>
+      <td><%= link_to 'Eliminar', articulo, confirm: '¿Está usted seguro?', method: :delete %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+
+<br />
+<%= link_to 'Nuevo Articulo', new_articulo_path %>

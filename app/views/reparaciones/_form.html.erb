@@ -1,0 +1,15 @@
+<%= form_for(@reparacion) do |f| %>
+  <%= render 'error_messages', target: @reparacion %>
+
+  <div class="field">
+    <%= f.label :clave %><br />
+    <%= f.text_field :clave %>
+  </div>
+  <div class="field">
+    <%= f.label :descripcion %><br />
+    <%= f.text_field :descripcion %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

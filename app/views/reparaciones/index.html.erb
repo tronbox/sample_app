@@ -1,0 +1,28 @@
+<h1>Listado de Reparaciones</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Clave</th>
+      <th>Descripcion</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+  <% @reparaciones.each do |reparacion| %>
+    <tr>
+      <td><%= reparacion.clave %></td>
+      <td><%= reparacion.descripcion %></td>
+      <td><%= link_to 'Mostrar', reparacion %></td>
+      <td><%= link_to 'Editar', edit_reparacion_path(reparacion) %></td>
+      <td><%= link_to 'Eliminar', reparacion, confirm: '¿Está usted seguro?', method: :delete %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+
+<br />
+<%= link_to 'Nuevo Reparacion', new_reparacion_path %>

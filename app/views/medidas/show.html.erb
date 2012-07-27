@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Clave:</b>
+  <%= @medida.clave %>
+</p>
+
+<p>
+  <b>Descripcion:</b>
+  <%= @medida.descripcion %>
+</p>
+
+<%= link_to 'Editar', edit_medida_path(@medida) %> |
+<%= link_to 'Listado', medidas_path %>

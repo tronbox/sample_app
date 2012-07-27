@@ -9,14 +9,17 @@
   <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
   <![endif]-->
 </head>
-<body>
-  <%= render 'layouts/header' %>
-
-  <div class="container">
-    <%= yield %>
-    <%= render 'layouts/footer' %>
+<body> 
+  <div class="container">  	
+  	
+  	<%= render 'layouts/header' %>	  				
+	
+	<div class="well sidebar-nav">
+    	<%= yield %>    		
+    </div>
+  	
+  	<%= render 'layouts/footer' %> 
   </div>
-
 </body>
 </html>
 

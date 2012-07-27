@@ -1,0 +1,30 @@
+<h1>Listado de Estados</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Clave</th>
+      <th>Descripcion</th>
+      <th>Color estado</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+  <% @estados.each do |estado| %>
+    <tr>
+      <td><%= estado.clave %></td>
+      <td><%= estado.descripcion %></td>
+      <td><%= estado.color_estado %></td>
+      <td><%= link_to 'Mostrar', estado %></td>
+      <td><%= link_to 'Editar', edit_estado_path(estado) %></td>
+      <td><%= link_to 'Eliminar', estado, confirm: '¿Está usted seguro?', method: :delete %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+
+<br />
+<%= link_to 'Nuevo Estado', new_estado_path %>
