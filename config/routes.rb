@@ -1,4 +1,8 @@
 SampleApp::Application.routes.draw do
+  resources :relaciones_articulos_medida
+
+  resources :agentes
+
   resources :medidas
 
   resources :areas

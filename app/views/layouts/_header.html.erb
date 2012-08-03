@@ -20,6 +20,8 @@
           <li><%= link_to "Refacciones", articulos_path %></li>
           <li><%= link_to "Areas", areas_path %></li>
           <li><%= link_to "Medidas", medidas_path %></li>
+          <li><%= link_to "Tecnico", agentes_path %></li>
+          <li><%= link_to "Articulos Medidas", relaciones_articulos_medida_path %></li>
           <% if user_signed_in? %>
             <li><%= link_to "Cerrar sesión", destroy_user_session_path, :method => :delete %></li>
           <% else %>
