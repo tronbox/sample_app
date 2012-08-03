@@ -1,0 +1,9 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Nombre:</b>
+  <%= @series.nombre %>
+</p>
+
+<%= link_to 'Editar', edit_series_path(@series) %> |
+<%= link_to 'Listado', series_index_path %>

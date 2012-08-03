@@ -20,7 +20,7 @@
       <td><%= activo.costo_revision %></td>
       <td><%= link_to 'Mostrar', activo %></td>
       <td><%= link_to 'Editar', edit_activo_path(activo) %></td>
-      <td><%= link_to 'Eliminar', activo, :data => {:confirm => '¿Está usted seguro?'}, method: :delete %></td>
+      <td><%= link_to 'Eliminar', activo, confirm: '¿Está usted seguro?', method: :delete %></td>
     </tr>
   <% end %>
   </tbody>

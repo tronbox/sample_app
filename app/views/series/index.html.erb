@@ -1,0 +1,26 @@
+<h1>Listado de Series</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Nombre</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+  <% @series.each do |series| %>
+    <tr>
+      <td><%= series.nombre %></td>
+      <td><%= link_to 'Mostrar', series %></td>
+      <td><%= link_to 'Editar', edit_series_path(series) %></td>
+      <td><%= link_to 'Eliminar', series, confirm: '¿Está usted seguro?', method: :delete %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+
+<br />
+<%= link_to 'Nueva Series', new_series_path %>
