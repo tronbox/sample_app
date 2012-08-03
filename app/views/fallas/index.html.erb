@@ -18,7 +18,7 @@
       <td><%= falla.descripcion %></td>
       <td><%= link_to 'Mostrar', falla %></td>
       <td><%= link_to 'Editar', edit_falla_path(falla) %></td>
-      <td><%= link_to 'Eliminar', falla, :data => {:confirm => '¿Está usted seguro?'}, method: :delete %></td>
+      <td><%= link_to 'Eliminar', falla, confirm: '¿Está usted seguro?', method: :delete %></td>
     </tr>
   <% end %>
   </tbody>
