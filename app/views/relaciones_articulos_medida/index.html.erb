@@ -1,0 +1,30 @@
+<h1>Listado de Relaciones articulos medida</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Articulo</th>
+      <th>Medida</th>
+      <th>Unidades por empaque</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+  <% @relaciones_articulos_medida.each do |relacion_articulo_medida| %>
+    <tr>
+      <td><%= relacion_articulo_medida.articulo.descripcion %></td>
+      <td><%= relacion_articulo_medida.medida.descripcion %></td>
+      <td><%= relacion_articulo_medida.unidades_por_empaque %></td>
+      <td><%= link_to 'Mostrar', relacion_articulo_medida %></td>
+      <td><%= link_to 'Editar', edit_relacion_articulo_medida_path(relacion_articulo_medida) %></td>
+      <td><%= link_to 'Eliminar', relacion_articulo_medida, confirm: '¿Está usted seguro?', method: :delete %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+
+<br />
+<%= link_to 'Nuevo Relacion articulo medida', new_relacion_articulo_medida_path %>

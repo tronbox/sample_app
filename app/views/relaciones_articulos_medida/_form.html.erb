@@ -1,0 +1,19 @@
+<%= form_for(@relacion_articulo_medida) do |f| %>
+  <%= render 'error_messages', target: @relacion_articulo_medida %>
+
+  <div class="field">
+    <%= f.label :articulo_id %><br />
+    <%= f.select :articulo_id, Articulo.all.map{ |a| [a.descripcion, a.id] }  %>
+  </div>
+  <div class="field">
+    <%= f.label :medida_id %><br />
+    <%= f.select :medida_id, Medida.all.map{ |m| [m.descripcion, m.id] } %>
+  </div>
+  <div class="field">
+    <%= f.label :unidades_por_empaque %><br />
+    <%= f.number_field :unidades_por_empaque %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

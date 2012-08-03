@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Clave:</b>
+  <%= @agente.clave %>
+</p>
+
+<p>
+  <b>Nombre:</b>
+  <%= @agente.nombre %>
+</p>
+
+<%= link_to 'Editar', edit_agente_path(@agente) %> |
+<%= link_to 'Listado', agentes_path %>

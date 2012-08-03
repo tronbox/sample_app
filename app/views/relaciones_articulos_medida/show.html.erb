@@ -1,0 +1,19 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Articulo:</b>
+  <%= @relacion_articulo_medida.articulo.descripcion %>
+</p>
+
+<p>
+  <b>Medida:</b>
+  <%= @relacion_articulo_medida.medida.descripcion %>
+</p>
+
+<p>
+  <b>Unidades por empaque:</b>
+  <%= @relacion_articulo_medida.unidades_por_empaque %>
+</p>
+
+<%= link_to 'Editar', edit_relacion_articulo_medida_path(@relacion_articulo_medida) %> |
+<%= link_to 'Listado', relaciones_articulos_medida_path %>

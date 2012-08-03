@@ -1,0 +1,15 @@
+<%= form_for(@agente) do |f| %>
+  <%= render 'error_messages', target: @agente %>
+
+  <div class="field">
+    <%= f.label :clave %><br />
+    <%= f.text_field :clave %>
+  </div>
+  <div class="field">
+    <%= f.label :nombre %><br />
+    <%= f.text_field :nombre %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

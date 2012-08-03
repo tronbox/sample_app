@@ -1,0 +1,28 @@
+<h1>Listado de Agentes</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Clave</th>
+      <th>Nombre</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+  <% @agentes.each do |agente| %>
+    <tr>
+      <td><%= agente.clave %></td>
+      <td><%= agente.nombre %></td>
+      <td><%= link_to 'Mostrar', agente %></td>
+      <td><%= link_to 'Editar', edit_agente_path(agente) %></td>
+      <td><%= link_to 'Eliminar', agente, confirm: '¿Está usted seguro?', method: :delete %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+
+<br />
+<%= link_to 'Nuevo Agente', new_agente_path %>
