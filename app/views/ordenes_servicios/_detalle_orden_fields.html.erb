@@ -1,0 +1,16 @@
+<tr class="fields">
+  <td class="field">
+    <%= f.select :articulo_id, Articulo.all.map{|articulo| [articulo.descripcion, articulo.id] }, {} %>
+  </td>
+
+  <td class="field">
+    <%= f.number_field :cantidad, :class => "input-small" %>
+  </td>
+
+  <td class="field">
+    <%= f.text_area :descripcion, :class => "table" %>
+  </td>
+  <td>
+    <%= link_to_remove 'Eliminar', f, :class => 'eliminar btn btn-danger' %>
+  </td>
+</tr>

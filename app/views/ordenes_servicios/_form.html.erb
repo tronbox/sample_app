@@ -62,7 +62,7 @@
 
     <div class="field span10">
       <%= f.label :descripcion %>
-      <%= f.text_area :descripcion, :class => "span10", :cols => "40%" %>
+      <%= f.text_area :descripcion, :class => "span10 oxlarge" %>
     </div>
   </div>
 
@@ -91,7 +91,32 @@
     </h1>
   </div>
 
-  <div class="form-actions">
+
+  <div class="span12">
+    <table class="lbs_formset table table-bordered span10">
+      <thead>
+        <tr>
+          <th class="titulo">Refacción</th>
+          <th>Cantidad</th>
+          <th>Descripción</th>
+          <th>Acciones</th>
+        </tr>
+      </thead>
+      <tbody class="lbs_fields_wrapper">
+        <%= f.fields_for :detalle_orden do |d_form| %>
+          <%= render 'detalle_orden_fields', :f => d_form %>
+        <% end %>
+        <tr>
+          <td colspan="4"> 
+            <%= link_to_create 'Agregar refacción', DetalleOrden.new, f, :class => 'agregar btn btn-inverse', :id=>"add" %>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+
+  <div class="form-actions span12">
     <div class="actions">
       <%= f.submit :class => 'btn btn-primary'%>
     </div>
