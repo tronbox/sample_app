@@ -1,3 +1,11 @@
+GIT
+  remote: git://github.com/anjlab/bootstrap-rails.git
+  revision: 63d8eed8bff9c81e4c572627f0ff4d59fd98e980
+  specs:
+    anjlab-bootstrap-rails (2.0.4.3)
+      railties (>= 3.0)
+      sass
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -31,7 +39,8 @@ GEM
     addressable (2.2.8)
     arel (3.0.2)
     bcrypt-ruby (3.0.1)
-    bootstrap-sass (2.0.4.0)
+    bootstrap-datepicker-rails (0.6.16)
+      railties (>= 3.0)
     builder (3.0.0)
     cancan (1.6.8)
     capybara (1.1.2)
@@ -155,7 +164,8 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  bootstrap-sass (~> 2.0.4.0)
+  anjlab-bootstrap-rails!
+  bootstrap-datepicker-rails
   cancan
   capybara (= 1.1.2)
   coffee-rails (= 3.2.2)

@@ -1,36 +1,68 @@
 <header class="navbar navbar-fixed-top">
   <div class="navbar-inner">
-    <div class="container">
+    <div class="container-fluid">
       <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">      
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
       </a>
+      <a class="brand" href="#"> <%= image_tag('pemex_p.png') %> Siorse  </a>
 
+      <div class="btn-group pull-right">
 
-      <%= link_to "Sistema de Ordenes de Servicio", '#', id: "logo" %>
-      <nav>
-        <ul class="nav pull-right">
-          <li><%= link_to "Inicio", home_index_path %></li>
-          <li><%= link_to "Categorías", categorias_path %></li>
-          <li><%= link_to "Maquinaria", activos_path %></li>
-          <li><%= link_to "Fallas", fallas_path %></li>
-          <li><%= link_to "Estados", estados_path %></li>
-          <li><%= link_to "Reparaciones", reparaciones_path %></li>
-          <li><%= link_to "Refacciones", articulos_path %></li>
-          <li><%= link_to "Areas", areas_path %></li>
-          <li><%= link_to "Medidas", medidas_path %></li>
-          <li><%= link_to "Tecnico", agentes_path %></li>
-          <li><%= link_to "Articulos Medidas", relaciones_articulos_medida_path %></li>
-          <li><%= link_to "Series", series_index_path %></li>
-          <% if user_signed_in? %>
-            <li><%= link_to "Cerrar sesión", destroy_user_session_path, :method => :delete %></li>
-          <% else %>
-            <li><%= link_to "Iniciar sesión", new_user_session_path %></li>
+        <ul class="nav">
+          <li class="divider-vertical"></li>
+          <% if not user_signed_in? %>
             <li><%= link_to "Registrarme", new_user_registration_path %></li>
           <% end %>
         </ul>
-      </nav>
+
+        <a class="btn dropdown-toggle" data-toggle="dropdown" href="#">
+          <i class="icon-user"></i>
+          <% if user_signed_in? %>
+            <%= current_user.email %>
+          <% end %>
+          <span class="caret"></span>
+        </a>
+        <ul class="dropdown-menu">
+          <li>
+            <% if user_signed_in? %>
+              <%= link_to "Cerrar sesión", destroy_user_session_path, :method => :delete %>
+            <% else %>
+              <%= link_to "Iniciar sesión", new_user_session_path %>
+            <% end %>
+            <li>
+            </li>
+          </li>
+        </ul>
+      </div>
+      
+      <div class="nav-collapse">
+        <ul class="nav">
+          <li class="active"><%= link_to "Inicio", home_index_path %></li>
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+              Catálogos
+              <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+              <li><%= link_to "Categorías", categorias_path %></li>
+              <li><%= link_to "Maquinaria", activos_path %></li>
+              <li><%= link_to "Fallas", fallas_path %></li>
+              <li><%= link_to "Estados", estados_path %></li>
+              <li><%= link_to "Reparaciones", reparaciones_path %></li>
+              <li><%= link_to "Refacciones", articulos_path %></li>
+              <li><%= link_to "Areas", areas_path %></li>
+              <li><%= link_to "Medidas", medidas_path %></li>
+              <li><%= link_to "Tecnico", agentes_path %></li>
+              <li><%= link_to "Articulos Medidas", relaciones_articulos_medida_path %></li>
+              <li><%= link_to "Series", series_index_path %></li>
+            </ul>
+          </li>
+          <li><%= link_to "Orden de servicio", ordenes_servicios_path  %></li>
+        </ul>
+      </div>
+
     </div>
   </div>
 </header>

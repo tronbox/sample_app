@@ -26,8 +26,11 @@ group :assets do
 end
 
 gem 'jquery-rails', '2.0.0'
-gem 'bootstrap-sass', '~> 2.0.4.0'
+#gem 'bootstrap-sass', '~> 2.0.4.0'
+gem 'anjlab-bootstrap-rails', :require => 'bootstrap-rails',
+  :git => 'git://github.com/anjlab/bootstrap-rails.git'
 
+gem 'bootstrap-datepicker-rails'
 
 group :test do
   gem 'capybara', '1.1.2'

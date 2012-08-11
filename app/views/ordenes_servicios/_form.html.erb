@@ -1,0 +1,100 @@
+<%= form_for(@orden_servicio) do |f| %>
+  <%= render 'error_messages', target: @orden_servicio %>
+  
+   <div class="page-header">
+    <h1>
+      <small>Información general de la orden</small>
+    </h1>
+   </div>
+
+  <div class="span12">
+    <div class="span1">
+      <div class="field">
+        <%= f.label :series_id %>
+        <%= f.select :series_id, Series.all.map{|serie| [serie.nombre, serie.id] }, {}, {:class => "span1"}  %>
+      </div>
+    </div>
+  
+    <div class="span3">
+      <div class="field">
+        <%= f.label :folio %>
+        <%= f.number_field :folio, :class => "span1" %>
+      </div>
+    </div>
+
+    <div class="span3">
+      <div class="field">
+        <%= f.label :fecha_recepcion %>
+        <div class="input-append date calendario" >
+          <span class="add-on"><i class="icon-th"></i></span>
+          <%= f.text_field :fecha_recepcion, :class => "span2" %>
+        </div>
+      </div>
+    </div>
+
+
+    <div class="span3">
+      <div class="field">
+        <%= f.label :fecha_entrega %>
+        <div class="input-append date calendario" >
+          <span class="add-on"><i class="icon-th"></i></span>
+          <%= f.text_field :fecha_entrega, :class => "span2" %>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="span12">
+    <div class="field span4">
+      <%= f.label :agente_id %>
+      <%= f.select :agente_id, Agente.all.map{|agente| [agente.nombre, agente.id]}, {}, {:class => "span4"} %>
+    </div>
+
+    <div class="fieldi span3">
+      <%= f.label :area_id %>
+      <%= f.select :area_id, Area.all.map{ |area| [area.descripcion, area.id]}, {}, {:class => "span3"}  %>
+    </div>
+
+    <div class="fieldi span3">
+      <%= f.label :estado_id %>
+      <%= f.select :estado_id, Estado.all.map{ |estado| [estado.descripcion, estado.id]}, {}, {:class => "span3"}  %>
+    </div>
+
+    <div class="field span10">
+      <%= f.label :descripcion %>
+      <%= f.text_area :descripcion, :class => "span10", :cols => "40%" %>
+    </div>
+  </div>
+
+
+  <div class="page-header">
+    <h1>
+      <small>Información de la máquina</small>
+    </h1>
+  </div>
+
+  <div class="span12">
+    <div class="fieldi span4">
+      <%= f.label :activo_id %>
+      <%= f.select :activo_id, Activo.all.map{ |activo| [activo.descripcion, activo.id]}, {}, {:class => "span4"}%>
+    </div>
+
+    <div class="field span4">
+      <%= f.label :falla_id %>
+      <%= f.select :falla_id, Falla.all.map{|falla| [falla.descripcion, falla.id]} , {}, {:class => "span4"} %>
+    </div>
+  </div>
+
+  <div class="page-header">
+    <h1>
+      <small>Detalle de la orden de servicio</small>
+    </h1>
+  </div>
+
+  <div class="form-actions">
+    <div class="actions">
+      <%= f.submit :class => 'btn btn-primary'%>
+    </div>
+  </div>
+
+<% end %>

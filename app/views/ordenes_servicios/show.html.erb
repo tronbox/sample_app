@@ -1,0 +1,49 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Folio:</b>
+  <%= @orden_servicio.folio %>
+</p>
+
+<p>
+  <b>Fecha recepcion:</b>
+  <%= @orden_servicio.fecha_recepcion %>
+</p>
+
+<p>
+  <b>Fecha entrega date:</b>
+  <%= @orden_servicio.fecha_entrega %>
+</p>
+
+<p>
+  <b>Descripcion:</b>
+  <%= @orden_servicio.descripcion %>
+</p>
+
+<p>
+  <b>Area:</b>
+  <%= @orden_servicio.area.descripcion %>
+</p>
+
+<p>
+  <b>Agente:</b>
+  <%= @orden_servicio.agente.nombre %>
+</p>
+
+<p>
+  <b>Activo:</b>
+  <%= @orden_servicio.activo.descripcion %>
+</p>
+
+<p>
+  <b>Falla:</b>
+  <%= @orden_servicio.falla.descripcion %>
+</p>
+
+<p>
+  <b>Series:</b>
+  <%= @orden_servicio.series.nombre %>
+</p>
+
+<%= link_to 'Editar', edit_orden_servicio_path(@orden_servicio) %> |
+<%= link_to 'Listado', ordenes_servicios_path %>

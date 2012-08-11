@@ -1,0 +1,48 @@
+<div class="page-header">
+  <h1>Listado de ordenes de servicios</h1>
+</div>
+
+<table class="table table-stripped">
+  <thead>
+    <tr>
+      <th>Folio</th>
+      <th>Fecha recepcion</th>
+      <th>Fecha entrega date</th>
+      <th>Descripcion</th>
+      <th>Area</th>
+      <th>Agente</th>
+      <th>Activo</th>
+      <th>Falla</th>
+      <th>Series</th>
+      <th>Opciones</th>
+    </tr>
+  </thead>
+
+  <tbody>
+  <% @ordenes_servicios.each do |orden_servicio| %>
+    <tr>
+      <td><%= orden_servicio.folio %></td>
+      <td><%= orden_servicio.fecha_recepcion %></td>
+      <td><%= orden_servicio.fecha_entrega %></td>
+      <td><%= orden_servicio.descripcion %></td>
+      <td><%= orden_servicio.area.descripcion %></td>
+      <td><%= orden_servicio.agente.nombre %></td>
+      <td><%= orden_servicio.activo.descripcion %></td>
+      <td><%= orden_servicio.falla.descripcion %></td>
+      <td><%= orden_servicio.series.nombre %></td>
+      <td>
+        <div class="btn-group">
+          <%= link_to 'Mostrar', orden_servicio, :class => 'btn' %>
+          <%= link_to 'Editar', edit_orden_servicio_path(orden_servicio), :class => 'btn' %>
+          <%= link_to 'Eliminar', orden_servicio, confirm: '¿Está usted seguro?', method: :delete, :class => 'btn btn-danger' %>
+        </div>
+      </td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+
+<br />
+<div class="form-actions">
+  <%= link_to 'Nueva orden servicio', new_orden_servicio_path, :class => 'btn btn-primary' %>
+</div>
