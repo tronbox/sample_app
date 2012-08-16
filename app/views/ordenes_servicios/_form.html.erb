@@ -1,68 +1,76 @@
 <%= form_for(@orden_servicio) do |f| %>
   <%= render 'error_messages', target: @orden_servicio %>
   
-   <div class="page-header">
-    <h1>
-      <small>Información general de la orden</small>
-    </h1>
-   </div>
+  <div class="page-header">
+   <h1>
+     <small>Información general de la orden</small>
+   </h1>
+  </div>
 
-  <div class="span12">
-    <div class="span1">
-      <div class="field">
-        <%= f.label :series_id %>
-        <%= f.select :series_id, Series.all.map{|serie| [serie.nombre, serie.id] }, {}, {:class => "span1"}  %>
-      </div>
-    </div>
-  
-    <div class="span3">
-      <div class="field">
-        <%= f.label :folio %>
-        <%= f.number_field :folio, :class => "span1" %>
-      </div>
-    </div>
-
-    <div class="span3">
-      <div class="field">
-        <%= f.label :fecha_recepcion %>
-        <div class="input-append date calendario" >
-          <span class="add-on"><i class="icon-th"></i></span>
-          <%= f.text_field :fecha_recepcion, :class => "span2" %>
+  <div class="row">
+    <div class="span12 prepend">
+      <div class="span11 well">
+        <div class="span2">
+          <div class="field">
+            <%= f.label :series_id %>
+            <%= f.select :series_id, Series.all.map{|serie| [serie.nombre, serie.id] }, {}, {:class => "span2"}  %>
+          </div>
         </div>
-      </div>
-    </div>
+
+        <div class="span2">
+          <div class="field">
+            <%= f.label :folio %>
+            <%= f.number_field :folio, :class => "span1" %>
+          </div>
+        </div>
+
+        <div class="span3">
+          <div class="field">
+            <%= f.label :fecha_recepcion %>
+            <div class="input-append date calendario" >
+              <%= f.text_field :fecha_recepcion, :class => "span2" %>
+              <span class="add-on"><i class="icon-th"></i></span>
+            </div>
+          </div>
+        </div>
 
 
-    <div class="span3">
-      <div class="field">
-        <%= f.label :fecha_entrega %>
-        <div class="input-append date calendario" >
-          <span class="add-on"><i class="icon-th"></i></span>
-          <%= f.text_field :fecha_entrega, :class => "span2" %>
+        <div class="span3">
+          <div class="field">
+            <%= f.label :fecha_entrega %>
+            <div class="input-append date calendario" >
+              <%= f.text_field :fecha_entrega, :class => "span2" %>
+              <span class="add-on"><i class="icon-th"></i></span>
+            </div>
+          </div>
         </div>
       </div>
     </div>
   </div>
 
-  <div class="span12">
-    <div class="field span4">
-      <%= f.label :agente_id %>
-      <%= f.select :agente_id, Agente.all.map{|agente| [agente.nombre, agente.id]}, {}, {:class => "span4"} %>
-    </div>
+  <div class="row">
+    <div class="span12 prepend">
+      <div class="span11 well">
+        <div class="field span4">
+          <%= f.label :agente_id %>
+          <%= f.select :agente_id, Agente.all.map{|agente| [agente.nombre, agente.id]}, {}, {:class => "span4"} %>
+        </div>
 
-    <div class="fieldi span3">
-      <%= f.label :area_id %>
-      <%= f.select :area_id, Area.all.map{ |area| [area.descripcion, area.id]}, {}, {:class => "span3"}  %>
-    </div>
+        <div class="fieldi span4">
+          <%= f.label :area_id %>
+          <%= f.select :area_id, Area.all.map{ |area| [area.descripcion, area.id]}, {}, {:class => "span4"}  %>
+        </div>
 
-    <div class="fieldi span3">
-      <%= f.label :estado_id %>
-      <%= f.select :estado_id, Estado.all.map{ |estado| [estado.descripcion, estado.id]}, {}, {:class => "span3"}  %>
-    </div>
+        <div class="fieldi span2">
+          <%= f.label :estado_id %>
+          <%= f.select :estado_id, Estado.all.map{ |estado| [estado.descripcion, estado.id]}, {}, {:class => "span2"}  %>
+        </div>
 
-    <div class="field span10">
-      <%= f.label :descripcion %>
-      <%= f.text_area :descripcion, :class => "span10 oxlarge" %>
+        <div class="field span10">
+          <%= f.label :descripcion %>
+          <%= f.text_area :descripcion, :class => "span10 oxlarge" %>
+        </div>
+      </div>
     </div>
   </div>
 
@@ -73,15 +81,26 @@
     </h1>
   </div>
 
-  <div class="span12">
-    <div class="fieldi span4">
-      <%= f.label :activo_id %>
-      <%= f.select :activo_id, Activo.all.map{ |activo| [activo.descripcion, activo.id]}, {}, {:class => "span4"}%>
-    </div>
+  <div class="row">
+    <div class="span12 prepend">
+      <div class="span11 well">
+        <div class="field span6">
+          <div class="control-group">
+            <%= f.label :activo_id%>
+            <div class="input-prepend">
+              <span class="add-on">
+                <a class="icon-search" data-toggle="modal" href="#myModal" ></a>
+              </span>
+              <%= f.text_field :activo_id, :class => "span5 disabled", :disabled => 'disabled' %>
+            </div>
+          </div>
+        </div>
 
-    <div class="field span4">
-      <%= f.label :falla_id %>
-      <%= f.select :falla_id, Falla.all.map{|falla| [falla.descripcion, falla.id]} , {}, {:class => "span4"} %>
+        <div class="field span4">
+          <%= f.label :falla_id %>
+          <%= f.select :falla_id, Falla.all.map{|falla| [falla.descripcion, falla.id]} , {}, {:class => "span4"} %>
+        </div>
+      </div>
     </div>
   </div>
 
@@ -92,34 +111,63 @@
   </div>
 
 
-  <div class="span12">
-    <table class="lbs_formset table table-bordered span10">
-      <thead>
-        <tr>
-          <th class="titulo">Refacción</th>
-          <th>Cantidad</th>
-          <th>Descripción</th>
-          <th>Acciones</th>
-        </tr>
-      </thead>
-      <tbody class="lbs_fields_wrapper">
-        <%= f.fields_for :detalle_orden do |d_form| %>
-          <%= render 'detalle_orden_fields', :f => d_form %>
-        <% end %>
-        <tr>
-          <td colspan="4"> 
-            <%= link_to_create 'Agregar refacción', DetalleOrden.new, f, :class => 'agregar btn btn-inverse', :id=>"add" %>
-          </td>
-        </tr>
-      </tbody>
-    </table>
+  <div class="row">
+    <div class="span12 prepend">
+      <div class="span11 well">
+        <table class="lbs_formset table table-bordered span10">
+          <thead>
+            <tr>
+              <th class="titulo">Refacción</th>
+              <th>Cantidad</th>
+              <th>Descripción</th>
+              <th>Acciones</th>
+            </tr>
+          </thead>
+          <tbody class="lbs_fields_wrapper">
+            <%= f.fields_for :detalle_orden do |d_form| %>
+              <%= render 'detalle_orden_fields', :f => d_form %>
+            <% end %>
+            <tr>
+              <td colspan="4"> 
+                <%= link_to_create 'Agregar refacción', DetalleOrden.new, f, :class => 'agregar btn btn-inverse', :id=>"add" %>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
   </div>
 
 
-  <div class="form-actions span12">
+  <div class="form-actions row">
     <div class="actions">
       <%= f.submit :class => 'btn btn-primary'%>
     </div>
   </div>
 
 <% end %>
+
+
+<div class="modal hide fade in" id="myModal">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal">×</button>
+    <h3>Seleccionar activo</h3>
+  </div>
+  <div class="modal-body">
+
+    <ul class="nav nav-tabs" id="myTab">
+      <li class="active"><a href="#buscar">Buscar</a></li>
+      <li><a href="#crear">Crear</a></li>
+    </ul>
+
+    <div class="tab-content">
+      <div class="tab-pane active" id="buscar">Buscar</div>
+      <div class="tab-pane" id="crear">Crear</div>
+    </div>
+
+  </div>
+  <div class="modal-footer">
+    <a href="#" class="btn" data-dismiss="modal">Close</a>
+    <a href="#" class="btn btn-primary">Save changes</a>
+  </div>
+</div>
