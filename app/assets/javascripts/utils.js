@@ -25,3 +25,4 @@ function add_fields(link, association, content){
     wrapper.prepend(item);
   }
 }
+

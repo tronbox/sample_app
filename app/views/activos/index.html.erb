@@ -1,14 +1,12 @@
 <h1>Listado de Activos</h1>
 
-<table>
+<table class="datatable table table-bordered">
   <thead>
     <tr>
       <th>Clave</th>
       <th>Descripcion</th>
       <th>Costo revision</th>
-      <th></th>
-      <th></th>
-      <th></th>
+      <th>Opciones</th>
     </tr>
   </thead>
 
@@ -18,9 +16,13 @@
       <td><%= activo.clave %></td>
       <td><%= activo.descripcion %></td>
       <td><%= activo.costo_revision %></td>
-      <td><%= link_to 'Mostrar', activo %></td>
-      <td><%= link_to 'Editar', edit_activo_path(activo) %></td>
-      <td><%= link_to 'Eliminar', activo, confirm: '¿Está usted seguro?', method: :delete %></td>
+      <td>
+        <div class="btn-group">
+          <%= link_to 'Mostrar', activo, :class => 'btn' %>
+          <%= link_to 'Editar', edit_activo_path(activo), :class => 'btn' %>
+          <%= link_to 'Eliminar', activo, confirm: '¿Está usted seguro?', method: :delete, :class => 'btn btn-danger' %>
+        </div>
+      </td>
     </tr>
   <% end %>
   </tbody>

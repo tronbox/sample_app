@@ -91,7 +91,8 @@
               <span class="add-on">
                 <a class="icon-search" data-toggle="modal" href="#myModal" ></a>
               </span>
-              <%= f.text_field :activo_id, :class => "span5 disabled", :disabled => 'disabled' %>
+              <input  class = "span5 disabled" disabled = 'disabled' type="text" id="nombre_activo" >
+              <%= f.hidden_field :activo_id %>
             </div>
           </div>
         </div>
@@ -161,13 +162,14 @@
     </ul>
 
     <div class="tab-content">
-      <div class="tab-pane active" id="buscar">Buscar</div>
+      <div class="tab-pane active" id="buscar">
+        <%= render "activos/buscar_activo", :activos => @activos %>
+      </div>
       <div class="tab-pane" id="crear">Crear</div>
     </div>
 
   </div>
   <div class="modal-footer">
-    <a href="#" class="btn" data-dismiss="modal">Close</a>
-    <a href="#" class="btn btn-primary">Save changes</a>
+    <a href="#" class="btn" data-dismiss="modal">Cerrar</a>
   </div>
 </div>

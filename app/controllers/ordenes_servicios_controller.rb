@@ -25,6 +25,7 @@ class OrdenesServiciosController < ApplicationController
   # GET /ordenes_servicios/new.json
   def new
     @orden_servicio = OrdenServicio.new
+    @activos = Activo.all
 
     respond_to do |format|
       format.html # new.html.erb
