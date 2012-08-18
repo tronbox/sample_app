@@ -43,14 +43,15 @@ class ActivosController < ApplicationController
   # POST /activos.json
   def create
     @activo = Activo.new(params[:activo])
+    @activo_disponible = Activo.new
 
     respond_to do |format|
       if @activo.save
         format.html { redirect_to @activo, notice: 'Activo was successfully created.' }
-        format.json { render json: @activo, status: :created, location: @activo }
+        format.js
       else
         format.html { render action: "new" }
-        format.json { render json: @activo.errors, status: :unprocessable_entity }
+        format.js
       end
     end
   end

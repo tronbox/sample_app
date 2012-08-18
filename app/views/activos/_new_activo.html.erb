@@ -1,0 +1,22 @@
+<%= form_for(activo, :remote => true, :validate => true) do |f| %>
+  <%= render 'error_messages', target: @activo %>
+  <div class="row">
+    <div class="span7">
+    <div class="field span1">
+      <label>Clave</label>
+      <%= f.text_field :clave, :class => "span1" %>
+    </div>
+    <div class="field span3">
+      <%= f.label :descripcion %>
+      <%= f.text_field :descripcion, :class => "span3" %>
+    </div>
+    <div class="field span2">
+      <%= f.label :costo_revision %>
+      <%= f.text_field :costo_revision, :class => "span2" %>
+    </div>
+    </div>
+  </div>
+  <div class="actions">
+    <%= f.submit :disable_with => 'Espere...', :class => "btn btn-primary" %>
+  </div>
+<% end %>

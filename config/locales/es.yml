@@ -1,0 +1,4 @@
+es:
+  hello: "Hello world"
+  required:
+    mark: '%'

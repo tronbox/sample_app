@@ -26,6 +26,7 @@ class OrdenesServiciosController < ApplicationController
   def new
     @orden_servicio = OrdenServicio.new
     @activos = Activo.all
+    @activo = Activo.new
 
     respond_to do |format|
       format.html # new.html.erb

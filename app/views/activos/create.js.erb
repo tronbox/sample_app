@@ -1,0 +1,7 @@
+<% if @activo.errors.any? %>
+  $("#crear").html("<%= escape_javascript render :partial => "activos/new_activo", :locals => {:activo => @activo}  %>");  
+<% else %>
+  $("#crear").html("<%= escape_javascript render :partial => "activos/new_activo", :locals => {:activo => @activo_disponible}  %>");
+  asigna_activo("<%= @activo.descripcion %>", "<%= @activo.id%>"); 
+  $('#myModal').modal('hide')
+<% end %>
