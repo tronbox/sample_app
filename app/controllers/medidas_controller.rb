@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 class MedidasController < ApplicationController
   load_and_authorize_resource
   # GET /medidas
@@ -45,7 +46,7 @@ class MedidasController < ApplicationController
 
     respond_to do |format|
       if @medida.save
-        format.html { redirect_to @medida, notice: 'Medida was successfully created.' }
+        format.html { redirect_to @medida, notice: 'Medida se ha creado con éxito.' }
         format.json { render json: @medida, status: :created, location: @medida }
       else
         format.html { render action: "new" }
@@ -61,7 +62,7 @@ class MedidasController < ApplicationController
 
     respond_to do |format|
       if @medida.update_attributes(params[:medida])
-        format.html { redirect_to @medida, notice: 'Medida was successfully updated.' }
+        format.html { redirect_to @medida, notice: 'Medida se ha actualizado correctamente.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }

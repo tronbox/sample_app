@@ -1,22 +1,23 @@
-<h1>Listado de Areas</h1>
+<div class="label label-info" align="center">
+	<h1>Listado de Áreas</h1>
+</div>
+<br />
 
-<table>
+<table class="areas table table-bordered">
   <thead>
     <tr>
       <th>Clave</th>
-      <th>Descripcion</th>
+      <th>Descripción</th>
       <th>Calle</th>
-      <th>Numero exterior</th>
-      <th>Numero interior</th>
+      <th>Número exterior</th>
+      <th>Número interior</th>
       <th>Colonia</th>
       <th>Localidad</th>
       <th>Municipio</th>
-      <th>Codigo postal</th>
-      <th>Telefono</th>
-      <th>Correo electronico</th>
-      <th></th>
-      <th></th>
-      <th></th>
+      <th>Código postal</th>
+      <th>Teléfono</th>
+      <th>Correo electrónico</th>
+      <th>Opciones</th>      
     </tr>
   </thead>
 
@@ -34,13 +35,17 @@
       <td><%= area.codigo_postal %></td>
       <td><%= area.telefono %></td>
       <td><%= area.correo_electronico %></td>
-      <td><%= link_to 'Mostrar', area %></td>
-      <td><%= link_to 'Editar', edit_area_path(area) %></td>
-      <td><%= link_to 'Eliminar', area, confirm: '¿Está usted seguro?', method: :delete %></td>
+      <td>
+      	<div class="btn-group">
+      		<%= link_to 'Mostrar', area, :class => 'btn' %>
+      		<%= link_to 'Editar', edit_area_path(area), :class => 'btn' %>
+      		<%= link_to 'Eliminar', area, confirm: '¿Está usted seguro?', method: :delete, :class => 'btn btn-danger' %>
+      	</div>
+      </td>      
     </tr>
   <% end %>
   </tbody>
 </table>
 
 <br />
-<%= link_to 'Nueva Area', new_area_path %>
+<%= link_to 'Nueva Área', new_area_path, :class => 'btn btn-primary' %>

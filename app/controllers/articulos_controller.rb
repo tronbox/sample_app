@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 class ArticulosController < ApplicationController
   load_and_authorize_resource
   # GET /articulos
@@ -45,7 +46,7 @@ class ArticulosController < ApplicationController
 
     respond_to do |format|
       if @articulo.save
-        format.html { redirect_to @articulo, notice: 'Articulo was successfully created.' }
+        format.html { redirect_to @articulo, notice: 'Articulo se ha creado con éxito.' }
         format.json { render json: @articulo, status: :created, location: @articulo }
       else
         format.html { render action: "new" }
@@ -61,7 +62,7 @@ class ArticulosController < ApplicationController
 
     respond_to do |format|
       if @articulo.update_attributes(params[:articulo])
-        format.html { redirect_to @articulo, notice: 'Articulo was successfully updated.' }
+        format.html { redirect_to @articulo, notice: 'Articulo se ha actualizado correctamente.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }

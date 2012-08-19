@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 class AgentesController < ApplicationController
   load_and_authorize_resource
   # GET /agentes
@@ -45,7 +46,7 @@ class AgentesController < ApplicationController
 
     respond_to do |format|
       if @agente.save
-        format.html { redirect_to @agente, notice: 'Agente was successfully created.' }
+        format.html { redirect_to @agente, notice: 'Agente se ha creado con éxito.' }
         format.json { render json: @agente, status: :created, location: @agente }
       else
         format.html { render action: "new" }
@@ -61,7 +62,7 @@ class AgentesController < ApplicationController
 
     respond_to do |format|
       if @agente.update_attributes(params[:agente])
-        format.html { redirect_to @agente, notice: 'Agente was successfully updated.' }
+        format.html { redirect_to @agente, notice: 'Agente se ha actualizado correctamente.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }

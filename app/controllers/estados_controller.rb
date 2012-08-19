@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 class EstadosController < ApplicationController
   load_and_authorize_resource
   # GET /estados
@@ -45,7 +46,7 @@ class EstadosController < ApplicationController
 
     respond_to do |format|
       if @estado.save
-        format.html { redirect_to @estado, notice: 'Estado was successfully created.' }
+        format.html { redirect_to @estado, notice: 'Estado se ha creado con éxito.' }
         format.json { render json: @estado, status: :created, location: @estado }
       else
         format.html { render action: "new" }
@@ -61,7 +62,7 @@ class EstadosController < ApplicationController
 
     respond_to do |format|
       if @estado.update_attributes(params[:estado])
-        format.html { redirect_to @estado, notice: 'Estado was successfully updated.' }
+        format.html { redirect_to @estado, notice: 'Estado se ha actualizado correctamente.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }

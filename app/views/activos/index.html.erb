@@ -1,11 +1,14 @@
-<h1>Listado de Activos</h1>
+<div class="label label-info" align="center">
+	<h1>Listado de Activos</h1>
+</div>
+<br />
 
 <table class="datatable table table-bordered">
   <thead>
     <tr>
       <th>Clave</th>
-      <th>Descripcion</th>
-      <th>Costo revision</th>
+      <th>Descripción</th>
+      <th>Costo revisión</th>
       <th>Opciones</th>
     </tr>
   </thead>
@@ -29,4 +32,4 @@
 </table>
 
 <br />
-<%= link_to 'Nuevo Activo', new_activo_path %>
+<%= link_to 'Nuevo Activo', new_activo_path, :class => 'btn btn-primary' %>

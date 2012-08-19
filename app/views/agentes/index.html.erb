@@ -1,13 +1,14 @@
-<h1>Listado de Agentes</h1>
+<div class="label label-info" align="center">
+	<h1>Listado de Agentes</h1>
+</div>
+<br />
 
-<table>
+<table class="agentes table table-bordered">
   <thead>
     <tr>
       <th>Clave</th>
       <th>Nombre</th>
-      <th></th>
-      <th></th>
-      <th></th>
+      <th>Opciones</th>      
     </tr>
   </thead>
 
@@ -16,13 +17,17 @@
     <tr>
       <td><%= agente.clave %></td>
       <td><%= agente.nombre %></td>
-      <td><%= link_to 'Mostrar', agente %></td>
-      <td><%= link_to 'Editar', edit_agente_path(agente) %></td>
-      <td><%= link_to 'Eliminar', agente, confirm: '¿Está usted seguro?', method: :delete %></td>
+      <td>
+      	<div class="btn-group">
+      		<%= link_to 'Mostrar', agente, :class => 'btn' %>
+      		<%= link_to 'Editar', edit_agente_path(agente), :class => 'btn' %>
+      		<%= link_to 'Eliminar', agente, confirm: '¿Está usted seguro?', method: :delete, :class => 'btn btn-danger' %>
+      	</div>
+      </td>      
     </tr>
   <% end %>
   </tbody>
 </table>
 
 <br />
-<%= link_to 'Nuevo Agente', new_agente_path %>
+<%= link_to 'Nuevo Agente', new_agente_path, :class => 'btn btn-primary'  %>

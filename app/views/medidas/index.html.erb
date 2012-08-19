@@ -1,13 +1,14 @@
-<h1>Listado de Medidas</h1>
+<div class="label label-info" align="center">
+	<h1>Listado de Medidas</h1>
+</div>
+<br />
 
-<table>
+<table class="medidas table table-bordered">
   <thead>
     <tr>
       <th>Clave</th>
-      <th>Descripcion</th>
-      <th></th>
-      <th></th>
-      <th></th>
+      <th>Descripción</th>
+      <th>Opciones</th>      
     </tr>
   </thead>
 
@@ -16,13 +17,17 @@
     <tr>
       <td><%= medida.clave %></td>
       <td><%= medida.descripcion %></td>
-      <td><%= link_to 'Mostrar', medida %></td>
-      <td><%= link_to 'Editar', edit_medida_path(medida) %></td>
-      <td><%= link_to 'Eliminar', medida, confirm: '¿Está usted seguro?', method: :delete %></td>
+      <td>
+      	<div class="btn-group">
+      		<%= link_to 'Mostrar', medida, :class => 'btn' %>
+      		<%= link_to 'Editar', edit_medida_path(medida), :class => 'btn' %>
+      		<%= link_to 'Eliminar', medida, confirm: '¿Está usted seguro?', method: :delete, :class => 'btn btn-danger' %>
+      	</div>
+      </td>      
     </tr>
   <% end %>
   </tbody>
 </table>
 
 <br />
-<%= link_to 'Nueva Medida', new_medida_path %>
+<%= link_to 'Nueva Medida', new_medida_path, :class => 'btn btn-primary' %>

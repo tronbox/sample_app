@@ -1,12 +1,14 @@
-<h1>Listado de Series</h1>
+<div class="label label-info" align="center">
+	<h1>Listado de Series</h1>
+</div>
+<br />
 
-<table>
+
+<table class="series table table-bordered">
   <thead>
     <tr>
       <th>Nombre</th>
-      <th></th>
-      <th></th>
-      <th></th>
+      <th>Opciones</th>      
     </tr>
   </thead>
 
@@ -14,13 +16,17 @@
   <% @series.each do |series| %>
     <tr>
       <td><%= series.nombre %></td>
-      <td><%= link_to 'Mostrar', series %></td>
-      <td><%= link_to 'Editar', edit_series_path(series) %></td>
-      <td><%= link_to 'Eliminar', series, confirm: '¿Está usted seguro?', method: :delete %></td>
+      <td>
+      	<div class="btn-group">      		
+      		<%= link_to 'Mostrar', series, :class => 'btn' %>
+      		<%= link_to 'Editar', edit_series_path(series), :class => 'btn' %>
+      		<%= link_to 'Eliminar', series, confirm: '¿Está usted seguro?', method: :delete, :class => 'btn btn-danger' %>
+      	</div>
+      </td>
     </tr>
   <% end %>
   </tbody>
 </table>
 
 <br />
-<%= link_to 'Nueva Series', new_series_path %>
+<%= link_to 'Nueva Serie', new_series_path, :class => 'btn btn-primary' %>

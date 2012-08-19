@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 class ReparacionesController < ApplicationController
   load_and_authorize_resource
   # GET /reparaciones
@@ -45,7 +46,7 @@ class ReparacionesController < ApplicationController
 
     respond_to do |format|
       if @reparacion.save
-        format.html { redirect_to @reparacion, notice: 'Reparacion was successfully created.' }
+        format.html { redirect_to @reparacion, notice: 'Reparacion se ha creado con éxito.' }
         format.json { render json: @reparacion, status: :created, location: @reparacion }
       else
         format.html { render action: "new" }
@@ -61,7 +62,7 @@ class ReparacionesController < ApplicationController
 
     respond_to do |format|
       if @reparacion.update_attributes(params[:reparacion])
-        format.html { redirect_to @reparacion, notice: 'Reparacion was successfully updated.' }
+        format.html { redirect_to @reparacion, notice: 'Reparacion se ha actualizado correctamente.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }

@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 class AreasController < ApplicationController
   load_and_authorize_resource
   # GET /areas
@@ -45,7 +46,7 @@ class AreasController < ApplicationController
 
     respond_to do |format|
       if @area.save
-        format.html { redirect_to @area, notice: 'Area was successfully created.' }
+        format.html { redirect_to @area, notice: 'Area se ha creado con éxito.' }
         format.json { render json: @area, status: :created, location: @area }
       else
         format.html { render action: "new" }
@@ -61,7 +62,7 @@ class AreasController < ApplicationController
 
     respond_to do |format|
       if @area.update_attributes(params[:area])
-        format.html { redirect_to @area, notice: 'Area was successfully updated.' }
+        format.html { redirect_to @area, notice: 'Area se ha actualizado correctamente.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }

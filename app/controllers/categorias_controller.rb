@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 class CategoriasController < ApplicationController
   load_and_authorize_resource
   # GET /categorias
@@ -45,7 +46,7 @@ class CategoriasController < ApplicationController
 
     respond_to do |format|
       if @categoria.save
-        format.html { redirect_to @categoria, notice: 'Categoria was successfully created.' }
+        format.html { redirect_to @categoria, notice: 'Categoria se ha creado con éxito.' }
         format.json { render json: @categoria, status: :created, location: @categoria }
       else
         format.html { render action: "new" }
@@ -61,7 +62,7 @@ class CategoriasController < ApplicationController
 
     respond_to do |format|
       if @categoria.update_attributes(params[:categoria])
-        format.html { redirect_to @categoria, notice: 'Categoria was successfully updated.' }
+        format.html { redirect_to @categoria, notice: 'Categoria se ha actualizado correctamente.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }

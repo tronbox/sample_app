@@ -1,14 +1,17 @@
-<h1>Listado de Estados</h1>
+<div class="label label-info" align="center">
+	<h1>Listado de Estados</h1>
+</div>
+<br />
 
-<table>
+
+
+<table class="estados table table-bordered">
   <thead>
     <tr>
       <th>Clave</th>
-      <th>Descripcion</th>
+      <th>Descripción</th>
       <th>Color estado</th>
-      <th></th>
-      <th></th>
-      <th></th>
+      <th>Opciones</th>      
     </tr>
   </thead>
 
@@ -18,13 +21,17 @@
       <td><%= estado.clave %></td>
       <td><%= estado.descripcion %></td>
       <td><%= estado.color_estado %></td>
-      <td><%= link_to 'Mostrar', estado %></td>
-      <td><%= link_to 'Editar', edit_estado_path(estado) %></td>
-      <td><%= link_to 'Eliminar', estado, confirm: '¿Está usted seguro?', method: :delete %></td>
+      <td>
+      	<div class="btn-group">
+      		<%= link_to 'Mostrar', estado, :class => 'btn' %>
+      		<%= link_to 'Editar', edit_estado_path(estado), :class => 'btn' %>
+      		<%= link_to 'Eliminar', estado, confirm: '¿Está usted seguro?', method: :delete, :class => 'btn btn-danger' %>
+      	</div>
+      </td>      
     </tr>
   <% end %>
   </tbody>
 </table>
 
 <br />
-<%= link_to 'Nuevo Estado', new_estado_path %>
+<%= link_to 'Nuevo Estado', new_estado_path, :class => 'btn btn-primary' %>

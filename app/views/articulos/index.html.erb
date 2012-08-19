@@ -1,14 +1,15 @@
-<h1>Listado de Articulos</h1>
+<div class="label label-info" align="center">
+	<h1>Listado de Artículos</h1>
+</div>
+<br />
 
-<table>
+<table class="articulos table table-bordered">
   <thead>
     <tr>
       <th>Clave</th>
-      <th>Descripcion</th>
-      <th>Descripcion larga</th>
-      <th></th>
-      <th></th>
-      <th></th>
+      <th>Descripción</th>
+      <th>Descripción larga</th>
+      <th>Opciones</th>      
     </tr>
   </thead>
 
@@ -18,13 +19,17 @@
       <td><%= articulo.clave %></td>
       <td><%= articulo.descripcion %></td>
       <td><%= articulo.descripcion_larga %></td>
-      <td><%= link_to 'Mostrar', articulo %></td>
-      <td><%= link_to 'Editar', edit_articulo_path(articulo) %></td>
-      <td><%= link_to 'Eliminar', articulo, confirm: '¿Está usted seguro?', method: :delete %></td>
+      <td>
+      	<div class="btn-group">
+      		<%= link_to 'Mostrar', articulo, :class => 'btn' %>
+      		<%= link_to 'Editar', edit_articulo_path(articulo), :class => 'btn' %>
+      		<%= link_to 'Eliminar', articulo, confirm: '¿Está usted seguro?', method: :delete, :class => 'btn btn-danger' %>
+      	</div>
+      </td>      
     </tr>
   <% end %>
   </tbody>
 </table>
 
 <br />
-<%= link_to 'Nuevo Articulo', new_articulo_path %>
+<%= link_to 'Nuevo Artículo', new_articulo_path, :class => 'btn btn-primary' %>

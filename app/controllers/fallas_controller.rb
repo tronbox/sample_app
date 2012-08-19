@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 class FallasController < ApplicationController
   load_and_authorize_resource
   # GET /fallas
@@ -45,7 +46,7 @@ class FallasController < ApplicationController
 
     respond_to do |format|
       if @falla.save
-        format.html { redirect_to @falla, notice: 'Falla was successfully created.' }
+        format.html { redirect_to @falla, notice: 'Falla se ha creado con éxito.' }
         format.json { render json: @falla, status: :created, location: @falla }
       else
         format.html { render action: "new" }
@@ -61,7 +62,7 @@ class FallasController < ApplicationController
 
     respond_to do |format|
       if @falla.update_attributes(params[:falla])
-        format.html { redirect_to @falla, notice: 'Falla was successfully updated.' }
+        format.html { redirect_to @falla, notice: 'Falla se ha actualizado correctamente.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }

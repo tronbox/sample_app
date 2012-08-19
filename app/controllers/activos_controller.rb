@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*- 
 class ActivosController < ApplicationController
   load_and_authorize_resource
 
@@ -47,7 +48,7 @@ class ActivosController < ApplicationController
 
     respond_to do |format|
       if @activo.save
-        format.html { redirect_to @activo, notice: 'Activo was successfully created.' }
+        format.html { redirect_to @activo, notice: 'Activo se ha creado con éxito.' }
         format.js
       else
         format.html { render action: "new" }
@@ -63,7 +64,7 @@ class ActivosController < ApplicationController
 
     respond_to do |format|
       if @activo.update_attributes(params[:activo])
-        format.html { redirect_to @activo, notice: 'Activo was successfully updated.' }
+        format.html { redirect_to @activo, notice: 'Activo se ha actualizado correctamente.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }
