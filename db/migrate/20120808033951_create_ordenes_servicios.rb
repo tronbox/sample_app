@@ -2,8 +2,8 @@ class CreateOrdenesServicios < ActiveRecord::Migration
   def change
     create_table :ordenes_servicios do |t|
       t.integer :folio
-      t.date :fecha_recepcion
-      t.date :fecha_entrega
+      t.datetime :fecha_recepcion
+      t.datetime :fecha_entrega
       t.text :descripcion
       t.references :area
       t.references :agente

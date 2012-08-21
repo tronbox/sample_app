@@ -79,7 +79,8 @@
               <span class="add-on">
                 <a class="icon-search" data-toggle="modal" href="#myModal" ></a>
               </span>
-              <input  class = "span5 disabled" disabled = 'disabled' type="text" id="nombre_activo" >
+              <!-- <input  class = "span5 disabled" disabled = 'disabled' type="text" id="nombre_activo" > --!>
+              <%= f.text_field :activo_descripcion, { :class => "span5 disabled", :disabled => "disabled", :id => "nombre_activo"} %>
               <%= f.hidden_field :activo_id %>
             </div>
           </div>

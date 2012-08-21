@@ -37,12 +37,19 @@ class OrdenesServiciosController < ApplicationController
   # GET /ordenes_servicios/1/edit
   def edit
     @orden_servicio = OrdenServicio.find(params[:id])
+    @activos = Activo.all
+    @activo = Activo.new
+
   end
 
   # POST /ordenes_servicios
   # POST /ordenes_servicios.json
   def create
+    puts "****************************************************************************************"
+    puts params[:orden_servicio]
     @orden_servicio = OrdenServicio.new(params[:orden_servicio])
+    @orden_servicio.fecha_entrega = 1.day.ago
+    puts @orden_servicio.fecha_entrega
 
     respond_to do |format|
       if @orden_servicio.save
