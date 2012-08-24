@@ -10,5 +10,6 @@ module FormsHelper
       mark ||= ""
       (mark + str).html_safe
     end
-  end
+  end  
+  
 end
