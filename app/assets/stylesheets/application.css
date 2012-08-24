@@ -13,4 +13,6 @@
  *= require custom
  *= require dataTables/jquery.dataTables.bootstrap
  *= require bootstrap-datepicker
+ *= require jquery.ui.core
+ *= require jquery.ui.theme
  */
