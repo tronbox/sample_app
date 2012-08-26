@@ -12,8 +12,10 @@ class OrdenServicio < ActiveRecord::Base
   attr_accessible :descripcion, :fecha_entrega, :fecha_recepcion, :folio, :area_id, :agente_id, :activo_id, :falla_id, :series_id, 
     :estado_id, :detalle_orden_attributes, :articulo_id
 
-  #validates_uniqueness_of :orden_servicio_id, :scope => :articulo_id
+  validates :fecha_recepcion, :fecha_entrega, :area_id, :agente_id, :activo_id, :falla_id, :series_id, :estado_id, :presence => true
+  validates_associated :detalle_orden 
   
+
   def activo_descripcion
     if self.activo != nil
       self.activo.descripcion

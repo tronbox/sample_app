@@ -1,9 +1,13 @@
 <%= form_for(@orden_servicio) do |f| %>
-  <%= render 'error_messages', target: @orden_servicio %>
+  <% if not @orden_servicio.errors.empty? %>
+    <div class="alert alert-error">
+      <%= render 'error_messages', target: @orden_servicio %>
+    </div>
+  <%end%>
   
   <div class="row">
     <div class="span12 prepend">
-      <div class="span11">
+      <div class="span11 controls-row">
         <div class="span2">
           <div class="field">
             <%= f.label :series_id %>

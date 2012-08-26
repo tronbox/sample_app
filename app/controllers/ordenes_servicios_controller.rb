@@ -46,6 +46,9 @@ class OrdenesServiciosController < ApplicationController
   # POST /ordenes_servicios.json
   def create
     @orden_servicio = OrdenServicio.new(params[:orden_servicio])
+    @activos = Activo.all
+    @activo = Activo.new
+
     respond_to do |format|
       if @orden_servicio.save
         format.html { redirect_to @orden_servicio, notice: 'Orden servicio was successfully created.' }
