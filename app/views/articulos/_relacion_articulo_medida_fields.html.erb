@@ -3,7 +3,7 @@
     <%= f.select :medida_id, Medida.all.map{|medida| [medida.descripcion, medida.id] }, {} %>
   </td>
   <td class="field">
-    <%= f.number_field :unidades_por_empaque, :value => 1, :min => 1, :step => 1, :class => "input-small" %>
+    <%= f.number_field :unidades_por_empaque, :class => "input-small" %>
   </td>
   <td>
     <%= link_to_remove 'Eliminar', f, :class => 'eliminar btn btn-danger' %>
