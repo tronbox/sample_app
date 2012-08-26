@@ -45,12 +45,7 @@ class OrdenesServiciosController < ApplicationController
   # POST /ordenes_servicios
   # POST /ordenes_servicios.json
   def create
-    puts "****************************************************************************************"
-    puts params[:orden_servicio]
     @orden_servicio = OrdenServicio.new(params[:orden_servicio])
-    @orden_servicio.fecha_entrega = 1.day.ago
-    puts @orden_servicio.fecha_entrega
-
     respond_to do |format|
       if @orden_servicio.save
         format.html { redirect_to @orden_servicio, notice: 'Orden servicio was successfully created.' }

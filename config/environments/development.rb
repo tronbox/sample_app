@@ -34,6 +34,8 @@ SampleApp::Application.configure do
 
   # Expands the lines which load the assets
   config.assets.debug = true
+  Date::DATE_FORMATS.merge!(:default => "%d/%m/%Y")
+  Date::DATE_FORMATS.merge!(:db => "%d/%m/%Y")
 
   config.action_mailer.default_url_options = { :host => 'localhost:3000'}
 

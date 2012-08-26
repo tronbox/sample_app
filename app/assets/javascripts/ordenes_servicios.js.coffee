@@ -3,7 +3,7 @@
 # You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
 #
 calendario = () ->
-  $('.calendario').datepicker('es')
+  $('.calendario').datepicker({"format": "dd-mm-yyyy", "weekStart": 1, "autoclose": true})
 
 tabs = () ->
     $('#myTab li  a').click( ->
