@@ -5,8 +5,8 @@
 
 selecciona_activo = (element) ->
   $(element).find(".selecciona_activo").click( ->   
-    nombre = $(this).parent().parent().parent().find("td.descripcion_activo").text()
-    id = $(this).parent().parent().parent().find("td.id_activo").text()
+    nombre = $(this).parent().parent().find("td.descripcion_activo").text()
+    id = $(this).parent().parent().find("td.id_activo").text()
     asigna_activo(nombre, id)
     $('#myModal').modal('hide')
     false 
