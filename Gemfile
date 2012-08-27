@@ -7,6 +7,7 @@ gem 'rails', '3.2.6'
 gem 'rieles'
 gem 'devise'
 gem 'cancan'
+
 group :development, :test do
   gem 'sqlite3'
   gem 'rspec-rails', '2.10.0'
@@ -33,7 +34,7 @@ gem 'anjlab-bootstrap-rails', :require => 'bootstrap-rails',
   :git => 'git://github.com/anjlab/bootstrap-rails.git'
 
 gem 'bootstrap-datepicker-rails'
-
+gem 'will_paginate'
 group :test do
   gem 'capybara', '1.1.2'
 end

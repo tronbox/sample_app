@@ -10,26 +10,10 @@ tabs = () ->
       $(this).tab('show')
     )
 
-@selecciona_activo = () -> 
-  $(".selecciona_activo").click( ->   
-    nombre = $(this).parent().parent().parent().find("td.descripcion_activo").text()
-    id = $(this).parent().parent().parent().find("td.id_activo").text()
-    asigna_activo(nombre, id)
-    $('#myModal').modal('hide')
-    false 
-  )
-
-#Ojo este mejor llevarlo utilsc.js.coffee
-@asigna_activo = (nombre, id) ->
-  $("#nombre_activo").attr('value', nombre)
-  $("#orden_servicio_activo_id").attr('value', id)
-  false
-
   
 carga_funcionalidad = () ->
   calendario()
   tabs()
-  selecciona_activo()
 
 $(document).ready(carga_funcionalidad)
 

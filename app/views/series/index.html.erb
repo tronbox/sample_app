@@ -4,27 +4,15 @@
 <br />
 
 
-<table class="series table table-bordered">
+<table id="series" class="table table-bordered" data-source="<%= series_index_url(format: "json") %>">
   <thead>
     <tr>
       <th>Nombre</th>
-      <th>Opciones</th>      
+      <th>Opciones</th>     
     </tr>
   </thead>
 
   <tbody>
-  <% @series.each do |series| %>
-    <tr>
-      <td><%= series.nombre %></td>
-      <td>
-      	<div class="btn-group">      		
-      		<%= link_to 'Mostrar', series, :class => 'btn' %>
-      		<%= link_to 'Editar', edit_series_path(series), :class => 'btn' %>
-      		<%= link_to 'Eliminar', series, confirm: '¿Está usted seguro?', method: :delete, :class => 'btn btn-danger' %>
-      	</div>
-      </td>
-    </tr>
-  <% end %>
   </tbody>
 </table>
 

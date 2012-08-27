@@ -1,4 +1,4 @@
-<table class="datatable_modal table table-condensed table-bordered">
+<table id="activos_modal" class="table table-condensed table-bordered" data-source="<%= activos_url(format: "json") %>"  >
   <thead>
     <tr>
       <th>#</th>
@@ -9,18 +9,6 @@
   </thead>
 
   <tbody>
-  <% activos.each do |activo| %>
-    <tr>
-      <td class="id_activo"><%= activo.id%></td>
-      <td><%= activo.clave %></td>
-      <td class="descripcion_activo"><%= activo.descripcion %></td>
-      <td class="span1">
-        <div class="btn-group">
-          <%= link_to 'Seleccionar', '#', :class => 'btn btn-mini btn-inverse selecciona_activo' %>
-        </div>
-      </td>
-    </tr>
-  <% end %>
   </tbody>
 </table>
 

@@ -5,11 +5,9 @@ class ActivosController < ApplicationController
   # GET /activos
   # GET /activos.json
   def index
-    @activos = Activo.all
-
     respond_to do |format|
       format.html # index.html.erb
-      format.json { render json: @activos }
+      format.json { render json: ActivosDatatable.new(view_context) }
     end
   end
 

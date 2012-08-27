@@ -5,11 +5,9 @@ class SeriesController < ApplicationController
   # GET /series
   # GET /series.json
   def index
-    @series = Series.all
-
     respond_to do |format|
       format.html # index.html.erb
-      format.json { render json: @series }
+      format.json { render json: SeriesDatatable.new(view_context) }
     end
   end
 
