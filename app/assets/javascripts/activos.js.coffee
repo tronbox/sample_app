@@ -12,7 +12,7 @@ selecciona_activo = (element) ->
     false 
   )
 
-asigna_activo = (nombre, id) ->
+@asigna_activo = (nombre, id) ->
   $("#nombre_activo").attr('value', nombre)
   $("#orden_servicio_activo_id").attr('value', id)
   false
