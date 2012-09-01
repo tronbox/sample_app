@@ -1,0 +1,20 @@
+<div class="label label-info" align="center">
+  <h1>Listado de Usuarios</h1>
+</div>
+<br/>
+
+<table id="usuarios" class="table table-bordered" data-source="<%= useres_url(format: "json") %>">
+  <thead>
+    <tr>
+      <th>Nombre</th>
+      <th>Rol</th>
+      <th>Opciones</th>
+    </tr>
+  </thead>
+
+  <tbody>
+  </tbody>
+</table>
+
+<br />
+<%= link_to 'Nuevo Usuario', new_user_path, :class => 'btn btn-primary' %>

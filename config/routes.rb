@@ -18,7 +18,8 @@ SampleApp::Application.routes.draw do
 
   resources :estados
 
-  devise_for :useres
+  devise_for :useres, :path_prefix => 'authorization'
+  resources :useres
 
   resources :fallas
 

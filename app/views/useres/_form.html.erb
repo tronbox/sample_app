@@ -1,0 +1,30 @@
+<div class="span3">
+  <%= form_for(@user) do |f| %>
+    <%= render 'error_messages', target: @user %>
+
+    <div class="actions">
+      <div class="controls span3">
+        <%= f.label :email, "Correo electrónico" %>
+        <%= f.email_field :email %>
+      </div>
+
+      <div class="controls span3">
+        <%= f.label :password, "Contraseña" %>
+        <%= f.password_field :password %>
+      </div>
+
+      <div class="controls span3">
+        <%= f.label :password_confirmation, "Confirmar contraseña" %>
+        <%= f.password_field :password_confirmation %>
+      </div>
+      <div class="controls span3">
+        <%= f.label :rol_id, "Rol" %>
+        <%= f.select :rol_id, Rol.all.map {|rol| [rol.nombre.capitalize, rol.id]} %>
+      </div>
+
+      <div class="controls span3">
+        <%= f.submit "Guardar", :class => "btn btn-primary" %>
+      </div>
+    </div>
+  <% end %>
+</div>
