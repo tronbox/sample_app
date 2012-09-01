@@ -18,8 +18,6 @@ class ActivosDatatable
   private
 
   def data
-    puts ".........................................................."
-    puts params[:origen].present?
     if params[:origen].present? and params[:origen] == "orden_servicio"
       activos.map do |activo|
         [
