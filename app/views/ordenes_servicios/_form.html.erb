@@ -15,13 +15,6 @@
           </div>
         </div>
 
-        <div class="span2">
-          <div class="field">
-            <%= f.label :folio %>
-            <%= f.number_field :folio, :class => "span1" %>
-          </div>
-        </div>
-
         <div class="span3">
           <div class="field">
             <%= f.label :fecha_recepcion %>
@@ -49,23 +42,6 @@
   <div class="row">
     <div class="span12 prepend">
       <div class="span11">
-<!--
-        <div class="field span4">
-          <%= f.label :agente_id %>
-          <%= f.select :agente_id, Agente.all.map{|agente| [agente.nombre, agente.id]}, {}, {:class => "span4"} %>
-        </div>
-
-        <div class="fieldi span4">
-          <%= f.label :area_id %>
-          <%= f.select :area_id, Area.all.map{ |area| [area.descripcion, area.id]}, {}, {:class => "span4"}  %>
-        </div>
-
-        <div class="fieldi span2">
-          <%= f.label :estado_id %>
-          <%= f.select :estado_id, Estado.all.map{ |estado| [estado.descripcion, estado.id]}, {}, {:class => "span2"}  %>
-        </div>
-
---!>
         <div class="field span10">
           <%= f.label :descripcion %>
           <%= f.text_area :descripcion, :class => "span10 oxlarge" %>
@@ -85,7 +61,6 @@
               <span class="add-on">
                 <a class="icon-search" data-toggle="modal" href="#myModal" ></a>
               </span>
-              <!-- <input  class = "span5 disabled" disabled = 'disabled' type="text" id="nombre_activo" > --!>
               <%= f.text_field :activo_descripcion, { :class => "span5 disabled", :disabled => "disabled", :id => "nombre_activo"} %>
               <%= f.hidden_field :activo_id %>
             </div>
@@ -94,7 +69,7 @@
 
         <div class="field span4">
           <%= f.label "Área" %>
-          <%= f.label "Acá estará el área" %>
+          <%= text_field_tag 'activo_algo','', {:class => "span4 disabled", :disabled => "disabled", :id => "area_activo"} %>
         </div>
 
       </div>
@@ -106,14 +81,14 @@
     <div class="span12 prepend">
       <div class="span11">
 
-        <div class="accordion" id="accordion_orden">
+        <div class="accordion span10" id="accordion_orden">
           <div class="accordion-group">
             <div class="accordion-heading">
               <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion_orden" href="#collapseOne">Fallas</a>
             </div>
             <div id="collapseOne" class="accordion-body collapse" style="height: 0px;">
               <div class="accordion-inner">
-                <table class="lbs_formset table table-bordered span10">
+                <table class="lbs_formset table table-bordered span9">
                   <thead>
                     <tr>
                       <th class="titulo">Falla</th>
@@ -141,7 +116,7 @@
             </div>
             <div id="collapseTwo" class="accordion-body collapse" style="height: 0px;">
               <div class="accordion-inner">
-                <table class="lbs_formset table table-bordered span10">
+                <table class="lbs_formset table table-bordered span9">
                   <thead>
                     <tr>
                       <th class="titulo">Reparación</th>

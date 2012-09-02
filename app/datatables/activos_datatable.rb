@@ -24,6 +24,7 @@ class ActivosDatatable
           h(activo.id),
           h(activo.clave),
           h(activo.descripcion),
+          h(activo.area.descripcion),
           link_to('Seleccionar', "#", :class => 'btn btn-mini btn-inverse selecciona_activo')
         ]
       end
@@ -33,6 +34,7 @@ class ActivosDatatable
           h(activo.clave),
           h(activo.descripcion),
           h(activo.costo_revision),
+          h(activo.area.descripcion),
           [
             link_to('Mostrar', activo, :class => 'btn'), 
             link_to('Editar', @view.edit_activo_path(activo), :class => 'btn'), 

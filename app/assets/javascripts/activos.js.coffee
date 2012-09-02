@@ -7,14 +7,16 @@ selecciona_activo = (element) ->
   $(element).find(".selecciona_activo").click( ->   
     nombre = $(this).parent().parent().find("td.descripcion_activo").text()
     id = $(this).parent().parent().find("td.id_activo").text()
-    asigna_activo(nombre, id)
+    area = $(this).parent().parent().find("td.area_activo").text()
+    asigna_activo(nombre, id, area)
     $('#myModal').modal('hide')
     false 
   )
 
-@asigna_activo = (nombre, id) ->
+@asigna_activo = (nombre, id, area) ->
   $("#nombre_activo").attr('value', nombre)
   $("#orden_servicio_activo_id").attr('value', id)
+  $("#area_activo").attr('value', area)
   false
 
 
@@ -41,5 +43,6 @@ jQuery ->
     fnRowCallback: ( nRow, aData, iDisplayIndex, iDisplayIndexFull ) ->
       $('td:eq(0)', nRow).addClass('id_activo')
       $('td:eq(2)', nRow).addClass('descripcion_activo')
+      $('td:eq(3)', nRow).addClass('area_activo')
       selecciona_activo(nRow)
 
