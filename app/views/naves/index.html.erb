@@ -1,0 +1,28 @@
+<h1>Listado de Naves</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Clave</th>
+      <th>Nombre</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+  <% @naves.each do |nave| %>
+    <tr>
+      <td><%= nave.clave %></td>
+      <td><%= nave.nombre %></td>
+      <td><%= link_to 'Mostrar', nave %></td>
+      <td><%= link_to 'Editar', edit_nave_path(nave) %></td>
+      <td><%= link_to 'Eliminar', nave, confirm: '¿Está usted seguro?', method: :delete %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+
+<br />
+<%= link_to 'Nuevo Nave', new_nave_path %>

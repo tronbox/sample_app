@@ -2,13 +2,24 @@
   <%= render 'error_messages', target: @reparacion %>
 
   <div class="field">
-    <%= f.label :clave %><br />
+    <%= f.label :clave %>
     <%= f.text_field :clave %>
   </div>
   <div class="field">
-    <%= f.label :descripción %><br />
+    <%= f.label :descripción %>
     <%= f.text_field :descripcion %>
   </div>
+
+  <div class="field">
+    <%= f.label :pasos %>
+    <%= f.text_area :pasos %>
+  </div>
+
+  <div class="field">
+    <%= f.label :nave_id %>
+    <%= f.select :nave_id, Nave.all.map {|nave| [nave.nombre, nave.id] }, {} %>
+  </div>
+
   <div class="actions">
     <%= f.submit %>
   </div>

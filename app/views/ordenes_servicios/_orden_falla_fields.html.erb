@@ -1,0 +1,9 @@
+<tr class="fields">
+  <td class="field">
+    <%= f.select :falla_id, Falla.all.map{|falla| [falla.descripcion, falla.id] }, {} %>
+  </td>
+
+  <td>
+    <%= link_to_remove 'Eliminar', f, :class => 'eliminar btn btn-danger' %>
+  </td>
+</tr>

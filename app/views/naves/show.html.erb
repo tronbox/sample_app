@@ -1,0 +1,14 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Clave:</b>
+  <%= @nave.clave %>
+</p>
+
+<p>
+  <b>Nombre:</b>
+  <%= @nave.nombre %>
+</p>
+
+<%= link_to 'Editar', edit_nave_path(@nave) %> |
+<%= link_to 'Listado', naves_path %>

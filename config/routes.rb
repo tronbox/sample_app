@@ -1,5 +1,7 @@
 SampleApp::Application.routes.draw do
 
+  resources :naves
+
   resources :ordenes_servicios
 
   resources :relaciones_articulos_medida
