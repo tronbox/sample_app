@@ -9,6 +9,23 @@
     <%= f.label :nombre %><br />
     <%= f.text_field :nombre %>
   </div>
+  
+  <div class="field">
+    <%= f.label :e_mail %><br />
+    <%= f.text_field :e_mail %>
+  </div>
+  <div class="field">
+    <%= f.label :responsable %><br />
+    <%= f.check_box :responsable %>
+  </div>
+  
+  
+  <div class="field">
+    <%= f.label :nave_id %><br />
+    <%= f.select :nave_id, Nave.all.collect{|n| [n.nombre, n.id ]} %>
+  </div>
+  
+  
   <div class="actions">
     <%= f.submit %>
   </div>

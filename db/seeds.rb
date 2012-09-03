@@ -7,7 +7,7 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 #
 puts "Creando los roles..."
-admin = Rol.create(nombre: "administrador)
+admin = Rol.create(nombre: "administrador")
 Rol.create(nombre: "capturista")
 Rol.create(nombre: "responsable de nave")
 Rol.create(nombre: "tecnico")
