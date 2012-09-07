@@ -1,26 +1,37 @@
-<%= form_for(@reparacion) do |f| %>
+<%= form_for @reparacion, :html => { :class => 'form-horizontal' } do |f| %>
   <%= render 'error_messages', target: @reparacion %>
+  	<legend></legend>
+  	<fieldset>	
 
-  <div class="field">
-    <%= f.label :clave %>
-    <%= f.text_field :clave %>
-  </div>
-  <div class="field">
-    <%= f.label :descripción %>
-    <%= f.text_field :descripcion %>
-  </div>
-
-  <div class="field">
-    <%= f.label :pasos %>
-    <%= f.text_area :pasos %>
-  </div>
-
-  <div class="field">
-    <%= f.label :nave_id %>
-    <%= f.select :nave_id, Nave.all.map {|nave| [nave.nombre, nave.id] }, {} %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+	  <div class="control-group">
+	    <%= f.label :clave, :class => 'control-label' %>
+		<div class="controls">
+	    	<%= f.text_field :clave, :class => 'text_field' %>
+	    </div>
+	  </div>
+	  <div class="control-group">
+	    <%= f.label :descripción, :class => 'control-label' %>
+		<div class="controls">
+	    	<%= f.text_field :descripcion, :class => 'text_field' %>
+	    </div>
+	  </div>
+	
+	  <div class="control-group">
+	    <%= f.label :pasos, :class => 'control-label' %>
+		<div class="controls">
+	    	<%= f.text_area :pasos, :class => 'text_field' %>
+	    </div>
+	  </div>
+	
+	  <div class="control-group">
+	    <%= f.label :nave_id, :class => 'control-label' %>
+		<div class="controls">
+	    	<%= f.select :nave_id, Nave.all.map {|nave| [nave.nombre, nave.id] }, {}, :class => 'select' %>
+	    </div>
+	  </div>
+	
+	  <div class="form-actions">
+	    <%= f.submit  "Guardar", :class => "btn btn-primary" %>
+	  </div>
+	 </fieldset>
 <% end %>

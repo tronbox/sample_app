@@ -1,13 +1,13 @@
-<h1>Listado de Naves</h1>
-
-<table>
+<div class="label label-info" align="center">
+	<h1>Listado de Naves</h1>
+</div>
+<br />
+<table class="naves table table-bordered">
   <thead>
     <tr>
       <th>Clave</th>
       <th>Nombre</th>
-      <th></th>
-      <th></th>
-      <th></th>
+      <th>Opciones</th>      
     </tr>
   </thead>
 
@@ -16,13 +16,17 @@
     <tr>
       <td><%= nave.clave %></td>
       <td><%= nave.nombre %></td>
-      <td><%= link_to 'Mostrar', nave %></td>
-      <td><%= link_to 'Editar', edit_nave_path(nave) %></td>
-      <td><%= link_to 'Eliminar', nave, confirm: '¿Está usted seguro?', method: :delete %></td>
+      <td>
+      	<div class="btn-group">
+	      <%= link_to 'Mostrar', nave, :class => 'btn' %>
+	      <%= link_to 'Editar', edit_nave_path(nave), :class => 'btn' %>
+	      <%= link_to 'Eliminar', nave, confirm: '¿Está usted seguro?', method: :delete, :class => 'btn btn-danger' %>
+	    </div>
+	  </td>
     </tr>
   <% end %>
   </tbody>
 </table>
 
 <br />
-<%= link_to 'Nuevo Nave', new_nave_path %>
+<%= link_to 'Nueva Nave', new_nave_path, :class => 'btn btn-primary' %>

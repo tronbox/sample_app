@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 class ActivosDatatable
-  delegate :params, :h, :link_to, to: :@view
+  delegate :params, :h, :link_to, :image_tag, to: :@view
 
   def initialize(view)
     @view = view
@@ -35,6 +35,8 @@ class ActivosDatatable
           h(activo.descripcion),
           h(activo.costo_revision),
           h(activo.area.descripcion),
+          h(activo.codigo),          
+          image_tag(activo.imagen_url),
           [
             link_to('Mostrar', activo, :class => 'btn'), 
             link_to('Editar', @view.edit_activo_path(activo), :class => 'btn'), 

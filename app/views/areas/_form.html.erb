@@ -1,51 +1,82 @@
-<%= form_for(@area) do |f| %>
+<%= form_for @area, :html => { :class => 'form-horizontal' } do |f| %>
   <%= render 'error_messages', target: @area %>
+  	<legend></legend>
+  	<fieldset>	
 
-  <div class="field">
-    <%= f.label :clave %><br />
-    <%= f.text_field :clave %>
-  </div>
-  <div class="field">
-    <%= f.label :descripción %><br />
-    <%= f.text_field :descripcion %>
-  </div>
-  <div class="field">
-    <%= f.label :calle %><br />
-    <%= f.text_field :calle %>
-  </div>
-  <div class="field">
-    <%= f.label :número_exterior %><br />
-    <%= f.text_field :numero_exterior %>
-  </div>
-  <div class="field">
-    <%= f.label :número_interior %><br />
-    <%= f.text_field :numero_interior %>
-  </div>
-  <div class="field">
-    <%= f.label :colonia %><br />
-    <%= f.text_field :colonia %>
-  </div>
-  <div class="field">
-    <%= f.label :localidad %><br />
-    <%= f.text_field :localidad %>
-  </div>
-  <div class="field">
-    <%= f.label :municipio %><br />
-    <%= f.text_field :municipio %>
-  </div>
-  <div class="field">
-    <%= f.label :código_postal %><br />
-    <%= f.text_field :codigo_postal %>
-  </div>
-  <div class="field">
-    <%= f.label :teléfono %><br />
-    <%= f.text_field :telefono %>
-  </div>
-  <div class="field">
-    <%= f.label :correo_electrónico %><br />
-    <%= f.text_field :correo_electronico %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+	  <div class="control-group">
+	    <%= f.label :clave, :class => 'control-label' %>
+	    <div class="controls">
+	    	<%= f.text_field :clave, :class => 'text_field' %>
+	    </div>
+	  </div>
+	  <div class="control-group">
+	    <%= f.label :descripción, :class => 'control-label' %>
+	    <div class="controls">
+	    	<%= f.text_field :descripcion, :class => 'text_field' %>
+	    </div>
+	  </div>
+	  <div class="control-group">
+	    <%= f.label :calle, :class => 'control-label' %>
+	    <div class="controls">
+	    	<%= f.text_field :calle, :class => 'text_field' %>
+	    </div>
+	  </div>
+	  <div class="control-group">
+	    <%= f.label :número_exterior, :class => 'control-label' %>
+	    <div class="controls">
+	    	<%= f.text_field :numero_exterior, :class => 'text_field' %>
+	    </div>
+	  </div>
+	  <div class="control-group">
+	    <%= f.label :número_interior, :class => 'control-label' %>
+	    <div class="controls">
+	    	<%= f.text_field :numero_interior, :class => 'text_field' %>
+	    </div>
+	  </div>
+	  <div class="control-group">
+	    <%= f.label :colonia, :class => 'control-label' %>
+	    <div class="controls">
+	    	<%= f.text_field :colonia, :class => 'text_field' %>
+	    </div>
+	  </div>
+	  <div class="control-group">
+	    <%= f.label :localidad, :class => 'control-label' %>
+	    <div class="controls">
+	    	<%= f.text_field :localidad, :class => 'text_field' %>
+	    </div>
+	  </div>
+	  <div class="control-group">
+	    <%= f.label :municipio, :class => 'control-label' %>
+	    <div class="controls">
+	    	<%= f.text_field :municipio, :class => 'text_field' %>
+	    </div>
+	  </div>
+	  <div class="control-group">
+	    <%= f.label :código_postal, :class => 'control-label' %>
+	    <div class="controls">
+	    	<%= f.text_field :codigo_postal, :class => 'text_field' %>
+	    </div>
+	  </div>
+	  <div class="control-group">
+	    <%= f.label :teléfono, :class => 'control-label' %>
+	    <div class="controls">
+	    	<%= f.text_field :telefono, :class => 'text_field' %>
+	    </div>
+	  </div>
+	  <div class="control-group">
+	    <%= f.label :correo_electrónico, :class => 'control-label' %>
+	    <div class="controls">
+	    	<%= f.text_field :correo_electronico, :class => 'text_field' %>
+	    </div>
+	  </div>
+	  <div class="control-group">
+	    <%= f.label :responsable, :class => 'control-label' %>
+	    <div class="controls">
+	    	<%= f.text_field :responsable, :class => 'text_field' %>
+	    </div>
+	  </div>
+	  <div class="form-actions">
+	    <%= f.submit "Guardar", :class => "btn btn-primary" %>
+	  </div>
+	 </fieldset>
 <% end %>

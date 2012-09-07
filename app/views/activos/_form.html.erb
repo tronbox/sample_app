@@ -1,23 +1,45 @@
-<%= form_for(@activo) do |f| %>
+<%= form_for @activo, :html => { :class => 'form-horizontal' } do |f| %>
   <%= render 'error_messages', target: @activo %>
-
-  <div class="field">
-    <%= f.label :clave %>
-    <%= f.text_field :clave %>
-  </div>
-  <div class="field">
-    <%= f.label :descripción %>
-    <%= f.text_field :descripcion %>
-  </div>
-  <div class="field">
-    <%= f.label :costo_revisión %>
-    <%= f.text_field :costo_revision %>
-  </div>
-  <div class="field">
-    <%= f.label :area_id %>
-    <%= f.select :area_id, Area.all.map { |area| [area.descripcion, area.id] },  {} %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+  	<legend></legend>
+  	<fieldset>	
+	  <div class="control-group">
+	    <%= f.label :clave, :class => 'control-label' %>
+		<div class="controls">
+	    	<%= f.text_field :clave, :class => 'text_field' %>	    	
+	  	</div>
+	  </div>
+	  <div class="control-group">
+	    <%= f.label :descripción, :class => 'control-label' %>
+		<div class="controls">
+	    	<%= f.text_field :descripcion, :class => 'text_field' %>
+	  	</div>
+	  </div>
+	  <div class="control-group">
+	    <%= f.label :costo_revisión, :class => 'control-label' %>
+		<div class="controls">
+	    	<%= f.text_field :costo_revision, :class => 'text_field' %>	    
+	  	</div>
+	  </div>
+	  <div class="control-group">
+	    <%= f.label :area_id, :class => 'control-label' %>
+		<div class="controls">
+	    	<%= f.select :area_id, Area.all.map { |area| [area.descripcion, area.id] },  {}, :class => 'select' %>
+	  	</div>
+	  </div>
+	  <div class="control-group">
+	    <%= f.label :codigo, :class => 'control-label' %>
+		<div class="controls">
+	    	<%= f.text_field :codigo, :class => 'text_field' %>
+	  	</div>
+	  </div>
+	  <div class="control-group">
+	    <%= f.label :imagen_url, :class => 'control-label' %>
+		<div class="controls">
+	    	<%= f.text_field :imagen_url, :class => 'text_field' %>
+	  	</div>
+	  </div>
+	  <div class="form-actions">
+	    <%= f.submit "Guardar", :class => "btn btn-primary" %>			    
+	  </div>
+	 </fieldset>
 <% end %>

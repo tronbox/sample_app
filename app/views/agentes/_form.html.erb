@@ -1,32 +1,44 @@
-<%= form_for(@agente) do |f| %>
-  <%= render 'error_messages', target: @agente %>
-
-  <div class="field">
-    <%= f.label :clave %><br />
-    <%= f.text_field :clave %>
-  </div>
-  <div class="field">
-    <%= f.label :nombre %><br />
-    <%= f.text_field :nombre %>
-  </div>
-  
-  <div class="field">
-    <%= f.label :e_mail %><br />
-    <%= f.text_field :e_mail %>
-  </div>
-  <div class="field">
-    <%= f.label :responsable %><br />
-    <%= f.check_box :responsable %>
-  </div>
-  
-  
-  <div class="field">
-    <%= f.label :nave_id %><br />
-    <%= f.select :nave_id, Nave.all.collect{|n| [n.nombre, n.id ]} %>
-  </div>
-  
-  
-  <div class="actions">
-    <%= f.submit %>
-  </div>
-<% end %>
+	<%= form_for @agente, :html => { :class => 'form-horizontal' } do |f| %>
+  		<%= render 'error_messages', target: @agente %>
+  		 <legend></legend>
+		 <fieldset>
+			<div class="control-group">
+			    <%= f.label :clave, :class => 'control-label' %>
+			    <div class="controls">
+			    	<%= f.text_field :clave, :class => 'text_field' %>
+			    </div>
+			</div>
+			
+			<div class="control-group">
+			    <%= f.label :nombre, :class => 'control-label' %>
+			    <div class="controls">
+			    	<%= f.text_field :nombre, :class => 'text_field' %>
+			    </div>
+			</div>
+			  
+			<div class="control-group">
+			    <%= f.label :e_mail, :class => 'control-label' %>
+			    <div class="controls">
+			    	<%= f.text_field :e_mail, :class => 'text_field' %>
+			    </div>
+			</div>
+			
+			<div class="control-group">
+			    <%= f.label :responsable, :class => 'control-label' %>
+			    <div class="controls">
+			    	<%= f.check_box :responsable, :class => 'check_box' %>
+			    </div>
+			</div>
+			    
+			<div class="control-group">
+			    <%= f.label :nave_id, :class => 'control-label' %>
+			    <div class="controls">
+			    	<%= f.select :nave_id, Nave.all.collect{|n| [n.nombre, n.id ]}, :class => 'select' %>
+			    </div>
+			</div>
+			    
+			<div class="form-actions">
+			    <%= f.submit "Guardar", :class => "btn btn-primary" %>			    
+			</div>
+		 </fieldset>
+	<% end %>
