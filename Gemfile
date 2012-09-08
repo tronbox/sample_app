@@ -26,7 +26,7 @@ group :assets do
   gem 'uglifier', '1.2.3'
 end
 
-gem 'jquery-rails', '2.0.0'
+gem 'jquery-rails', '2.1.0'
 gem 'jquery-datatables-rails', :git => 'git://github.com/rweng/jquery-datatables-rails'
 gem "jquery-ui-rails", "~> 2.0.0"
 #gem 'bootstrap-sass', '~> 2.0.4.0'
