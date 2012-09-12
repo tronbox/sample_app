@@ -181,3 +181,27 @@
     <a href="#" class="btn" data-dismiss="modal">Cerrar</a>
   </div>
 </div>
+
+
+<div class="modal hide fade in" id="myModal_reparaciones">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal">×</button>
+    <h3>Seleccionar reparación</h3>
+  </div>
+  <div class="modal-body">
+
+    <ul class="nav nav-tabs" id="myTab_reparaciones">
+      <li class="active"><a href="#buscar_reparacion">Buscar</a></li>
+    </ul>
+
+    <div class="tab-content">
+      <div class="tab-pane active" id="buscar_reparacion">
+        <%= render "reparaciones/buscar_reparacion", :reparacion => @reparacion %>
+      </div>
+    </div>
+
+  </div>
+  <div class="modal-footer">
+    <a href="#" class="btn" data-dismiss="modal">Cerrar</a>
+  </div>
+</div>

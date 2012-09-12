@@ -4,11 +4,9 @@ class ReparacionesController < ApplicationController
   # GET /reparaciones
   # GET /reparaciones.json
   def index
-    @reparaciones = Reparacion.all
-
     respond_to do |format|
       format.html # index.html.erb
-      format.json { render json: @reparaciones }
+      format.json { render json: ReparacionesDatatable.new(view_context) }
     end
   end
 
