@@ -15,5 +15,17 @@
   <%= @activo.costo_revision %>
 </p>
 
+<p>
+  <b>Área:</b>
+  <%= @activo.area.descripcion %>
+</p>
+<p>
+  <b>Código:</b>
+  <%= @activo.codigo %>
+</p>
+<p>
+  <b>Imagen url:</b>
+  <%= @activo.imagen_url %>
+</p>
 <%= link_to 'Editar', edit_activo_path(@activo) %> |
 <%= link_to 'Listado', activos_path %>

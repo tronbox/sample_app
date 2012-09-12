@@ -10,5 +10,20 @@
   <%= @agente.nombre %>
 </p>
 
+<p>
+  <b>E mail:</b>
+  <%= @agente.e_mail %>
+</p>
+
+<p>
+  <b>Responsable:</b>
+  <%= @agente.responsable %>
+</p>
+
+<p>
+  <b>Nave industrial:</b>
+  <%= @agente.nave.nombre %>
+</p>
+
 <%= link_to 'Editar', edit_agente_path(@agente) %> |
 <%= link_to 'Listado', agentes_path %>

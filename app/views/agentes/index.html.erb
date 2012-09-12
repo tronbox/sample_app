@@ -8,6 +8,9 @@
     <tr>
       <th>Clave</th>
       <th>Nombre</th>
+      <th>E mail</th>
+      <th>Responsable</th>
+      <th>Nave industrial</th>
       <th>Opciones</th>      
     </tr>
   </thead>
@@ -17,6 +20,9 @@
     <tr>
       <td><%= agente.clave %></td>
       <td><%= agente.nombre %></td>
+      <td><%= agente.e_mail %></td>
+      <td><%= agente.responsable %></td>
+      <td><%= agente.nave.nombre %></td>  
       <td>
       	<div class="btn-group">
       		<%= link_to 'Mostrar', agente, :class => 'btn' %>

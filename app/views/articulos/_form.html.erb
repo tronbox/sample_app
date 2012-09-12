@@ -1,71 +1,77 @@
-<%= form_for(@articulo) do |f| %>
-  <%= render 'error_messages', target: @articulo %>
-  	<div class="articulo">
-  		<div class="span12 last">
-    		<fieldset class="span10 ui-widget-content ui-corner-all ui-draggable ui-resizable">
-  				<legend class="ui-widget-header ui-corner-all ui-corner-all ui-helper-clearfix"><div>Información del artículo</div> </legend>
-					<div class="row">
-				    	<div class="span6 prepend">
-				      		<div class="span11">
-				        		<div class="span3">            			   		
-				  					<div class="field">
-										<%= f.label :clave %><br />
-										<%= f.text_field :clave %>
-									</div> 					
-				  				</div>
-				  				<div class="span3">
-									<div class="field">
-								    	<%= f.label :descripción %><br />
-								    	<%= f.text_field :descripcion %>
-								  	</div>
-								</div>
-								<div class="span3">
-									<div class="field">
-								   		<%= f.label :descripción_larga %><br />
-								   		<%= f.text_field :descripcion_larga %>
-								 	</div>
-								</div>
-							</div>
+<%= form_for @articulo, :html => { :class => 'form-horizontal' } do |f| %>
+	<% if not @articulo.errors.empty? %>
+		<div class="alert alert-error">
+	  		<%= render 'error_messages', target: @articulo %>
+	    </div>
+  	<%end%>
+  	
+  	<legend></legend>
+  	<div class="row">  		
+	  	<div class="span12 prepend">
+			<div class="span11">							   		  	   			   	
+					<div class="control-group">
+						<%= f.label :clave, :class => 'control-label' %>
+						<div class="controls">
+							<%= f.text_field :clave, :class => 'text_field' %>
 						</div>
-					</div>
-			</fieldset>
-		</div>
-	</div>	
-	
-  	<br />
-  	<br />
-  	<div class="unidades_de_medida">
-  		<div class="span12 last">
-    		<fieldset class="span6 ui-widget-content ui-corner-all">
-  				<legend class="ui-widget-header ui-corner-all"><div>Medidas</div> </legend>
-				<div class="row">
-					<div class="span10 prepend">
-				    	<div class="span10">
-					        <table class="lbs_formset table table-bordered span4">
-					          <thead>
-					            <tr>
-					              <th class="titulo">Medida</th>
-					              <th>Unidades por empaque</th>              
-					            </tr>
-					          </thead>
-					          <tbody class="lbs_fields_wrapper">
-					            <%= f.fields_for :relacion_articulo_medida do |d_form| %>
-					              <%= render 'relacion_articulo_medida_fields', :f => d_form %>
-					            <% end %>
-					            <tr>
-					              <td colspan="4"> 
-					                <%= link_to_create 'Agregar Medida', RelacionArticuloMedida.new, f, :class => 'agregar btn btn-inverse', :id=>"add" %>
-					              </td>
-					            </tr>
-					          </tbody>
-					        </table>
-				      	</div>
-				    </div>
-				  </div>				  
-			</fieldset>
-		</div>
+					</div> 													  			
+					<div class="control-group">
+					   	<%= f.label :descripción, :class => 'control-label' %>
+					   	<div class="controls">
+					   		<%= f.text_field :descripcion, :class => 'text_field' %>
+					   	</div>
+					</div>																			
+					<div class="control-group">
+						<%= f.label :descripción_larga, :class => 'control-label' %>
+						<div class="controls">
+							<%= f.text_field :descripcion_larga, :class => 'text_field' %>
+						</div>
+					</div>									
+			</div>
+		</div>	
 	</div>
-  <div class="actions">
-    <%= f.submit :class => 'btn btn-primary pull-right'%>
-  </div>
+	
+	
+	</br>	  			  		
+	  	
+	  	
+	<div class="row">
+    	<div class="span12 prepend">
+	      	<div class="span11">	
+			  	<div class="accordion span10" id="accordion_articulos">  	
+			  	  	<div class="accordion-group">
+			        	<div class="accordion-heading">
+			            	<a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion_articulos" href="#collapseTwo">Medidas</a>
+			            </div>
+			            <div id="collapseTwo" class="accordion-body collapse" style="height: 0px;">
+			            	<div class="accordion-inner">
+			                	<table class="lbs_formset table table-bordered span9">
+			                  		<thead>
+								    	<tr>
+								        	<th class="titulo">Medida</th>
+								            <th>Unidades por empaque</th>              
+								        </tr>
+								    </thead>
+								    <tbody class="lbs_fields_wrapper">
+								    	<%= f.fields_for :relacion_articulo_medida do |d_form| %>
+								        <%= render 'relacion_articulo_medida_fields', :f => d_form %>
+								        <% end %>
+								        <tr>
+								        	<td colspan="4"> 
+								            	<%= link_to_create 'Agregar Medida', RelacionArticuloMedida.new, f, :class => 'agregar btn btn-inverse', :id=>"add" %>
+								            </td>
+								        </tr>
+								    </tbody>
+			                	</table>
+			              	</div>
+			            </div>
+			     	</div>
+			     </div>
+		     </div>
+	     </div>
+	</div>
+	     
+	<div class="form-actions">
+		<%= f.submit :class => 'btn btn-primary pull-right'%>
+	</div>		  	    
 <% end %>

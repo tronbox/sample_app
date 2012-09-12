@@ -1,19 +1,28 @@
-<%= form_for(@estado) do |f| %>
+<%= form_for @estado, :html => { :class => 'form-horizontal' } do |f| %>
   <%= render 'error_messages', target: @estado %>
+  	<legend></legend>
+  	<fieldset>	
 
-  <div class="field">
-    <%= f.label :clave %><br />
-    <%= f.text_field :clave %>
-  </div>
-  <div class="field">
-    <%= f.label :descripción %><br />
-    <%= f.text_field :descripcion %>
-  </div>
-  <div class="field">
-    <%= f.label :color_estado %><br />
-    <%= f.text_field :color_estado %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
-  </div>
+	  <div class="control-group">
+	    <%= f.label :clave, :class => 'control-label' %>
+	    <div class="controls">
+	    	<%= f.text_field :clave %>
+	    </div>
+	  </div>
+	  <div class="control-group">
+	    <%= f.label :descripción, :class => 'control-label' %>
+	    <div class="controls">
+	    	<%= f.text_field :descripcion, :class => 'text_field' %>
+	    </div>
+	  </div>
+	  <div class="control-group">
+	    <%= f.label :color_estado, :class => 'control-label' %>
+	    <div class="controls">
+	    	<%= f.text_field :color_estado, :class => 'text_field' %>
+	    </div>
+	  </div>
+	  <div class="form-actions">
+	    <%= f.submit  "Guardar", :class => "btn btn-primary" %>
+	  </div>
+	 </fieldset>
 <% end %>
