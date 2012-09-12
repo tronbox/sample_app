@@ -1,7 +1,7 @@
 <tr class="fields">
   <td class="field">
-    <!-- <%= f.select :reparacion_id, Reparacion.all.map{|fs| [fs.descripcion, fs.id] }, {} %> --!>
-    <div class="control-group">
+    <%= f.select :reparacion_id, Reparacion.all.map{|fs| [fs.descripcion, fs.id] }, {} %>
+    <!--<div class="control-group">
       <%= f.label :reparacion_id%>
       <div class="input-prepend">
         <span class="add-on">
@@ -10,7 +10,7 @@
         <%= text_field_tag 'rep','', { :class => "disabled", :disabled => "disabled"} %>
         <%= f.hidden_field :reparacion_id %>
       </div>
-    </div>
+    </div> --!>
   </td>
 
   <td>

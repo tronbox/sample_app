@@ -18,14 +18,24 @@ class OrdenServicio < ActiveRecord::Base
 
   attr_accessible :descripcion, :fecha_entrega, :fecha_recepcion, :folio, :activo_id, :falla_id, :series_id, :status, :orden_falla_attributes, :orden_reparacion_attributes, :reparacion_id
 
-  validates :fecha_recepcion, :fecha_entrega, :area_id, :agente_id, :activo_id, :series_id, :estado_id, :presence => true
+  validates :fecha_recepcion, :fecha_entrega, :activo_id, :series_id, :presence => true
   validates_associated :orden_falla
   validates_associated :orden_reparacion
   
+  before_save :asigna_folio
 
   def activo_descripcion
     if self.activo != nil
       self.activo.descripcion
+    end
+  end
+
+  def asigna_folio
+    ultimo = OrdenServicio.where(:series_id => self.series).last
+    if ultimo
+      self.folio = ultimo.folio + 1
+    else
+      self.folio = 1
     end
   end
 end
