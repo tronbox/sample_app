@@ -3,15 +3,37 @@ class AgentesController < ApplicationController
   load_and_authorize_resource
   # GET /agentes
   # GET /agentes.json
-  def index
+  def index     
     @agentes = Agente.all
 
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @agentes }
+      format.pdf do
+        pdf = AgentesPdf.new(@agentes, view_context)
+        send_data pdf.render, filename: "agentes.pdf",
+                              type: "application/pdf",
+                              disposition: "inline"
+      end
     end
   end
+  
+  # GET /agentes/reporte
+  # GET /agentes/reporte.pdf  
+  def reporte
+    puts "======================================================================================================"
+    @agentes_pdf = Agente.all
 
+    respond_to do |format|    
+      format.pdf do
+        pdf = AgentesPdf.new(@agentes_pdf, view_context)
+        send_data pdf.render, filename: "agentes.pdf",
+                              type: "application/pdf",
+                              disposition: "inline"
+      end     
+    end
+  end
+  
   # GET /agentes/1
   # GET /agentes/1.json
   def show
@@ -19,7 +41,7 @@ class AgentesController < ApplicationController
 
     respond_to do |format|
       format.html # show.html.erb
-      format.json { render json: @agente }
+      format.json { render json: @agente }      
     end
   end
 
@@ -82,4 +104,6 @@ class AgentesController < ApplicationController
       format.json { head :no_content }
     end
   end
+  
+    
 end

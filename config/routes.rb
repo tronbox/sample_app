@@ -8,6 +8,8 @@ SampleApp::Application.routes.draw do
 
   resources :agentes
   
+  #match "/agentes/reporte", :to => "agentes#reporte"
+  
   resources :series
 
   resources :medidas
