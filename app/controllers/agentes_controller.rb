@@ -15,6 +15,7 @@ class AgentesController < ApplicationController
                               type: "application/pdf",
                               disposition: "inline"
       end
+      format.xls {send_data @agentes.to_xls, :filename => 'reporte.xls' }
     end
   end
   
