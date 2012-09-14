@@ -1,4 +1,5 @@
 class RemoveFieldsToOrdenesServicio < ActiveRecord::Migration
+=begin
   def up
     remove_column :ordenes_servicios, :area
     remove_column :ordenes_servicios, :agente
@@ -26,4 +27,5 @@ class RemoveFieldsToOrdenesServicio < ActiveRecord::Migration
 
     remove_column :ordenes_servicios, :status, :integer
   end
+=end
 end
