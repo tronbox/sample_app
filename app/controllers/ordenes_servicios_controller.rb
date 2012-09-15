@@ -18,6 +18,12 @@ class OrdenesServiciosController < ApplicationController
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @orden_servicio }
+      format.pdf do
+        pdf = OrdenServicioPdf.new(@orden_servicio, view_context)
+        send_data pdf.render, filename: "orden_servicio.pdf",
+                              type: "application/pdf",
+                              disposition: "inline"
+      end
     end
   end
 
@@ -60,9 +66,15 @@ class OrdenesServiciosController < ApplicationController
     @activo = Activo.new
 
     respond_to do |format|
-      if @orden_servicio.save
+      if @orden_servicio.save        
         format.html { redirect_to @orden_servicio, notice: 'Orden servicio was successfully created.' }
         format.json { render json: @orden_servicio, status: :created, location: @orden_servicio }
+        format.pdf do
+          pdf = OrdenServicioPdf.new(@orden_servicio, view_context)
+          send_data pdf.render, filename: "orden_servicio.pdf",
+                              type: "application/pdf",
+                              disposition: "inline"
+        end        
       else
         format.html { render action: "new" }
         format.json { render json: @orden_servicio.errors, status: :unprocessable_entity }
