@@ -8,6 +8,12 @@ class ActivosController < ApplicationController
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: ActivosDatatable.new(view_context) }
+      format.pdf do
+        pdf = ActivosPdf.new(Activo.all, view_context)
+        send_data pdf.render, filename: "activos.pdf",
+                              type: "application/pdf",
+                              disposition: "inline"
+      end
     end
   end
 
