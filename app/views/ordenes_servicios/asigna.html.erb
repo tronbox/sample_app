@@ -1,0 +1,26 @@
+<h2>Asignación de nave</h2>
+<table class="datatable table table-bordered">
+  <thead>
+    <tr>
+      <th>Reparacion</th>
+      <th>Pasos</th>
+      <th>Nave</th>
+      <th>Estatus</th>
+    </tr>
+  </thead>
+
+  <tbody>
+  <% @ordenes_reparaciones.each do |orden_reparacion| %>
+    <tr>
+      <td><%= orden_reparacion.reparacion.descripcion %></td>
+      <td><%= orden_reparacion.reparacion.pasos %></td>
+      <td><%= orden_reparacion.reparacion.nave.nombre %></td>
+      <td><%= Status.estatus(orden_reparacion.status) %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+<%= form_tag asigna_orden_servicio_path, {:method => :get, :class => "form-inline"} do%>
+  <%= select_tag :id_nave, options_from_collection_for_select(@naves, "id", "nombre") %>
+  <%= submit_tag 'Asignar', :class=>"btn btn-inverse" %>
+<%end%>

@@ -2,7 +2,11 @@ SampleApp::Application.routes.draw do
 
   resources :naves
 
-  resources :ordenes_servicios
+  resources :ordenes_servicios do
+    member do
+      get 'asigna'
+    end
+  end
 
   resources :relaciones_articulos_medida
 

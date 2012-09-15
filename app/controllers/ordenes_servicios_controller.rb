@@ -42,6 +42,16 @@ class OrdenesServiciosController < ApplicationController
 
   end
 
+  def asigna
+    if params[:id_nave].present?     
+      OrdenReparacion.actualiza_estatus params[:id], params[:id_nave], Status::ASIGNADA
+      redirect_to ordenes_servicios_path, :notice => "La orden de servicio fue asignada a una nave"
+    else
+      @ordenes_reparaciones = OrdenReparacion.joins(:orden_servicio).where("ordenes_servicios.id" => params[:id])
+      @naves = Nave.obten_naves_sin_asignar_por_orden_de_servicio params[:id]
+    end
+  end
+
   # POST /ordenes_servicios
   # POST /ordenes_servicios.json
   def create

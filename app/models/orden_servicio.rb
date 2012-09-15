@@ -16,7 +16,7 @@ class OrdenServicio < ActiveRecord::Base
   accepts_nested_attributes_for :orden_falla, :allow_destroy => true
   accepts_nested_attributes_for :orden_reparacion, :allow_destroy => true
 
-  attr_accessible :descripcion, :fecha_entrega, :fecha_recepcion, :folio, :activo_id, :falla_id, :series_id, :status, :orden_falla_attributes, :orden_reparacion_attributes, :reparacion_id
+  attr_accessible :descripcion, :fecha_entrega, :fecha_recepcion, :folio, :activo_id, :series_id, :status, :orden_falla_attributes, :orden_reparacion_attributes
 
   validates :fecha_recepcion, :fecha_entrega, :activo_id, :series_id, :presence => true
   validates_associated :orden_falla
@@ -37,5 +37,7 @@ class OrdenServicio < ActiveRecord::Base
     else
       self.folio = 1
     end
+
+    self.status = Status::CAPTURADA if self.new_record?
   end
 end

@@ -3,6 +3,7 @@ class CreateOrdenesReparaciones < ActiveRecord::Migration
     create_table :ordenes_reparaciones do |t|
       t.references :orden_servicio
       t.references :reparacion
+      t.integer    :status
 
       t.timestamps
     end
