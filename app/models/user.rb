@@ -16,14 +16,14 @@ class User < ActiveRecord::Base
   end
 
   def capturista?
-    self.rol and self.rol.name == 'capturista'
+    self.rol and self.rol.nombre == 'capturista'
   end
 
   def responsable_nave?
-    self.rol and self.rol.name == 'responsable de nave'
+    self.rol and self.rol.nombre == 'responsable de nave'
   end
 
   def tecnico?
-    self.ron and self.rol.name == 'tecnico'
+    self.ron and self.rol.nombre == 'tecnico'
   end
 end
