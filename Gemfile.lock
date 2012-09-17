@@ -133,6 +133,8 @@ GEM
     rake (0.9.2.2)
     rdoc (3.12)
       json (~> 1.4)
+    rghost (0.8.7.8)
+    rghost_barcode (0.9)
     rieles (0.0.4)
     rspec (2.10.0)
       rspec-core (~> 2.10.0)
@@ -203,6 +205,8 @@ DEPENDENCIES
   pg (= 0.12.2)
   prawn
   rails (= 3.2.6)
+  rghost
+  rghost_barcode
   rieles
   rspec-rails (= 2.10.0)
   sass-rails (= 3.2.4)

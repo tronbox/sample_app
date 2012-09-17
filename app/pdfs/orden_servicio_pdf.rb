@@ -9,25 +9,26 @@ class OrdenServicioPdf < Prawn::Document
   end
   
   def orden_servicio_reporte
-    text "Orden de Servicio", size: 14, style: :bold, align: :center   
-    text "Id\: #{@orden_servicio.id}", size: 14, style: :bold
-    text "Folio\: #{@orden_servicio.folio}", size: 14, style: :bold
-    text "Fecha recepcion\: #{@orden_servicio.fecha_recepcion}", size: 14, style: :bold
-    text "Fecha entrega\: #{@orden_servicio.fecha_entrega}", size: 14, style: :bold    
-    text "Activo\: #{@orden_servicio.activo.descripcion}", size: 14, style: :bold
-    text "Series\: #{@orden_servicio.series.nombre}", size: 14, style: :bold               
-    text "Código de barras:", size: 14, style: :bold
+    text "Orden de Servicio", size: 11, style: :bold, align: :center, font: :arial  
+    text "Id\: #{@orden_servicio.id}", size: 11, style: :bold
+    text "Folio\: #{@orden_servicio.folio}", size: 11, style: :bold
+    text "Fecha recepcion\: #{@orden_servicio.fecha_recepcion}", size: 11, style: :bold
+    text "Fecha entrega\: #{@orden_servicio.fecha_entrega}", size: 11, style: :bold    
+    text "Activo\: #{@orden_servicio.activo.descripcion}", size: 11, style: :bold
+    text "Series\: #{@orden_servicio.series.nombre}", size: 11, style: :bold 
+    text "Descripción\: #{@orden_servicio.descripcion}", size: 11, style: :bold, font: :arial              
+    text "Código de barras:", size: 11, style: :bold
     doc=RGhost::Document.new
-    doc.barcode_ean13("#{@orden_servicio.activo.codigo}",:columns => 2, :rows=> 2, :text => {:size => 10})
+    doc.barcode_code39("#{@orden_servicio.activo.codigo}",:columns => 2, :rows=> 2, :text => {:size => 10})
     doc.render :jpeg, :filename => "#{Rails.root}/app/assets/images/barcodes/barcode.jpeg"                          
-    image "#{Rails.root}/app/assets/images/barcodes/barcode.jpeg" , :at => [50,570], :width => 500
+    image "#{Rails.root}/app/assets/images/barcodes/barcode.jpeg" , :at => [100,580], :width => 500
     text ""
     text ""
     text ""
-    text "Imagen:", size: 14, style: :bold
+    text "Imagen:", size: 11, style: :bold
     if @orden_servicio.activo.imagen_url?
       if File.exist?("#{@orden_servicio.activo.imagen_url}")
-        image "#{@orden_servicio.activo.imagen_url}" , :at => [50,570], :width => 50
+        image "#{@orden_servicio.activo.imagen_url}" , :at => [300,580], :width => 160
       else
         text "No existe la imagen"
       end
@@ -38,7 +39,7 @@ class OrdenServicioPdf < Prawn::Document
   end  
   
   def fallas_rows  
-    text "Fallas", size: 14, style: :bold, align: :center           
+    text "Fallas", size: 11, style: :bold, align: :left           
     [["Descripcion"]] +  
     @orden_servicio.falla.map do |item|
       [item.descripcion]
@@ -57,7 +58,7 @@ class OrdenServicioPdf < Prawn::Document
   end   
   
   def reparaciones_rows  
-    text "Reparaciones", size: 14, style: :bold, align: :center           
+    text "Reparaciones", size: 11, style: :bold, align: :left           
     [["Descripcion"]] +  
     @orden_servicio.reparacion.map do |item|
       [item.descripcion]

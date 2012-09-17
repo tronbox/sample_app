@@ -7,6 +7,12 @@ class OrdenesServiciosController < ApplicationController
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @ordenes_servicios }
+      format.pdf do
+        pdf = OrdenesServicioPdf.new(@ordenes_servicios, view_context)
+        send_data pdf.render, filename: "orden_servicio.pdf",
+                              type: "application/pdf",
+                              disposition: "inline"
+      end
     end
   end
 
