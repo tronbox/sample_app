@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 class OrdenServicioPdf < Prawn::Document
   def initialize(orden_servicio, view)
     super(top_margin: 70)
@@ -12,15 +13,25 @@ class OrdenServicioPdf < Prawn::Document
     text "Id\: #{@orden_servicio.id}", size: 14, style: :bold
     text "Folio\: #{@orden_servicio.folio}", size: 14, style: :bold
     text "Fecha recepcion\: #{@orden_servicio.fecha_recepcion}", size: 14, style: :bold
-    text "Fecha entrega\: #{@orden_servicio.fecha_entrega}", size: 14, style: :bold
+    text "Fecha entrega\: #{@orden_servicio.fecha_entrega}", size: 14, style: :bold    
     text "Activo\: #{@orden_servicio.activo.descripcion}", size: 14, style: :bold
-    text "Series\: #{@orden_servicio.series.nombre}", size: 14, style: :bold
-    #pigs = "#{@orden_servicio.activo.imagen_url}"     
+    text "Series\: #{@orden_servicio.series.nombre}", size: 14, style: :bold               
+    text "Código de barras:", size: 14, style: :bold
+    doc=RGhost::Document.new
+    doc.barcode_ean13("#{@orden_servicio.activo.codigo}",:columns => 2, :rows=> 2, :text => {:size => 10})
+    doc.render :jpeg, :filename => "#{Rails.root}/app/assets/images/barcodes/barcode.jpeg"                          
+    image "#{Rails.root}/app/assets/images/barcodes/barcode.jpeg" , :at => [50,570], :width => 500
+    text ""
+    text ""
+    text ""
     text "Imagen:", size: 14, style: :bold
     if @orden_servicio.activo.imagen_url?
-      image "#{@orden_servicio.activo.imagen_url}" , :at => [50,570], :width => 50
+      if File.exist?("#{@orden_servicio.activo.imagen_url}")
+        image "#{@orden_servicio.activo.imagen_url}" , :at => [50,570], :width => 50
+      else
+        text "No existe la imagen"
+      end
     end                                      
-
     
     fallas   
     reparaciones
@@ -61,6 +72,5 @@ class OrdenServicioPdf < Prawn::Document
       self.row_colors = ["DDDDDD", "FFFFFF"]
       self.header = true     
     end     
-  end   
-  
+  end     
 end
