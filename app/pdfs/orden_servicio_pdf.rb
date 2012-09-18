@@ -19,9 +19,9 @@ class OrdenServicioPdf < Prawn::Document
     text "Descripción\: #{@orden_servicio.descripcion}", size: 11, style: :bold, font: :arial              
     text "Código de barras:", size: 11, style: :bold
     doc=RGhost::Document.new
-    doc.barcode_code39("#{@orden_servicio.activo.codigo}",:columns => 2, :rows=> 2, :text => {:size => 10})
-    doc.render :jpeg, :filename => "#{Rails.root}/app/assets/images/barcodes/barcode.jpeg"                          
-    image "#{Rails.root}/app/assets/images/barcodes/barcode.jpeg" , :at => [100,580], :width => 500
+    doc.barcode_ean13("#{@orden_servicio.activo.codigo}",:columns => 2, :rows=> 2, :text => {:size => 10})
+    doc.render :jpeg, :filename => "#{Rails.root}/tmp/barcode.jpeg"                          
+    image "#{Rails.root}/tmp/barcode.jpeg" , :at => [100,580], :width => 500
     text ""
     text ""
     text ""
