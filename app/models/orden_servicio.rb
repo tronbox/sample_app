@@ -31,11 +31,13 @@ class OrdenServicio < ActiveRecord::Base
   end
 
   def asigna_folio
-    ultimo = OrdenServicio.where(:series_id => self.series).last
-    if ultimo
-      self.folio = ultimo.folio + 1
-    else
-      self.folio = 1
+    if self.folio = nil
+      ultimo = OrdenServicio.where(:series_id => self.series).last
+      if ultimo
+        self.folio = ultimo.folio + 1
+      else
+        self.folio = 1
+      end
     end
 
     self.status = Status::CAPTURADA if self.new_record?
