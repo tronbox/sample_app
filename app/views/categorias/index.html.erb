@@ -30,4 +30,6 @@
 </table>
 
 <br />
-<%= link_to 'Nueva Categoría', new_categoria_path, :class => 'btn btn-primary'  %>
+<%= link_to 'Nueva Categoría', new_categoria_path, :class => 'btn btn-primary'  %>1
+<%= link_to 'PDF Categoria', categorias_path(:format => 'pdf') %>
+<%= link_to 'Excel Categoria', categorias_path(:format => 'xls') %>

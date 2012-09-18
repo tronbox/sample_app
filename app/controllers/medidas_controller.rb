@@ -9,6 +9,14 @@ class MedidasController < ApplicationController
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @medidas }
+      format.pdf do
+        pdf = MedidasPdf.new(@medidas, view_context)
+        send_data pdf.render, filename: "medidas.pdf",
+                              type: "application/pdf",
+                              disposition: "inline"
+      end
+      format.xls {send_data @medidas.to_xls, :filename => 'reporte.xls' }
+
     end
   end
 

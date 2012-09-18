@@ -31,3 +31,5 @@
 
 <br />
 <%= link_to 'Nueva Medida', new_medida_path, :class => 'btn btn-primary' %>
+<%= link_to 'PDF Medida', medidas_path(:format => 'pdf') %>
+<%= link_to 'Excel Medida', medidas_path(:format => 'xls') %>

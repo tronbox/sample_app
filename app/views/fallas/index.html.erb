@@ -31,3 +31,5 @@
 
 <br />
 <%= link_to 'Nueva Falla', new_falla_path, :class => 'btn btn-primary' %>
+<%= link_to 'PDF Falla', fallas_path(:format => 'pdf') %>
+<%= link_to 'Excel Falla', fallas_path(:format => 'xls') %>

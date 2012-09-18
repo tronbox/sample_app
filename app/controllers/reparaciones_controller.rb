@@ -7,6 +7,12 @@ class ReparacionesController < ApplicationController
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: ReparacionesDatatable.new(view_context) }
+      format.pdf do
+        pdf = ReparacionesPdf.new(Reparacion.all, view_context)
+        send_data pdf.render, filename: "reparaciones.pdf",
+                              type: "application/pdf",
+                              disposition: "inline"
+      end
     end
   end
 

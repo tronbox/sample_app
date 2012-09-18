@@ -9,8 +9,32 @@ class FallasController < ApplicationController
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @fallas }
+      format.pdf do
+        pdf = FallasPdf.new(@fallas, view_context)
+        send_data pdf.render, filename: "fallas.pdf",
+                              type: "application/pdf",
+                              disposition: "inline"
+      end
+      format.xls {send_data @fallas.to_xls, :filename => 'reporte.xls' }
     end
   end
+
+  # GET /fallas/reporte
+  # GET /fallas/reporte.pdf  
+  def reporte
+    puts "======================================================================================================"
+    @fallas_pdf = Fallas.all
+
+    respond_to do |format|    
+      format.pdf do
+        pdf = FallasPdf.new(@fallas_pdf, view_context)
+        send_data pdf.render, filename: "fallas.pdf",
+                              type: "application/pdf",
+                              disposition: "inline"
+      end     
+    end
+  end
+
 
   # GET /fallas/1
   # GET /fallas/1.json

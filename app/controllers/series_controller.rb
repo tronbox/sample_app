@@ -8,6 +8,14 @@ class SeriesController < ApplicationController
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: SeriesDatatable.new(view_context) }
+      format.pdf do
+        pdf = SeriesPdf.new(Serie.all, view_context)
+        send_data pdf.render, filename: "series.pdf",
+                              type: "application/pdf",
+                              disposition: "inline"
+      end
+      
+
     end
   end
 

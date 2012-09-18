@@ -9,6 +9,29 @@ class CategoriasController < ApplicationController
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @categorias }
+      format.pdf do
+        pdf = CategoriasPdf.new(@categorias, view_context)
+        send_data pdf.render, filename: "categorias.pdf",
+                              type: "application/pdf",
+                              disposition: "inline"
+      end
+      format.xls {send_data @categorias.to_xls, :filename => 'reporte.xls' }
+    end
+  end
+
+# GET /categorias/reporte
+  # GET /categorias/reporte.pdf  
+  def reporte
+    puts "======================================================================================================"
+    @categorias_pdf = Categorias.all
+
+    respond_to do |format|    
+      format.pdf do
+        pdf = CategoriasPdf.new(@categorias_pdf, view_context)
+        send_data pdf.render, filename: "categorias.pdf",
+                              type: "application/pdf",
+                              disposition: "inline"
+      end     
     end
   end
 

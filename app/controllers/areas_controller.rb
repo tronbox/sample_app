@@ -9,6 +9,13 @@ class AreasController < ApplicationController
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @areas }
+      format.pdf do
+        pdf = AreasPdf.new(@areas, view_context)
+        send_data pdf.render, filename: "areas.pdf",
+                              type: "application/pdf",
+                              disposition: "inline"
+      end
+      format.xls {send_data @areas.to_xls, :filename => 'reporte.xls' }
     end
   end
 
