@@ -31,7 +31,7 @@ class OrdenServicio < ActiveRecord::Base
   end
 
   def asigna_folio
-    if self.folio = nil
+    if self.new_record?
       ultimo = OrdenServicio.where(:series_id => self.series).last
       if ultimo
         self.folio = ultimo.folio + 1

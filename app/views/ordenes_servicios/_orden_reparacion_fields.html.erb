@@ -12,7 +12,27 @@
       </div>
     </div> --!>
   </td>
-
+  <td>
+    <%= f.select :agente_id, Agente.all.map{|ag| [ag.nombre, ag.id] }, {} %>
+  </td>
+  <td>
+    <div class="input-append date calendario span3" data-date-format="dd-mm-yyyy">
+      <%= f.text_field :fecha_on, :readonly => true, :'data-date-format' => "dd-mm-yyyy", :class => "span2"%>
+      <span class="add-on"><i class="icon-th"></i></span>
+    </div>
+  </td>
+  <td>
+    <div class="input-append date calendario span3" data-date-format="dd-mm-yyyy">
+      <%= f.text_field :fecha_off, :readonly => true, :'data-date-format' => "dd-mm-yyyy", :class => "span2"%>
+      <span class="add-on"><i class="icon-th"></i></span>
+    </div>
+  </td>
+  <td>
+    <%= f.text_area :descripcion, :class => "table" %>
+  </td>
+  <td>
+    <%= f.check_box :cancelada %>
+  </td>
   <td>
     <%= link_to_remove 'Eliminar', f, :class => 'eliminar btn btn-danger' %>
   </td>
