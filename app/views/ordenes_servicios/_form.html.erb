@@ -121,8 +121,8 @@
                     <tr>
                       <th class="titulo">Reparación</th>
                       <th class="titulo">Técnico</th>
-                      <th class="titulo">Fecha on</th>
-                      <th class="titulo">Fecha off</th>
+                      <th class="titulo">Fecha/Hora On</th>
+                      <th class="titulo">Fecha/Hora Off</th>
                       <th class="titulo">Descripción</th>
                       <th class="titulo">Cancelar</th>
                       <th>Acciones</th>
@@ -133,7 +133,7 @@
                       <%= render 'orden_reparacion_fields', :f => d_form2 %>
                     <% end %>
                     <tr>
-                      <td colspan="4"> 
+                      <td colspan="7"> 
                         <%= link_to_create 'Agregar reparación', OrdenReparacion.new, f, :class => 'agregar btn btn-inverse', :id=>"add2" %>
                       </td>
                     </tr>
@@ -150,9 +150,27 @@
               <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion_orden" href="#collapseThree">Refacciones</a>
             </div>
             <div id="collapseThree" class="accordion-body collapse" style="height: 0px;">
-              <div class="accordion-inner">
-
-
+              <div class="accordion-inner refacciones">
+                <table class="lbs_formset table table-bordered span9">
+                  <thead>
+                    <tr>
+                      <th class="titulo">Refacción</th>
+                      <th class="titulo">Cantidad</th>
+                      <th class="titulo">Descripción</th>
+                      <th>Acciones</th>
+                    </tr>
+                  </thead>
+                  <tbody class="lbs_fields_wrapper">
+                    <%= f.fields_for :orden_refaccion do |d_or| %>
+                      <%= render 'orden_refaccion_fields', :f => d_or %>
+                    <% end %>
+                    <tr>
+                      <td colspan="7"> 
+                        <%= link_to_create 'Agregar refacción', OrdenRefaccion.new, f, :class => 'agregar btn btn-inverse', :id=>"add3" %>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
               </div>
             </div>
           </div>

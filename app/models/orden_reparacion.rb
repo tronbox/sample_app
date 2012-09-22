@@ -1,7 +1,7 @@
 class OrdenReparacion < ActiveRecord::Base
   belongs_to :orden_servicio
   belongs_to :reparacion
-  attr_accessible :reparacion_id, :status, :agente_id, :descripcion, :cancelada, :fecha_on, :fecha_off
+  attr_accessible :reparacion_id, :status, :agente_id, :descripcion, :cancelada, :fecha_on, :fecha_off, :hora_on, :hora_off
 
   before_save :asigna_status
 

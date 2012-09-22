@@ -1,0 +1,14 @@
+<tr class="fields">
+  <td class="field">
+    <%= f.select :relacion_articulo_medida_id, RelacionArticuloMedida.all.map{|am| [am.articulo.descripcion+"-"+am.medida.descripcion, am.id] }, {} %>
+  </td>
+  <td>
+    <%= f.number_field :cantidad %>
+  </td>
+  <td>
+    <%= f.text_area :descripcion, :class => "table" %>
+  </td>
+  <td>
+    <%= link_to_remove 'Eliminar', f, :class => 'eliminar btn btn-danger' %>
+  </td>
+</tr>

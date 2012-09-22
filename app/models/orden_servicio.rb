@@ -12,11 +12,14 @@ class OrdenServicio < ActiveRecord::Base
   has_many :orden_reparacion
   has_many :reparacion, :through => :orden_reparacion, :dependent => :destroy
 
+  has_many :orden_refaccion
+  has_many :relacion_articulo_medida, :through => :orden_refaccion, :dependent => :destroy
 
   accepts_nested_attributes_for :orden_falla, :allow_destroy => true
   accepts_nested_attributes_for :orden_reparacion, :allow_destroy => true
+  accepts_nested_attributes_for :orden_refaccion, :allow_destroy => true
 
-  attr_accessible :descripcion, :fecha_entrega, :fecha_recepcion, :folio, :activo_id, :series_id, :status, :orden_falla_attributes, :orden_reparacion_attributes
+  attr_accessible :descripcion, :fecha_entrega, :fecha_recepcion, :folio, :activo_id, :series_id, :status, :orden_falla_attributes, :orden_reparacion_attributes, :orden_refaccion_attributes
 
   validates :fecha_recepcion, :fecha_entrega, :activo_id, :series_id, :presence => true
   validates_associated :orden_falla

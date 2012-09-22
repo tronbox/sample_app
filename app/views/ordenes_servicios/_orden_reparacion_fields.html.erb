@@ -20,11 +20,19 @@
       <%= f.text_field :fecha_on, :readonly => true, :'data-date-format' => "dd-mm-yyyy", :class => "span2"%>
       <span class="add-on"><i class="icon-th"></i></span>
     </div>
+    <div class="input-append bootstrap-timepicker-component span3">
+      <%= f.text_field :hora_on, :class => "input-small timepicker-default"%>
+      <span class="add-on"><i class="icon-time"></i></span>
+    </div>
   </td>
   <td>
     <div class="input-append date calendario span3" data-date-format="dd-mm-yyyy">
       <%= f.text_field :fecha_off, :readonly => true, :'data-date-format' => "dd-mm-yyyy", :class => "span2"%>
       <span class="add-on"><i class="icon-th"></i></span>
+    </div>
+    <div class="input-append bootstrap-timepicker-component span3">
+      <%= f.text_field :hora_off, :class => "input-small timepicker-default"%>
+      <span class="add-on"><i class="icon-time"></i></span>
     </div>
   </td>
   <td>

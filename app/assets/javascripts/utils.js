@@ -24,5 +24,7 @@ function add_fields(link, association, content){
   } else {
     wrapper.prepend(item);
   }
+  $('.calendario').datepicker({"format": "dd-mm-yyyy", "weekStart": 1, "autoclose": true})
+  $('.timepicker-default').timepicker()
 }
 

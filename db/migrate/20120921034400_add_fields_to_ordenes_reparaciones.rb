@@ -4,8 +4,10 @@ class AddFieldsToOrdenesReparaciones < ActiveRecord::Migration
       t.text :descripcion
       t.boolean :cancelada
       t.references :agente
-      t.datetime :fecha_on
-      t.datetime :fecha_off
+      t.date :fecha_on
+      t.time :hora_on
+      t.date :fecha_off
+      t.time :hora_off
     end
     add_index :ordenes_reparaciones, :agente_id
   end
