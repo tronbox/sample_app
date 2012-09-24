@@ -62,7 +62,7 @@ SampleApp::Application.configure do
   config.active_support.deprecation = :notify
 
   Date::DATE_FORMATS.merge!(:default => "%d/%m/%Y")
-  Date::DATE_FORMATS.merge!(:db => "%d/%m/%Y")
+  Date::DATE_FORMATS.merge!(:db => "%m/%d/%Y")
   # Log the query plan for queries taking more than this (works
   # with SQLite, MySQL, and PostgreSQL)
   # config.active_record.auto_explain_threshold_in_seconds = 0.5
