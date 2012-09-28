@@ -4,6 +4,8 @@
 #
 calendario = () ->
   $('.calendario').datepicker({"format": "dd-mm-yyyy", "weekStart": 1, "autoclose": true})
+  $('.timepicker-default').timepicker()
+
 
 tabs = () ->
     $('#myTab li  a').click( ->

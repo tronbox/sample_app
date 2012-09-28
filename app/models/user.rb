@@ -12,7 +12,7 @@ class User < ActiveRecord::Base
   # attr_accessible :title, :body
   #
   def admin?
-    self.rol and self.rol.nombre == 'admin'
+    self.rol and self.rol.nombre == 'administrador'
   end
 
   def capturista?
