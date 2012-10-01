@@ -3,6 +3,7 @@ class OrdenesServiciosController < ApplicationController
 
   # GET /ordenes_servicios
   # GET /ordenes_servicios.json
+  load_and_authorize_resource
   def index
     @ordenes_servicios = OrdenServicio.get_orden_servicio_for_user current_user
 
