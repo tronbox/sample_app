@@ -1,6 +1,7 @@
 class OrdenesServiciosController < ApplicationController
   # GET /ordenes_servicios
   # GET /ordenes_servicios.json
+  load_and_authorize_resource
   def index
     @ordenes_servicios = OrdenServicio.all
 

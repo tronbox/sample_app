@@ -1,5 +1,7 @@
 SampleApp::Application.routes.draw do
 
+  get "consultas/general"
+
   resources :naves
 
   resources :ordenes_servicios do
@@ -8,6 +10,8 @@ SampleApp::Application.routes.draw do
     end
   end
 
+  match "/consultas/general", :to => "consultas#general"
+  
   resources :relaciones_articulos_medida
 
   resources :agentes
