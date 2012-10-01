@@ -1,8 +1,10 @@
 class OrdenesServiciosController < ApplicationController
+  load_and_authorize_resource
+
   # GET /ordenes_servicios
   # GET /ordenes_servicios.json
   def index
-    @ordenes_servicios = OrdenServicio.all
+    @ordenes_servicios = OrdenServicio.get_orden_servicio_for_user current_user
 
     respond_to do |format|
       format.html # index.html.erb

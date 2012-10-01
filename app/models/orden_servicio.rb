@@ -45,4 +45,15 @@ class OrdenServicio < ActiveRecord::Base
 
     self.status = Status::CAPTURADA if self.new_record?
   end
+
+  def self.get_orden_servicio_for_user user
+    ordenes_servicios = OrdenServicio.all
+    #if user.responsable_nave?
+    #  ordenes_servicios = OrdenServicio.where()
+    #else
+
+    #end
+    ordenes_servicios
+  end
+
 end

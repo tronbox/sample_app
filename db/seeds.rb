@@ -8,11 +8,19 @@
 #
 puts "Creando los roles..."
 admin = Rol.create(nombre: "administrador")
-Rol.create(nombre: "capturista")
-Rol.create(nombre: "responsable de nave")
+cap = Rol.create(nombre: "capturista")
+resp = Rol.create(nombre: "responsable de nave")
 Rol.create(nombre: "tecnico")
 
 puts "Creando el usuario con rol admin..."
 u = User.create(email: "admin@example.com", password: "admin#", password_confirmation: "admin#")
 u.rol = admin
+
+uc = User.create(email: "capturista@example.com", password: "capturista#", password_confirmation: "capturista#")
+uc.rol = cap
+
+ur = User.create(email: "responsable@example.com", password: "responsable#", password_confirmation: "responsable#")
+ur.rol = resp
+
+
 u.save!

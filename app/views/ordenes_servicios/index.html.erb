@@ -28,19 +28,26 @@
       <td><%= Status.estatus(orden_servicio.status)%></td>
       <td>
         <div class="btn-group">
-          <%= link_to 'Asignar', asigna_orden_servicio_path(orden_servicio), :class => 'btn btn-inverse' %>
+          <% if can? :asigna, orden_servicio%>
+            <%= link_to 'Asignar', asigna_orden_servicio_path(orden_servicio), :class => 'btn btn-inverse' %>
+          <% end %>
           <%= link_to 'Mostrar', orden_servicio, :class => 'btn' %>
           <%= link_to 'PDF', orden_servicio_path(orden_servicio, :format => "pdf"), :class => 'btn' %>
-          <%= link_to 'Editar', edit_orden_servicio_path(orden_servicio), :class => 'btn' %>
-          <%= link_to 'Eliminar', orden_servicio, confirm: '¿Está usted seguro?', method: :delete, :class => 'btn btn-danger' %>
+          <% if can? :update, orden_servicio %>
+            <%= link_to 'Editar', edit_orden_servicio_path(orden_servicio), :class => 'btn' %>
+          <% end %>
+          <%if can? :delete, orden_servicio%>
+            <%= link_to 'Eliminar', orden_servicio, confirm: '¿Está usted seguro?', method: :delete, :class => 'btn btn-danger' %>
+          <%end%>
         </div>
       </td>
     </tr>
   <% end %>
   </tbody>
 </table>
-
+<% if !current_user.responsable_nave? %>
 <br />
 <div class="form-actions">
   <%= link_to 'Nueva orden servicio', new_orden_servicio_path, :class => 'btn btn-primary' %>
 </div>
+<% end %>

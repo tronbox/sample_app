@@ -12,6 +12,7 @@
       </div>
     </div> --!>
   </td>
+  <% if current_user.admin? or current_user.responsable_nave? %>
   <td>
     <%= f.select :agente_id, Agente.all.map{|ag| [ag.nombre, ag.id] }, {} %>
   </td>
@@ -41,6 +42,11 @@
   <td>
     <%= f.check_box :cancelada %>
   </td>
+  <td>
+    <%= f.select :status, Status::REPARACION, {} %>
+  </td>
+
+  <%end%>
   <td>
     <%= link_to_remove 'Eliminar', f, :class => 'eliminar btn btn-danger' %>
   </td>

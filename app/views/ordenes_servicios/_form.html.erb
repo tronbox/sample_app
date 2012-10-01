@@ -11,14 +11,18 @@
         <div class="span2">
           <div class="field">
             <%= f.label :series_id %>
-            <%= f.select :series_id, Series.all.map{|serie| [serie.nombre, serie.id] }, {}, {:class => "span2"}  %>
+            <%= f.select :series_id, Series.all.map{|serie| [serie.nombre, serie.id] }, {}, {:class => "span2", :disabled => (current_user.responsable_nave?)}  %>
           </div>
         </div>
 
         <div class="span3">
           <div class="field">
             <%= f.label :fecha_recepcion %>
-            <div class="input-append date calendario" data-date-format="dd-mm-yyyy">
+            <% if current_user.responsable_nave? %>
+              <div class="input-append date" data-date-format="dd-mm-yyyy">
+            <%else%>
+              <div class="input-append date calendario" data-date-format="dd-mm-yyyy">
+            <%end%>
               <%= f.text_field :fecha_recepcion, :class => "span2", :readonly => true, :'data-date-format' => "dd-mm-yyyy"%>
               <span class="add-on"><i class="icon-th"></i></span>
             </div>
@@ -29,7 +33,11 @@
         <div class="span3">
           <div class="field">
             <%= f.label :fecha_entrega %>
-            <div class="input-append date calendario" data-date-format="dd-mm-yyyy" >
+            <% if current_user.responsable_nave? %>
+              <div class="input-append date" data-date-format="dd-mm-yyyy">
+            <%else%>
+              <div class="input-append date calendario" data-date-format="dd-mm-yyyy">
+            <%end%>
               <%= f.text_field :fecha_entrega, :class => "span2", :readonly => true %>
               <span class="add-on"><i class="icon-th"></i></span>
             </div>
@@ -44,7 +52,7 @@
       <div class="span11">
         <div class="field span10">
           <%= f.label :descripcion %>
-          <%= f.text_area :descripcion, :class => "span10 oxlarge" %>
+          <%= f.text_area :descripcion, :class => "span10 oxlarge", :disabled => (current_user.responsable_nave?) %>
         </div>
       </div>
     </div>
@@ -59,7 +67,7 @@
             <%= f.label :activo_id%>
             <div class="input-prepend">
               <span class="add-on">
-                <a class="icon-search" data-toggle="modal" href="#myModal" ></a>
+                <a class="icon-search" data-toggle="modal" href=<%= current_user.responsable_nave? ? "" : "#myModal"%>></a>
               </span>
               <%= f.text_field :activo_descripcion, { :class => "span5 disabled", :disabled => "disabled", :id => "nombre_activo"} %>
               <%= f.hidden_field :activo_id %>
@@ -120,11 +128,14 @@
                   <thead>
                     <tr>
                       <th class="titulo">Reparación</th>
+                      <% if current_user.admin? or current_user.responsable_nave? %>
                       <th class="titulo">Técnico</th>
                       <th class="titulo">Fecha/Hora On</th>
                       <th class="titulo">Fecha/Hora Off</th>
                       <th class="titulo">Descripción</th>
                       <th class="titulo">Cancelar</th>
+                      <th class="titulo">Estatus</th>
+                      <% end %>
                       <th>Acciones</th>
                     </tr>
                   </thead>
@@ -144,7 +155,7 @@
             </div>
           </div>
 
-
+          <% if current_user.responsable_nave? or current_user.admin?%>
           <div class="accordion-group">
             <div class="accordion-heading">
               <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion_orden" href="#collapseThree">Refacciones</a>
@@ -174,8 +185,7 @@
               </div>
             </div>
           </div>
-
-
+          <%end%>
 
         </div>
 
