@@ -20,3 +20,5 @@
 //= require bootstrap-datepicker
 //= require bootstrap-timepicker
 //= require bootstrap-datepicker/locales/bootstrap-datepicker.es
+//= require jquery-ui
+//= require autocomplete-rails

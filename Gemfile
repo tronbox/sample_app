@@ -33,6 +33,7 @@ gem 'prawn'
 gem 'to_xls'
 gem 'rghost'
 gem 'rghost_barcode'
+gem 'rails3-jquery-autocomplete'
 #gem 'bootstrap-sass', '~> 2.0.4.0'
 gem 'anjlab-bootstrap-rails', :require => 'bootstrap-rails',
   :git => 'git://github.com/anjlab/bootstrap-rails.git'

@@ -1,5 +1,5 @@
 class ConsultasController < ApplicationController
-  load_and_authorize_resource
+  authorize_resource :class => false
   
   def general
     query = "SELECT OS.* FROM ordenes_servicios OS  "
