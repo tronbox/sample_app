@@ -81,10 +81,14 @@ class ActivosController < ApplicationController
   # DELETE /activos/1.json
   def destroy
     @activo = Activo.find(params[:id])
-    @activo.destroy
+    if @activo.destroy
+      message = "Activo eliminado correctamente"
+    else
+      message = "Activo No eliminado, contiene dependencias"
+    end
 
     respond_to do |format|
-      format.html { redirect_to activos_url }
+      format.html { redirect_to activos_url, :notice => message }
       format.json { head :no_content }
     end
   end
