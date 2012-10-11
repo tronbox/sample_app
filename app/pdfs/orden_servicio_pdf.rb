@@ -21,9 +21,9 @@ class OrdenServicioPdf < Prawn::Document
     if @orden_servicio.activo.codigo?
       doc=RGhost::Document.new
       doc.barcode_code39("#{@orden_servicio.activo.codigo}",:columns => 2, :rows=> 2, :text => {:size => 10})
-      doc.render :jpeg, :filename => "#{Rails.root}/tmp/barcode.jpeg"
-      if File.exist?("#{Rails.root}/tmp/barcode.jpeg")                          
-        image "#{Rails.root}/tmp/barcode.jpeg" , :at => [100,580], :width => 500
+      doc.render :jpeg, :filename => "#{Rails.root}/tmp/#{@orden_servicio.activo.codigo}.jpeg"
+      if File.exist?("#{Rails.root}/tmp/#{@orden_servicio.activo.codigo}.jpeg")                          
+        image "#{Rails.root}/tmp/#{@orden_servicio.activo.codigo}.jpeg" , :at => [100,580], :width => 500
       else
         text "No se pudo generar el código de barras, formato soportado = code39", size: 6
       end
@@ -78,5 +78,8 @@ class OrdenServicioPdf < Prawn::Document
       self.row_colors = ["DDDDDD", "FFFFFF"]
       self.header = true     
     end     
-  end     
+  end    
+  
+  
+ 
 end
