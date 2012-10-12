@@ -253,3 +253,17 @@
     <a href="#" class="btn" data-dismiss="modal">Cerrar</a>
   </div>
 </div>
+
+<div class="modal hide fade in" id="myModalRefacciones">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal">×</button>
+    <h3>Seleccionar refacción</h3>
+  </div>
+  <div class="modal-body">
+    <%= render "activos/buscar_activo", :activos => @refaccion %>
+  </div>
+  <div class="modal-footer">
+    <a href="#" class="btn" data-dismiss="modal">Cerrar</a>
+  </div>
+</div>
+
