@@ -11,11 +11,28 @@ tabs = () ->
     $('#myTab li  a').click( ->
       $(this).tab('show')
     )
-
+open_modal = () ->
+  $('.open_modal_refaccion').click( ->
+    id = $(this).parent().siblings().last().attr('id')
+    $('#myModalRefacciones').attr('data', id)
+    $('#myModalRefacciones').show({
+      backdrop: true
+    })
+    $('#myModalRefacciones').show({
+      backdrop: true
+    })
+  )
+close_modal = () ->
+  $('.modal-refacciones-close').click(->
+    $('#myModalRefacciones').attr('data', '')
+    $('#myModalRefacciones').hide()
+  )
   
 carga_funcionalidad = () ->
   calendario()
   tabs()
+  open_modal()
+  close_modal()
 
 $(document).ready(carga_funcionalidad)
 

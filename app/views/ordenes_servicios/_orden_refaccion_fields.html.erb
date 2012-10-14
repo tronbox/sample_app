@@ -1,15 +1,13 @@
 <tr class="fields">
   <td class="field">
-    <!--
     <div class="input-prepend span5">
       <span class="add-on">
-        <a class="icon-search" data-toggle="modal" href="#myModalRefacciones"></a>
+        <a class="icon-search open_modal_refaccion" data-toggle="modal_" href="#myModalRefacciones"></a>
       </span>
       <%= text_field_tag "", "", { :class => "span3 disabled", :disabled => "disabled", :id => "nombre_activo"} %>
       <%= f.hidden_field :relacion_articulo_medida_id %>
     </div>
-    --!>
-    <%= f.select :relacion_articulo_medida_id, RelacionArticuloMedida.all.map{|am| [am.articulo.descripcion+"-"+am.medida.descripcion, am.id] }, {} %>
+    <% # f.select :relacion_articulo_medida_id, RelacionArticuloMedida.all.map{|am| [am.articulo.descripcion+"-"+am.medida.descripcion, am.id] }, {} %>
   </td>
   <td>
     <%= f.number_field :cantidad, :class => "span1" %>

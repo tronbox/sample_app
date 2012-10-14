@@ -26,5 +26,13 @@ function add_fields(link, association, content){
   }
   $('.calendario').datepicker({"format": "dd-mm-yyyy", "weekStart": 1, "autoclose": true})
   $('.timepicker-default').timepicker()
+  $('.open_modal_refaccion').click(function(){
+    id = $(this).parent().siblings().last().attr('id')
+    $('#myModalRefacciones').attr('data', id)
+    $('#myModalRefacciones').show({
+      backdrop: true
+    })
+  })
+
 }
 
