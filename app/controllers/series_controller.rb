@@ -82,11 +82,15 @@ class SeriesController < ApplicationController
   # DELETE /series/1.json
   def destroy
     @series = Series.find(params[:id])
-    @series.destroy
+    if @series.destroy
+      message = "Serie eliminada correctamente"
+    else
+      message = "Serie No eliminada, contiene dependencias"
+    end
 
     respond_to do |format|
-      format.html { redirect_to series_index_url }
+      format.html { redirect_to series_index_url, :notice => message }
       format.json { head :no_content }
-    end
+    end    
   end
 end

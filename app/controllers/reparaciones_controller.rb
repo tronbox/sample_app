@@ -79,11 +79,15 @@ class ReparacionesController < ApplicationController
   # DELETE /reparaciones/1.json
   def destroy
     @reparacion = Reparacion.find(params[:id])
-    @reparacion.destroy
+    if @reparacion.destroy
+      message = "Reparación eliminada correctamente"
+    else
+      message = "Reparación No eliminada, contiene dependencias"
+    end
 
     respond_to do |format|
-      format.html { redirect_to reparaciones_url }
+      format.html { redirect_to reparaciones_url, :notice => message }
       format.json { head :no_content }
-    end
+    end    
   end
 end

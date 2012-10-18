@@ -1,18 +1,16 @@
 class CategoriasPdf < Prawn::Document
+  include Reportes
   def initialize(categorias, view)
     super(top_margin: 70)
     @categorias = categorias
     @view = view
     
-    categorias2
+    itera_categorias
+    numero_paginas
   end
-  
-  def clave
-    text "Categoria \##{@categorias.clave}", size: 30, style: :bold
-    text "Categoria \##{@categorias.descripcion}", size: 30, style: :bold
-  end
-  
+
   def categorias_rows  
+    encabezado_pie_de_pagina
     text "Reporte de Categorias", size: 30, style: :bold    
     [["Clave", "Descripcion"]] +  
     @categorias.map do |item|
@@ -20,7 +18,7 @@ class CategoriasPdf < Prawn::Document
     end
   end   
   
-  def categorias2
+  def itera_categorias
     move_down 20
     table categorias_rows do
       row(0).font_style = :bold

@@ -1,18 +1,16 @@
 class AgentesPdf < Prawn::Document
+  include Reportes
   def initialize(agentes, view)
     super(top_margin: 70)
     @agentes = agentes
     @view = view
     
-    agentes2
-  end
-  
-  def clave
-    text "Agente \##{@agentes.clave}", size: 30, style: :bold
-    text "Agente \##{@agentes.nombre}", size: 30, style: :bold
+    itera_agentes
+    numero_paginas
   end
   
   def agentes_rows  
+    encabezado_pie_de_pagina
     text "Reporte de Agentes", size: 30, style: :bold    
     [["Clave", "Nombre", "E mail", "Nave industrial"]] +  
     @agentes.map do |item|
@@ -20,7 +18,7 @@ class AgentesPdf < Prawn::Document
     end
   end   
   
-  def agentes2
+  def itera_agentes
     move_down 20
     table agentes_rows do
       row(0).font_style = :bold

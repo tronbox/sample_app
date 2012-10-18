@@ -8,7 +8,16 @@ class Articulo < ActiveRecord::Base
   
   #validates_associated :relacion_articulo_medida
   
-  
   accepts_nested_attributes_for :relacion_articulo_medida, :allow_destroy => true
   attr_accessible :clave, :descripcion, :descripcion_larga, :articulo_id, :relacion_articulo_medida_attributes
+  
+  before_destroy :valida_dependencias
+    
+  protected
+  def valida_dependencias    
+    cuantos = RelacionArticuloMedida.where("articulo_id" => self.id)    
+    if cuantos.count>0     
+      return false            
+    end
+  end
 end

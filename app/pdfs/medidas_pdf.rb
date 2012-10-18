@@ -1,18 +1,16 @@
 class MedidasPdf < Prawn::Document
+  include Reportes
   def initialize(medidas, view)
     super(top_margin: 70)
     @medidas = medidas
     @view = view
     
-    medidas2
+    itera_medidas
+    numero_paginas
   end
-  
-  def clave
-    text "Medida \##{@medidas.clave}", size: 30, style: :bold
-    text "Medida \##{@medidas.descripcion}", size: 30, style: :bold
-  end
-  
-  def medidas_rows  
+
+  def medidas_rows 
+    encabezado_pie_de_pagina 
     text "Listado de Medidas", size: 30, style: :bold    
     [["Clave", "Descripcion"]] +  
     @medidas.map do |item|
@@ -20,7 +18,7 @@ class MedidasPdf < Prawn::Document
     end
   end   
   
-  def medidas2
+  def itera_medidas
     move_down 20
     table medidas_rows do
       row(0).font_style = :bold

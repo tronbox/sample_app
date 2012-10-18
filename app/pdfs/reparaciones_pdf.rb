@@ -1,23 +1,26 @@
 # -*- coding: utf-8 -*-
 class ReparacionesPdf < Prawn::Document
+  include Reportes
   def initialize(reparaciones, view)
     super(top_margin: 70)
     @reparaciones = reparaciones
     @view = view
     
-    reparaciones2
+    itera_reparaciones
+    numero_paginas
   end
  
   
   def reparaciones_rows  
-    text "Catalogo_de_Reparaciones", size: 30, style: :bold    
+    encabezado_pie_de_pagina
+    text "Catalogo de Reparaciones", size: 30, style: :bold    
     [["Clave", "Descripcion"]] +  
     @reparaciones.map do |item|
       [item.clave, item.descripcion]
     end
   end   
   
-  def reparaciones2
+  def itera_reparaciones
     move_down 20
     table reparaciones_rows do
       row(0).font_style = :bold

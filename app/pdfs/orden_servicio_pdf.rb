@@ -1,14 +1,17 @@
 # -*- coding: utf-8 -*-
 class OrdenServicioPdf < Prawn::Document
+  include Reportes
   def initialize(orden_servicio, view)
     super(top_margin: 70)
     @orden_servicio = orden_servicio
     @view = view
     
     orden_servicio_reporte
+    numero_paginas
   end
   
   def orden_servicio_reporte
+    encabezado_pie_de_pagina
     text "Orden de Servicio", size: 11, style: :bold, align: :center, font: :arial  
     text "Id\: #{@orden_servicio.id}", size: 11, style: :bold
     text "Folio\: #{@orden_servicio.folio}", size: 11, style: :bold

@@ -98,13 +98,15 @@ class AgentesController < ApplicationController
   # DELETE /agentes/1.json
   def destroy
     @agente = Agente.find(params[:id])
-    @agente.destroy
+    if @agente.destroy
+      message = "Agente eliminado correctamente"
+    else
+      message = "Agente No eliminado, contiene dependencias"
+    end
 
     respond_to do |format|
-      format.html { redirect_to agentes_url }
+      format.html { redirect_to agentes_url, :notice => message }
       format.json { head :no_content }
-    end
+    end  
   end
-  
-    
 end

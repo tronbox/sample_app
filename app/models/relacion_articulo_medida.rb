@@ -8,4 +8,13 @@ class RelacionArticuloMedida < ActiveRecord::Base
   has_many :orden_servicio, :through => :orden_refaccion
 
   attr_accessible :articulo_id, :medida_id, :unidades_por_empaque
+  before_destroy :valida_dependencias
+    
+  protected
+  def valida_dependencias    
+    cuantos = OrdenRefaccion.where("relacion_articulo_medida_id" => self.id)    
+    if cuantos.count>0     
+      return false            
+    end
+  end
 end

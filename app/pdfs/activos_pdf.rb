@@ -1,23 +1,35 @@
 # -*- coding: utf-8 -*-
 class ActivosPdf < Prawn::Document
+  include Reportes
   def initialize(activos, view)
     super(top_margin: 70)
     @activos = activos
     @view = view
     
-    activos2
+    itera_activos
+    numero_paginas
   end
   
   
-  def activos_rows  
-    text "Reporte de Activos", size: 30, style: :bold    
+  def activos_rows 
+    encabezado_pie_de_pagina
+          
+    #Dibuja las lineas          
+    indent(0) do
+      stroke_horizontal_rule
+      move_down 5         
+      text "Reporte de Activos", size: 14, style: :bold, align: :center
+      stroke_horizontal_rule
+    end
+    move_down 5
+           
     [["Id", "Clave", "Descripción", "Area"]] +  
     @activos.map do |item|
       [item.id, item.clave, item.descripcion, item.area.descripcion]
-    end
+    end   
   end  
   
-  def activos2
+  def itera_activos
     move_down 20
     table activos_rows do
       row(0).font_style = :bold

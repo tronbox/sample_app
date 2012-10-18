@@ -82,11 +82,15 @@ class AreasController < ApplicationController
   # DELETE /areas/1.json
   def destroy
     @area = Area.find(params[:id])
-    @area.destroy
+    if @area.destroy
+      message = "Área eliminada correctamente"
+    else
+      message = "Área No eliminada, contiene dependencias"
+    end
 
     respond_to do |format|
-      format.html { redirect_to areas_url }
+      format.html { redirect_to areas_url, :notice => message }
       format.json { head :no_content }
-    end
+    end       
   end
 end

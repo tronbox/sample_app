@@ -73,10 +73,14 @@ class NavesController < ApplicationController
   # DELETE /naves/1.json
   def destroy
     @nave = Nave.find(params[:id])
-    @nave.destroy
+    if @nave.destroy
+      message = "Nave industrial eliminada correctamente"
+    else
+      message = "Nave industrial No eliminada, contiene dependencias"
+    end
 
     respond_to do |format|
-      format.html { redirect_to naves_url }
+      format.html { redirect_to naves_url, :notice => message }
       format.json { head :no_content }
     end
   end

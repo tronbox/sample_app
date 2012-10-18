@@ -7,8 +7,7 @@ class Activo < ActiveRecord::Base
   before_destroy :valida_dependencias
   
   protected
-  def valida_dependencias
-    
+  def valida_dependencias    
     cuantos = OrdenServicio.where("activo_id" => self.id)
     if cuantos.count>0
       return false            

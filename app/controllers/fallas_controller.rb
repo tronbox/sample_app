@@ -99,11 +99,15 @@ class FallasController < ApplicationController
   # DELETE /fallas/1.json
   def destroy
     @falla = Falla.find(params[:id])
-    @falla.destroy
+    if @falla.destroy
+      message = "Falla eliminada correctamente"
+    else
+      message = "Falla No eliminada, contiene dependencias"
+    end
 
     respond_to do |format|
-      format.html { redirect_to fallas_url }
+      format.html { redirect_to fallas_url, :notice => message }
       format.json { head :no_content }
-    end
+    end      
   end
 end

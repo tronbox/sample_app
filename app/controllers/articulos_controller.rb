@@ -75,11 +75,15 @@ class ArticulosController < ApplicationController
   # DELETE /articulos/1.json
   def destroy
     @articulo = Articulo.find(params[:id])
-    @articulo.destroy
+    if @articulo.destroy
+      message = "Artículo eliminado correctamente"
+    else
+      message = "Artículo No eliminado, contiene dependencias"
+    end
 
     respond_to do |format|
-      format.html { redirect_to articulos_url }
+      format.html { redirect_to articulos_url, :notice => message }
       format.json { head :no_content }
-    end
+    end    
   end
 end

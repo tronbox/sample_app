@@ -83,10 +83,14 @@ class MedidasController < ApplicationController
   # DELETE /medidas/1.json
   def destroy
     @medida = Medida.find(params[:id])
-    @medida.destroy
+    if @medida.destroy
+      message = "Medida eliminada correctamente"
+    else
+      message = "Medida No eliminada, contiene dependencias"
+    end
 
     respond_to do |format|
-      format.html { redirect_to medidas_url }
+      format.html { redirect_to medidas_url, :notice => message }
       format.json { head :no_content }
     end
   end
