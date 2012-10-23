@@ -8,12 +8,13 @@ class ActivosController < ApplicationController
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: ActivosDatatable.new(view_context) }
-      format.pdf do
-        pdf = ActivosPdf.new(Activo.all, view_context)
-        send_data pdf.render, filename: "activos.pdf",
-                              type: "application/pdf",
-                              disposition: "inline"
-      end
+      #format.pdf do
+      #  pdf = ActivosPdf.new(Activo.all, view_context)
+      #  send_data pdf.render, filename: "activos.pdf",
+      #                        type: "application/pdf",
+      #                        disposition: "inline"
+      #end
+      format.pdf {reporte_activos(Activo.all)}
     end
   end
 
@@ -92,4 +93,31 @@ class ActivosController < ApplicationController
       format.json { head :no_content }
     end
   end
+  
+  def reporte_activos(activos)
+    report = ThinReports::Report.new layout: File.join(Rails.root, 'app', 'reports', 'activos.tlf')
+    
+    activos.each do |activo|
+      report.list.add_row do |row|        
+        row.values clave: activo.clave, 
+                   descripcion: activo.descripcion,                    
+                   costo_revision: activo.costo_revision,
+                   area: activo.area.descripcion                   
+        row.values codigo_barras: genera_codigo_de_barras(activo.codigo) if activo.codigo?
+        row.values imagen: activo.imagen_url if activo.imagen_url? and File.exist?("#{activo.imagen_url}")        
+        row.item(:clave).style(:color, 'red')
+      end 
+    end
+    
+    send_data report.generate, filename: 'activos.pdf', 
+                               type: 'application/pdf', 
+                               disposition: 'attachment'
+  end 
+  
+  def genera_codigo_de_barras(codigo)
+    doc=RGhost::Document.new :paper => [5,2]
+    doc.barcode_code39("#{codigo}",:columns => 2, :rows=> 2, :text => {:size => 10})
+    doc.render :jpeg, :filename => "#{Rails.root}/tmp/#{codigo}.jpeg"
+    return "#{Rails.root}/tmp/#{codigo}.jpeg" if File.exist?("#{Rails.root}/tmp/#{codigo}.jpeg")      
+  end    
 end

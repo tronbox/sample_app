@@ -9,12 +9,13 @@ class AgentesController < ApplicationController
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @agentes }
-      format.pdf do
-        pdf = AgentesPdf.new(@agentes, view_context)
-        send_data pdf.render, filename: "agentes.pdf",
-                              type: "application/pdf",
-                              disposition: "inline"
-      end
+      #format.pdf do
+      #  pdf = AgentesPdf.new(@agentes, view_context)
+      #  send_data pdf.render, filename: "agentes.pdf",
+      #                        type: "application/pdf",
+      #                        disposition: "inline"
+      #end
+      format.pdf {reporte_agentes(@agentes)}
       format.xls {send_data @agentes.to_xls, :filename => 'reporte.xls' }
     end
   end
@@ -108,5 +109,26 @@ class AgentesController < ApplicationController
       format.html { redirect_to agentes_url, :notice => message }
       format.json { head :no_content }
     end  
+  end
+  
+  def reporte_agentes(agentes)
+    report = ThinReports::Report.new layout: File.join(Rails.root, 'app', 'reports', 'agentes.tlf')
+    
+    agentes.each do |agente|
+      report.list.add_row do |row|        
+        row.values clave: agente.clave, 
+                   nombre: agente.nombre,                    
+                   e_mail: agente.e_mail,
+                                     
+                   nave: agente.nave.nombre
+        row.values responsable: "Si" if agente.responsable?
+                
+        row.item(:clave).style(:color, 'red')
+      end 
+    end
+    
+    send_data report.generate, filename: 'activos.pdf', 
+                               type: 'application/pdf', 
+                               disposition: 'attachment'
   end
 end
