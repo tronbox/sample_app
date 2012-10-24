@@ -9,12 +9,13 @@ class FallasController < ApplicationController
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @fallas }
-      format.pdf do
-        pdf = FallasPdf.new(@fallas, view_context)
-        send_data pdf.render, filename: "fallas.pdf",
-                              type: "application/pdf",
-                              disposition: "inline"
-      end
+      #format.pdf do
+      #  pdf = FallasPdf.new(@fallas, view_context)
+      #  send_data pdf.render, filename: "fallas.pdf",
+      #                        type: "application/pdf",
+      #                        disposition: "inline"
+      #end
+      format.pdf {reporte_fallas(@fallas)}
       format.xls {send_data @fallas.to_xls, :filename => 'reporte.xls' }
     end
   end
@@ -109,5 +110,22 @@ class FallasController < ApplicationController
       format.html { redirect_to fallas_url, :notice => message }
       format.json { head :no_content }
     end      
+  end
+  
+  def reporte_fallas(fallas)
+    report = ThinReports::Report.new layout: File.join(Rails.root, 'app', 'reports', 'fallas.tlf')
+    
+    fallas.each do |falla|
+      report.list.add_row do |row|        
+        row.values clave: falla.clave, 
+                   descripcion: falla.descripcion                   
+                
+        row.item(:clave).style(:color, 'red')
+      end 
+    end
+    
+    send_data report.generate, filename: 'fallas.pdf', 
+                               type: 'application/pdf', 
+                               disposition: 'attachment' 
   end
 end

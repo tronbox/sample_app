@@ -9,12 +9,13 @@ class AreasController < ApplicationController
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @areas }
-      format.pdf do
-        pdf = AreasPdf.new(@areas, view_context)
-        send_data pdf.render, filename: "areas.pdf",
-                              type: "application/pdf",
-                              disposition: "inline"
-      end
+      #format.pdf do
+      #  pdf = AreasPdf.new(@areas, view_context)
+      #  send_data pdf.render, filename: "areas.pdf",
+      #                        type: "application/pdf",
+      #                        disposition: "inline"
+      #end
+      format.pdf {reporte_areas(@areas)}
       format.xls {send_data @areas.to_xls, :filename => 'reporte.xls' }
     end
   end
@@ -92,5 +93,24 @@ class AreasController < ApplicationController
       format.html { redirect_to areas_url, :notice => message }
       format.json { head :no_content }
     end       
+  end
+  
+  def reporte_areas(areas)
+    report = ThinReports::Report.new layout: File.join(Rails.root, 'app', 'reports', 'areas.tlf')
+    
+    areas.each do |area|
+      report.list.add_row do |row|        
+        row.values clave: area.clave, 
+                   descripcion: area.descripcion,                    
+                   correo_electronico: area.correo_electronico,
+                   responsable: area.responsable
+                
+        row.item(:clave).style(:color, 'red')
+      end 
+    end
+    
+    send_data report.generate, filename: 'areas.pdf', 
+                               type: 'application/pdf', 
+                               disposition: 'attachment'
   end
 end

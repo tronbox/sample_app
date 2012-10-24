@@ -31,7 +31,7 @@ class ConsultasController < ApplicationController
           #                      type: "application/pdf",
           #                      disposition: "inline"
         #end
-        format.pdf { reporte(@ordenes_servicios) }
+        format.pdf { reporte_ordenes_de_servicio(@ordenes_servicios) }
       end
     else      
       @naves = Nave.all
@@ -39,7 +39,7 @@ class ConsultasController < ApplicationController
     end
   end
   
-  def reporte(ordenes_servicios)
+  def reporte_ordenes_de_servicio(ordenes_servicios)
     data = []    
     ordenes_servicios.each do |os|                       
       cabecera = {:serie => os.series.nombre,
@@ -93,7 +93,7 @@ class ConsultasController < ApplicationController
     end                 
 
 
-    send_data report.generate, filename: 'tasks.pdf', 
+    send_data report.generate, filename: 'ordenes_de_servicio.pdf', 
                                type: 'application/pdf', 
                                disposition: 'attachment'   
   end 
@@ -105,8 +105,8 @@ class ConsultasController < ApplicationController
   end
   
   def genera_codigo_de_barras(codigo)
-    doc=RGhost::Document.new :paper => [5,2]
-    doc.barcode_code39("#{codigo}",:columns => 2, :rows=> 2, :text => {:size => 10})
+    doc=RGhost::Document.new :paper => [10,2], :margin => 0.5
+    doc.barcode_code39("#{codigo}", :text => {:size => 16})
     doc.render :jpeg, :filename => "#{Rails.root}/tmp/#{codigo}.jpeg"
     return "#{Rails.root}/tmp/#{codigo}.jpeg" if File.exist?("#{Rails.root}/tmp/#{codigo}.jpeg")      
   end   

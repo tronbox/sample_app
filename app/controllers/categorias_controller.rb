@@ -9,12 +9,13 @@ class CategoriasController < ApplicationController
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @categorias }
-      format.pdf do
-        pdf = CategoriasPdf.new(@categorias, view_context)
-        send_data pdf.render, filename: "categorias.pdf",
-                              type: "application/pdf",
-                              disposition: "inline"
-      end
+      #format.pdf do
+      #  pdf = CategoriasPdf.new(@categorias, view_context)
+      #  send_data pdf.render, filename: "categorias.pdf",
+      #                        type: "application/pdf",
+      #                        disposition: "inline"
+      #end
+      format.pdf {reporte_categorias(@categorias)}
       format.xls {send_data @categorias.to_xls, :filename => 'reporte.xls' }
     end
   end
@@ -104,5 +105,22 @@ class CategoriasController < ApplicationController
       format.html { redirect_to categorias_url }
       format.json { head :no_content }
     end
+  end
+  
+  def reporte_categorias(categorias)
+    report = ThinReports::Report.new layout: File.join(Rails.root, 'app', 'reports', 'categorias.tlf')
+    
+    categorias.each do |categoria|
+      report.list.add_row do |row|        
+        row.values clave: categoria.clave, 
+                   descripcion: categoria.descripcion
+                
+        row.item(:clave).style(:color, 'red')
+      end 
+    end
+    
+    send_data report.generate, filename: 'categorias.pdf', 
+                               type: 'application/pdf', 
+                               disposition: 'attachment'
   end
 end

@@ -7,12 +7,13 @@ class ReparacionesController < ApplicationController
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: ReparacionesDatatable.new(view_context) }
-      format.pdf do
-        pdf = ReparacionesPdf.new(Reparacion.all, view_context)
-        send_data pdf.render, filename: "reparaciones.pdf",
-                              type: "application/pdf",
-                              disposition: "inline"
-      end
+      #format.pdf do
+      #  pdf = ReparacionesPdf.new(Reparacion.all, view_context)
+      #  send_data pdf.render, filename: "reparaciones.pdf",
+      #                        type: "application/pdf",
+      #                        disposition: "inline"
+      #end
+      format.pdf {reporte_reparaciones(Reparacion.all)}
     end
   end
 
@@ -89,5 +90,24 @@ class ReparacionesController < ApplicationController
       format.html { redirect_to reparaciones_url, :notice => message }
       format.json { head :no_content }
     end    
+  end
+  
+  def reporte_reparaciones(reparaciones)
+    report = ThinReports::Report.new layout: File.join(Rails.root, 'app', 'reports', 'reparaciones.tlf')
+    
+    reparaciones.each do |reparacion|
+      report.list.add_row do |row|        
+        row.values clave: reparacion.clave, 
+                   descripcion: reparacion.descripcion,                    
+                   pasos: reparacion.pasos,                                    
+                   nave: reparacion.nave.nombre        
+                
+        row.item(:clave).style(:color, 'red')
+      end 
+    end
+    
+    send_data report.generate, filename: 'reparaciones.pdf', 
+                               type: 'application/pdf', 
+                               disposition: 'attachment'
   end
 end

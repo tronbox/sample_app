@@ -9,6 +9,7 @@ class ArticulosController < ApplicationController
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @articulos }
+      format.pdf {reporte_articulos(@articulos)}
     end
   end
 
@@ -86,4 +87,22 @@ class ArticulosController < ApplicationController
       format.json { head :no_content }
     end    
   end
+  
+  def reporte_articulos(articulos)
+    report = ThinReports::Report.new layout: File.join(Rails.root, 'app', 'reports', 'articulos.tlf')
+    
+    articulos.each do |articulo|
+      report.list.add_row do |row|        
+        row.values clave: articulo.clave, 
+                   descripcion: articulo.descripcion,                    
+                   descripcion_larga: articulo.descripcion_larga
+                
+        row.item(:clave).style(:color, 'red')
+      end 
+    end
+    
+    send_data report.generate, filename: 'articulos.pdf', 
+                               type: 'application/pdf', 
+                               disposition: 'attachment' 
+  end 
 end

@@ -9,12 +9,13 @@ class MedidasController < ApplicationController
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: @medidas }
-      format.pdf do
-        pdf = MedidasPdf.new(@medidas, view_context)
-        send_data pdf.render, filename: "medidas.pdf",
-                              type: "application/pdf",
-                              disposition: "inline"
-      end
+      #format.pdf do
+      #  pdf = MedidasPdf.new(@medidas, view_context)
+      #  send_data pdf.render, filename: "medidas.pdf",
+      #                        type: "application/pdf",
+      #                        disposition: "inline"
+      #end
+      format.pdf {reporte_medidas(@medidas)}
       format.xls {send_data @medidas.to_xls, :filename => 'reporte.xls' }
 
     end
@@ -93,5 +94,22 @@ class MedidasController < ApplicationController
       format.html { redirect_to medidas_url, :notice => message }
       format.json { head :no_content }
     end
+  end
+  
+  def reporte_medidas(medidas)
+    report = ThinReports::Report.new layout: File.join(Rails.root, 'app', 'reports', 'medidas.tlf')
+    
+    medidas.each do |medida|
+      report.list.add_row do |row|        
+        row.values clave: medida.clave, 
+                   descripcion: medida.descripcion                   
+                
+        row.item(:clave).style(:color, 'red')
+      end 
+    end
+    
+    send_data report.generate, filename: 'medidas.pdf', 
+                               type: 'application/pdf', 
+                               disposition: 'attachment' 
   end
 end

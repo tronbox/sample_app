@@ -115,8 +115,8 @@ class ActivosController < ApplicationController
   end 
   
   def genera_codigo_de_barras(codigo)
-    doc=RGhost::Document.new :paper => [5,2]
-    doc.barcode_code39("#{codigo}",:columns => 2, :rows=> 2, :text => {:size => 10})
+    doc=RGhost::Document.new [10,2], :margin => 0.5
+    doc.barcode_code39("#{codigo}",:text => {:size => 16})
     doc.render :jpeg, :filename => "#{Rails.root}/tmp/#{codigo}.jpeg"
     return "#{Rails.root}/tmp/#{codigo}.jpeg" if File.exist?("#{Rails.root}/tmp/#{codigo}.jpeg")      
   end    

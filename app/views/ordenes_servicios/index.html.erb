@@ -49,5 +49,6 @@
 <br />
 <div class="form-actions">
   <%= link_to 'Nueva orden servicio', new_orden_servicio_path, :class => 'btn btn-primary' %>
+  <%= link_to 'PDF ordenes de servicio', ordenes_servicios_path(:format => 'pdf'), :class => 'btn btn-inverse' %>
 </div>
 <% end %>

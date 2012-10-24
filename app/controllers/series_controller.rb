@@ -8,14 +8,13 @@ class SeriesController < ApplicationController
     respond_to do |format|
       format.html # index.html.erb
       format.json { render json: SeriesDatatable.new(view_context) }
-      format.pdf do
-        pdf = SeriesPdf.new(Serie.all, view_context)
-        send_data pdf.render, filename: "series.pdf",
-                              type: "application/pdf",
-                              disposition: "inline"
-      end
-      
-
+      #format.pdf do
+      #  pdf = SeriesPdf.new(Serie.all, view_context)
+      #  send_data pdf.render, filename: "series.pdf",
+      #                        type: "application/pdf",
+      #                        disposition: "inline"
+      #end
+      format.pdf {reporte_series(Series.all)}
     end
   end
 
@@ -92,5 +91,19 @@ class SeriesController < ApplicationController
       format.html { redirect_to series_index_url, :notice => message }
       format.json { head :no_content }
     end    
+  end
+  
+  def reporte_series(series)
+    report = ThinReports::Report.new layout: File.join(Rails.root, 'app', 'reports', 'series.tlf')
+    
+    series.each do |serie|
+      report.list.add_row do |row|        
+        row.values nombre: serie.nombre        
+      end 
+    end
+    
+    send_data report.generate, filename: 'series.pdf', 
+                               type: 'application/pdf', 
+                               disposition: 'attachment'
   end
 end
