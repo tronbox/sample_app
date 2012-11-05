@@ -35,7 +35,7 @@ class ActivosDatatable
           h(activo.descripcion),
           h(activo.costo_revision),
           h(activo.area.descripcion),
-          h(activo.codigo),                    
+          h(activo.codigo),                       
           [
             link_to('Mostrar', activo, :class => 'btn'), 
             link_to('Editar', @view.edit_activo_path(activo), :class => 'btn'), 

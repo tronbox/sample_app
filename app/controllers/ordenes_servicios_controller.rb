@@ -131,7 +131,7 @@ class OrdenesServiciosController < ApplicationController
             :nombre_activo => os.activo.descripcion,
             :descripcion => os.descripcion,
             :area => os.activo.area.descripcion,
-            :imagen => valida_imagenes(os.activo.imagen_url),
+            :imagen => valida_imagenes(os.activo.imagen.path),
             :codigo_barras => genera_codigo_de_barras(os.activo.codigo),            
             :detalle_fallas => [],
             :detalle_reparaciones => []
@@ -188,7 +188,7 @@ class OrdenesServiciosController < ApplicationController
                 :nombre_activo => orden_servicio.activo.descripcion,
                 :descripcion => orden_servicio.descripcion,
                 :area => orden_servicio.activo.area.descripcion,
-                :imagen => valida_imagenes(orden_servicio.activo.imagen_url),
+                :imagen => valida_imagenes(orden_servicio.activo.imagen.path ),
                 :codigo_barras => genera_codigo_de_barras(orden_servicio.activo.codigo),            
                 :detalle_fallas => [],
                 :detalle_reparaciones => []
@@ -232,8 +232,9 @@ class OrdenesServiciosController < ApplicationController
                                disposition: 'attachment'   
   end 
   
-  def valida_imagenes(imagen)    
-    if File.exist?("#{imagen}")      
+  def valida_imagenes(imagen)  
+    if File.exist?("#{imagen}")
+      puts imagen      
       return imagen
     end
   end

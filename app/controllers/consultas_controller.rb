@@ -35,7 +35,8 @@ class ConsultasController < ApplicationController
       end
     else      
       @naves = Nave.all
-      @areas = Area.all            
+      @areas = Area.all
+      @agentes = Agente.all            
     end
   end
   
@@ -49,7 +50,7 @@ class ConsultasController < ApplicationController
             :nombre_activo => os.activo.descripcion,
             :descripcion => os.descripcion,
             :area => os.activo.area.descripcion,
-            :imagen => valida_imagenes(os.activo.imagen_url),
+            :imagen => valida_imagenes(os.activo.imagen.path),
             :codigo_barras => genera_codigo_de_barras(os.activo.codigo),            
             :detalle_fallas => [],
             :detalle_reparaciones => []

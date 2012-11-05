@@ -2,102 +2,90 @@
 	<h1>Reporte de Ordenes de Servicio</h1>
 </div>
 <br />
-	<div class="depot_form">
-		<%= form_tag consultas_general_path, {:method => :get, :class => "form-inline"} do %>
-			<fieldset>							
-				<div class="row">
-			    	<div class="span12 prepend">
-				      	<div class="span11">	
-						  	<div class="accordion span10" id="accordion_filtros">
-						  		<!--FORMATO DE SALIDA DEL REPORTE-->
-								<div class="field" align="right">
-									<%= label_tag :formato %>										
-									<%= select_tag :format, options_for_select([["XLS", "xls"], ["PDF", "pdf"]], "pdf") %>					            	
-								</div>
-								<br />
-								<legend>Selecciona los filtros</legend>
-								<!--PRIMER ACORDEON-->		  								  		  	
-						  	  	<div class="accordion-group">
-						        	<div class="accordion-heading">
-						            	<a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion_filtros" href="#collapseOne">Fechas</a>
-						            </div>
-						            <div id="collapseOne" class="accordion-body collapse" style="height: 0px;">
-						            	<div class="accordion-inner">						                	
-											<div class="field">
-												<%= label_tag :fecha_inicial %>					
-												<div class="input-append date calendario" data-date-format="dd-mm-yyyy" >
-													<%= text_field_tag :fecha_inicial, params[:fecha_inicial] %>
-													<span class="add-on"><i class="icon-th"></i></span>
-							            		</div>
-											</div>
-											<br />
-											<div class="field">
-												<%= label_tag :fecha_final %>					
-												<div class="input-append date calendario" data-date-format="dd-mm-yyyy" >
-													<%= text_field_tag :fecha_final, params[:fecha_final] %>
-													<span class="add-on"><i class="icon-th"></i></span>
-							            		</div>
-											</div>									
-						              	</div>
-						            </div>
-						     	</div>
-						  	  	<!--SEGUNDO ACORDEON-->						  	  	
-						  	  	<div class="accordion-group">
-						        	<div class="accordion-heading">
-						            	<a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion_filtros" href="#collapseTwo">Naves</a>
-						            </div>
-						            <div id="collapseTwo" class="accordion-body collapse" style="height: 0px;">
-						            	<div class="accordion-inner">
-						                	<div class="field">
-						                		<div class="form_row">    
-												    <label for="opcion_nave">Selecciona opción:</label>
-												    <% [ 'todas_las_naves','por_nave' ].each do |opcion_nave| %><br />												      
-												      <%= radio_button_tag :opcion_nave, opcion_nave, opcion_nave == 'todas_las_naves' %>
-												      <%= opcion_nave.humanize %>
-												    <% end %>
-												    <!--Where
-													@opcion_nave = params[:opcion_nave]									    												    
-												    <br /><%= radio_button_tag 'opcion_nave', 'Todas las Naves', true %>Todas las Naves
-												    <br />
-												    <br /><%= radio_button_tag 'opcion_nave', 'Por Nave' %>Por Nave-->
-												    <%= select_tag :id_nave, options_from_collection_for_select(@naves, "id", "nombre") %>												    												   
-												</div>
-												<br />																																																										   
-											</div>
-						              	</div>
-						            </div>
-						     	</div>
-						     	<!--TERCER ACORDEON-->
-						     	<div class="accordion-group">
-						        	<div class="accordion-heading">
-						            	<a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion_filtros" href="#collapseThree">Areas</a>
-						            </div>
-						            <div id="collapseThree" class="accordion-body collapse" style="height: 0px;">
-						            	<div class="accordion-inner">
-						                	<div class="field">
-						                		<div class="form_row">    
-												    <label for="opcion_nave">Selecciona opción:</label>												    											    
-													<% [ 'todas_las_areas', 'por_area' ].each do |opcion_area| %><br />												      
-												      <%= radio_button_tag :opcion_area, opcion_area, opcion_area == 'todas_las_areas' %>												      
-												      <%= opcion_area.humanize %>												      
-												    <% end %>														    									    												   
-												    <%= select_tag :id_area, options_from_collection_for_select(@areas, "id", "descripcion") %>												    												   
-												</div>
-												<br />																																																										   
-											</div>
-						              	</div>
-						            </div>
-						     	</div>
-						     	
-						     	<br />
-						     	<div align="right">
-									<%= submit_tag 'Obtener reporte', :class=>"btn btn-inverse" %>
-								</div>
-						     	
-						     </div>
-					     </div>
-				     </div>
-				</div>																
-			</fieldset>
-		<% end %>
-	</div>
+	<%= form_tag consultas_general_path, {:method => :get, :class => "form-inline"} do %>
+		<!--FORMATO DE SALIDA DEL REPORTE-->
+		<div class="container well span11">  						
+			<div class="row">									    				            								          		 
+				<div class="field span11" align="right">
+					<%= label_tag :formato %>										
+						<%= select_tag :format, options_for_select([["XLS", "xls"], ["PDF", "pdf"]], "pdf") %>					            	
+				</div>										
+				<div class="field span11">
+					<legend>
+						Selecciona los filtros
+					</legend>
+				</div>						
+			</div>			
+							
+			<div class="row">					
+				<div class="field span3">				          			
+					<%= label_tag :fecha_inicial %>					
+						<div class="input-append date calendario" data-date-format="dd-mm-yyyy" >
+							<%= text_field_tag :fecha_inicial, params[:fecha_inicial] %>
+							<span class="add-on"><i class="icon-th"></i></span>
+						</div>									
+				</div>				          	
+				<div class="field span3">
+					<%= label_tag :fecha_final %>					
+						<div class="input-append date calendario" data-date-format="dd-mm-yyyy" >
+							<%= text_field_tag :fecha_final, params[:fecha_final] %>
+							<span class="add-on"><i class="icon-th"></i></span>
+						</div>
+				</div>										
+			</div>
+			<br/>					
+			<div class="row">
+				<div class="field span3">
+					<div class="form_row">    
+						<label for="opcion_nave">Selecciona opción:</label>
+						<% [ 'todas_las_naves','por_nave' ].each do |opcion_nave| %><br />												      
+							<%= radio_button_tag :opcion_nave, opcion_nave, opcion_nave == 'todas_las_naves' %>
+							<%= opcion_nave.humanize %>
+						<% end %>
+						<!--Where
+						@opcion_nave = params[:opcion_nave]									    												    
+						<br /><%= radio_button_tag 'opcion_nave', 'Todas las Naves', true %>Todas las Naves
+						<br />
+						<br /><%= radio_button_tag 'opcion_nave', 'Por Nave' %>Por Nave-->
+						<br />
+						<br />					
+						<%= select_tag :id_nave, options_from_collection_for_select(@naves, "id", "nombre") %>									    												  
+					</div>																																																																			 
+				</div>	    	
+				<div class="field span3">					          
+					<div class="form_row">    
+						<label for="opcion_nave">Selecciona opción:</label>												    											    
+						<% [ 'todas_las_areas', 'por_area' ].each do |opcion_area| %><br />												      
+							<%= radio_button_tag :opcion_area, opcion_area, opcion_area == 'todas_las_areas' %>												      
+							<%= opcion_area.humanize %>												      
+						<% end %>	
+						<br />	
+						<br />												    									    												   
+						<%= select_tag :id_area, options_from_collection_for_select(@areas, "id", "descripcion") %>												    												   
+					</div>																																																										   								
+				</div>	
+				<div class="field span3">				          		
+					<div class="form_row">    
+						<label for="opcion_nave">Selecciona opción:</label>												    											    
+							<% [ 'todos_los_agentes', 'por_agente' ].each do |opcion_agente| %><br />												      
+					      		<%= radio_button_tag :opcion_agente, opcion_agente, opcion_agente == 'todos_los_agentes' %>												      
+								<%= opcion_agente.humanize %>												      
+							<% end %>
+							<br />
+							<br />														    									    												   
+							<%= select_tag :id_agente, options_from_collection_for_select(@agentes, "id", "nombre") %>												    												   
+					</div>																																																																			   
+				</div>												     
+			</div>													
+			<br />
+			<div class="row">									    				            								          		 												
+				<div class="field span11">
+					<legend>						
+					</legend>
+				</div>						
+			</div>
+			<div align="right">
+				<%= submit_tag 'Obtener reporte', :class=>"btn btn-inverse" %>
+			</div>													
+		</div>
+	<% end %>

@@ -12,7 +12,7 @@
 
 <p>
   <b>Costo revisión:</b>
-  <%= @activo.costo_revision %>
+  <%= number_to_currency(@activo.costo_revision) %>
 </p>
 
 <p>
@@ -23,9 +23,12 @@
   <b>Código:</b>
   <%= @activo.codigo %>
 </p>
+
+
 <p>
-  <b>Imagen url:</b>
-  <%= @activo.imagen_url %>
+  <b>Imagen:</b>
+	<%= image_tag @activo.imagen.url(:small) %>  
 </p>
+
 <%= link_to 'Editar', edit_activo_path(@activo) %> |
 <%= link_to 'Listado', activos_path %>

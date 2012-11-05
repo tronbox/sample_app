@@ -104,7 +104,7 @@ class ActivosController < ApplicationController
                    costo_revision: activo.costo_revision,
                    area: activo.area.descripcion                   
         row.values codigo_barras: genera_codigo_de_barras(activo.codigo) if activo.codigo?
-        row.values imagen: activo.imagen_url if activo.imagen_url? and File.exist?("#{activo.imagen_url}")        
+        row.values imagen: activo.imagen.path if activo.imagen? and File.exist?("#{activo.imagen.path}")        
         row.item(:clave).style(:color, 'red')
       end 
     end
