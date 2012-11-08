@@ -188,6 +188,34 @@
           </div>
           <%end%>
 
+		  <div class="accordion-group">
+            <div class="accordion-heading">
+              <a class="accordion-toggle collapsed" data-toggle="collapse" data-parent="#accordion_orden" href="#collapseFour">Imágenes</a>
+            </div>
+            <div id="collapseFour" class="accordion-body collapse" style="height: 0px;">
+              <div class="accordion-inner imagenes">
+                <table class="lbs_formset table table-bordered span9">
+                  <thead>
+                    <tr>
+                      <th class="titulo">Imágen</th>
+                      <th>Acciones</th>
+                    </tr>
+                  </thead>
+                  <tbody class="lbs_fields_wrapper">
+                    <%= f.fields_for :orden_imagen do |d_or| %>
+                      <%= render 'orden_imagen_fields', :f => d_or %>
+                    <% end %>
+                    <tr>
+                      <td colspan="7"> 
+                        <%= link_to_create 'Agregar imágen', OrdenImagen.new, f, :class => 'agregar btn btn-inverse', :id=>"add4" %>
+                      </td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+	
         </div>
 
       </div>
