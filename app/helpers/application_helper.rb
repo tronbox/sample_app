@@ -1,6 +1,7 @@
 module ApplicationHelper
 
   def link_to_remove name, f, *args
+    puts "====================================0remove"
     f.hidden_field(:_destroy) + link_to_function(name, "remove_fields(this)", *args)
   end
 

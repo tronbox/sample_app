@@ -20,7 +20,7 @@ class OrdenServicio < ActiveRecord::Base
   accepts_nested_attributes_for :orden_falla, :allow_destroy => true
   accepts_nested_attributes_for :orden_reparacion, :allow_destroy => true
   accepts_nested_attributes_for :orden_refaccion, :allow_destroy => true
-  accepts_nested_attributes_for :orden_imagen
+  accepts_nested_attributes_for :orden_imagen, :allow_destroy => true
 
   attr_accessible :descripcion, :fecha_entrega, :fecha_recepcion, :folio, :activo_id, :series_id, :status, :orden_falla_attributes, :orden_reparacion_attributes, :orden_refaccion_attributes, :orden_imagen_attributes
 

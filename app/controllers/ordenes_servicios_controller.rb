@@ -134,7 +134,8 @@ class OrdenesServiciosController < ApplicationController
             :imagen => valida_imagenes(os.activo.imagen.path),
             :codigo_barras => genera_codigo_de_barras(os.activo.codigo),            
             :detalle_fallas => [],
-            :detalle_reparaciones => []
+            :detalle_reparaciones => [],
+            :detalle_imagenes => []
             }
             
       os.falla.map do |item|      
@@ -143,7 +144,12 @@ class OrdenesServiciosController < ApplicationController
       
       os.reparacion.map do |item|      
         cabecera[:detalle_reparaciones] << {:reparaciones => item.descripcion } 
-      end      
+      end  
+      
+      os.orden_imagen.map do |item|      
+        cabecera[:detalle_imagenes] << {:imagenes => valida_imagenes(item.imagen.path ) } 
+      end
+        
       data << cabecera         
     end
     
@@ -169,7 +175,11 @@ class OrdenesServiciosController < ApplicationController
         
         header[:detalle_reparaciones].each do |detalle|    
           r.page.list(:detalle_reparaciones).add_row(detalle)                            
-        end        
+        end 
+        
+        header[:detalle_imagenes].each do |detalle|      
+          r.page.list(:detalle_imagenes).add_row(detalle) 
+        end           
       end
     end                 
     send_data report.generate, filename: 'ordenes_de_servicio.pdf', 
@@ -191,7 +201,8 @@ class OrdenesServiciosController < ApplicationController
                 :imagen => valida_imagenes(orden_servicio.activo.imagen.path ),
                 :codigo_barras => genera_codigo_de_barras(orden_servicio.activo.codigo),            
                 :detalle_fallas => [],
-                :detalle_reparaciones => []
+                :detalle_reparaciones => [],
+                :detalle_imagenes => []
                 }
             
     orden_servicio.falla.map do |item|      
@@ -200,7 +211,12 @@ class OrdenesServiciosController < ApplicationController
       
     orden_servicio.reparacion.map do |item|      
       cabecera[:detalle_reparaciones] << {:reparaciones => item.descripcion } 
-    end      
+    end
+    
+    orden_servicio.orden_imagen.map do |item|      
+      cabecera[:detalle_imagenes] << {:imagenes => valida_imagenes(item.imagen.path ) } 
+    end
+          
     data << cabecera         
            
     report = ThinReports::Report.create do |r|              
@@ -223,7 +239,11 @@ class OrdenesServiciosController < ApplicationController
         
         header[:detalle_reparaciones].each do |detalle|    
           r.page.list(:detalle_reparaciones).add_row(detalle)                            
-        end          
+        end
+        
+        header[:detalle_imagenes].each do |detalle|    
+          r.page.list(:detalle_imagenes).add_row(detalle)                            
+        end                        
       end      
     end       
          
