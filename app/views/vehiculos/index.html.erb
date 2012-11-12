@@ -1,0 +1,55 @@
+<div class="label label-info" align="center">
+	<h1>Listado de Vehículos</h1>
+</div>
+<br />
+<table class="vehiculos table table-bordered">
+  <thead>
+    <tr>
+      <th>Número de serie</th>
+      <th>Marca</th>
+      <th>Linea</th>
+      <th>Modelo</th>
+      <th>Procedencia</th>
+      <th>Cilindros</th>
+      <th>Número de motor</th>
+      <th>Clase</th>
+      <th>Tipo</th>
+      <th>Clave vehicular</th>
+      <th>Capacidad</th>
+      <th>Combustible</th>
+      <th>Número de puertas</th>
+      <th>Opciones</th>      
+    </tr>
+  </thead>
+
+  <tbody>
+  <% @vehiculos.each do |vehiculo| %>
+    <tr>
+      <td><%= vehiculo.numero_de_serie %></td>
+      <td><%= vehiculo.marca %></td>
+      <td><%= vehiculo.linea %></td>
+      <td><%= vehiculo.modelo %></td>
+      <td><%= vehiculo.procedencia %></td>
+      <td><%= vehiculo.cilindros %></td>
+      <td><%= vehiculo.numero_de_motor %></td>
+      <td><%= vehiculo.clase %></td>
+      <td><%= vehiculo.tipo %></td>
+      <td><%= vehiculo.clave_vehicular %></td>
+      <td><%= vehiculo.capacidad %></td>
+      <td><%= vehiculo.combustible %></td>
+      <td><%= vehiculo.numero_de_puertas %></td>
+      <td>
+      	<div class="btn-group">
+      		<%= link_to 'Mostrar', vehiculo, :class => 'btn' %>
+      		<%= link_to 'Editar', edit_vehiculo_path(vehiculo), :class => 'btn' %>
+      		<%= link_to 'Eliminar', vehiculo, confirm: '¿Está usted seguro?', method: :delete, :class => 'btn btn-danger' %>
+      	</div>
+      </td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
+
+<br />
+<%= link_to 'Nuevo Vehiculo', new_vehiculo_path, :class => 'btn btn-primary'  %>
+<%= link_to 'PDF Vehículos', vehiculos_path(:format => 'pdf'), :class => 'btn btn-inverse' %>

@@ -1,0 +1,126 @@
+<%= form_for @vehiculo, :html => { :class => 'form-horizontal' } do |f| %>
+  <%= render 'error_messages', target: @vehiculo %>
+	<legend></legend>
+		<fieldset>	
+			<div class="row">
+				<div class="span12 prepend">
+			    	<div class="span11 controls-row">
+						  <div class="span3">						  	
+						    <%= f.label :número_de_serie, :class => 'control-label' %>
+						    <div class="controls">						    
+						    	<%= f.text_field :numero_de_serie, :class => "span2" %>
+						    </div>
+						  </div>
+						  <div class="span3">						  	
+						    <%= f.label :marca, :class => 'control-label' %>
+						    <div class="controls">						    
+						    	<%= f.text_field :marca, :class => 'span2' %>
+						    </div>
+						  </div>
+						  <div class="span3">						  	
+						    <%= f.label :linea, :class => 'control-label' %>
+						    <div class="controls">						    
+						    	<%= f.text_field :linea, :class => 'span2' %>
+						    </div>
+						  </div>
+					</div>
+				</div>
+			</div>
+			<br/>	
+			<div class="row">
+				<div class="span12 prepend">
+			    	<div class="span11 controls-row">
+			    		<div class="span3">
+						    <%= f.label :modelo, :class => 'control-label' %>
+						    <div class="controls">
+						    	<%= f.number_field :modelo, :class => 'span2' %>
+						    </div>
+						  </div>
+						  <div class="span3">
+						    <%= f.label :procedencia, :class => 'control-label' %>
+						    <div class="controls">
+						    	<%= f.text_field :procedencia, :class => 'span2' %>
+						    </div>
+						  </div>
+						  <div class="span3">
+						    <%= f.label :cilindros, :class => 'control-label' %>
+						    <div class="controls">
+						    	<%= f.number_field :cilindros, :class => 'span2' %>
+						    </div>
+						  </div>	
+			   		</div>
+				</div>
+			</div>			  
+			<br/>	  
+			<div class="row">
+				<div class="span12 prepend">
+			    	<div class="span11 controls-row">
+						<div class="span3">
+						    <%= f.label :número_de_motor, :class => 'control-label' %>
+						    <div class="controls">
+						    	<%= f.text_field :numero_de_motor, :class => 'span2' %>
+						    </div>
+						  </div>
+						  <div class="span3">
+						    <%= f.label :clase, :class => 'control-label' %>
+						    <div class="controls">
+						    	<%= f.text_field :clase, :class => 'span2' %>
+						    </div>
+						  </div>
+						  <div class="span3">
+						    <%= f.label :tipo, :class => 'control-label' %>
+						    <div class="controls">
+						    	<%= f.text_field :tipo, :class => 'span2' %>
+						    </div>
+						  </div>		
+					</div>
+				</div>
+			</div>			  
+			<br/>	    
+			<div class="row">
+				<div class="span12 prepend">
+			    	<div class="span11 controls-row">
+						  <div class="span3">  
+			  				<%= f.label :clave_vehicular, :class => 'control-label' %>
+						    <div class="controls">
+						    	<%= f.number_field :clave_vehicular, :class => 'span2' %>
+						    </div>
+						  </div>
+						  <div class="span3">
+						    <%= f.label :capacidad, :class => 'control-label' %>
+						    <div class="controls">
+						    	<%= f.text_field :capacidad, :class => 'span2' %>
+						    </div>
+						  </div>
+						  <div class="span2">
+						    <%= f.label :combustible, :class => 'control-label' %>
+						    <div class="controls">			    											
+								<%= f.select :combustible, options_for_select([["GASOLINA", "Gasolina"], ["DIESEL", "Diesel"], ["GAS", "Gas"] ], "Gasolina"), :class => 'span2' %>
+						    	<!--<%= f.text_field :combustible, :class => 'text_field' %>-->
+						    </div>
+						  </div>
+			  			</div>
+				</div>
+			</div>			  
+			<br/>	   
+			<div class="row">
+				<div class="span12 prepend">
+			    	<div class="span11 controls-row">  			    
+						  <div class="span3">
+						    <%= f.label :número_de_puertas, :class => 'control-label' %>
+						    <div class="controls">
+						    	<%= f.number_field :numero_de_puertas, :class => 'span2' %>
+						    </div>
+						  </div>
+			  		</div>
+				</div>
+			</div>			  
+			<br/>	   
+			  
+			  
+			  
+			  <div class="form-actions">
+			    <%= f.submit "Guardar", :class => "btn btn-primary" %>			 
+			  </div>
+		</fieldset>
+	<% end %>

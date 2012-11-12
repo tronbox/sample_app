@@ -1,5 +1,7 @@
 SampleApp::Application.routes.draw do
 
+  resources :vehiculos
+
   get "consultas/general"
 
   resources :naves
