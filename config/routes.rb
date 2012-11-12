@@ -1,5 +1,7 @@
 SampleApp::Application.routes.draw do
 
+  resources :recepciones_activos
+
   resources :vehiculos
 
   get "consultas/general"

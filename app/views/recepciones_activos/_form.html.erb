@@ -1,0 +1,58 @@
+<%= form_for @recepcion_activo, :html => { :class => 'form-horizontal' } do |f| %>
+  <%= render 'error_messages', target: @recepcion_activo %>
+	<legend></legend>
+		<fieldset>
+  			<div class="row">
+  				<div class="span12 prepend">
+    				<div class="span11 controls-row">        
+        				<div class="span2"> 
+        					<div class="field">         					
+				    			<%= f.label :agente %>						   	
+							   	<%= f.select :agente_id, Agente.all.collect{|a| [a.nombre, a.id ]}, {}, {:class => "span2"} %>
+						   	</div>
+			  			</div>
+  					      				
+  						<div class="span2">
+    						<div class="field">
+    							<%= f.label :vehículo %>    						
+    							<%= f.select :vehiculo_id, Vehiculo.all.collect{|v| [v.linea, v.id ]}, {}, {:class => "span2"} %>
+    						</div>
+  						</div>
+						<div class="span3">
+							<div class="field">
+								<%= f.label :fecha_recepción %>
+						  		<div class="input-append date calendario" data-date-format="dd-mm-yyyy">						 
+						    		<%= f.text_field :fecha_recepcion, :class => "span2", :readonly => true, :'data-date-format' => "dd-mm-yyyy"%>
+						    		<span class="add-on"><i class="icon-th"></i></span>
+						    	</div>
+						    </div>
+						</div>
+    				</div>
+    			</div>
+  			</div>
+  			<br />
+  	
+			<div class="row">
+				<div class="span12 prepend">
+			    	<div class="span11">
+				        <div class="field span10">
+				          <%= f.label :descripción %>
+				          <%= f.text_area :descripcion, :class => "span10 oxlarge" %>
+				        </div>
+			      	</div>
+			    </div>
+			</div>
+  			
+  		
+  			
+  			 <div class="form-actions row span10 prepend">
+			    <div class="actions span8">
+			      <%= f.submit "Guardar",:class => 'btn btn-primary pull-right'%>
+			    </div>
+			  </div> 
+
+	 	 </fieldset>
+	 	 
+	 	 
+	 	 
+<% end %>

@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Agente:</b>
+  <%= @recepcion_activo.agente.nombre %>
+</p>
+
+<p>
+  <b>Vehiculo:</b>
+  <%= @recepcion_activo.vehiculo.linea %>
+</p>
+
+<p>
+  <b>Fecha recepcion:</b>
+  <%= @recepcion_activo.fecha_recepcion %>
+</p>
+
+<p>
+  <b>Descripcion:</b>
+  <%= @recepcion_activo.descripcion %>
+</p>
+
+<%= link_to 'Editar', edit_recepcion_activo_path(@recepcion_activo) %> |
+<%= link_to 'Listado', recepciones_activos_path %>

@@ -1,0 +1,2 @@
+module RecepcionesActivosHelper
+end

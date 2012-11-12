@@ -70,7 +70,17 @@
               <li><%= link_to "Ordenes de servicio", consultas_general_path %></li>                       
             </ul>
           </li>
-          <li><%= link_to "Orden de servicio", ordenes_servicios_path  %></li>
+          
+          <li class="dropdown">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+              Procesos
+              <b class="caret"></b>
+            </a>
+            <ul class="dropdown-menu">
+            	<li><%= link_to "Orden de servicio", ordenes_servicios_path  %></li>
+          		<li><%= link_to "Recepción de activos", recepciones_activos_path  %></li>
+          	</ul>
+          </li>
         </ul>
       </div>
 
