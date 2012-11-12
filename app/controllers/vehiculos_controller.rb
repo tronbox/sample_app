@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*- 
 class VehiculosController < ApplicationController
+  load_and_authorize_resource
   # GET /vehiculos
   # GET /vehiculos.json
   def index

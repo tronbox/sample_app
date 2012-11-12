@@ -1,4 +1,5 @@
 class RecepcionesActivosController < ApplicationController
+  load_and_authorize_resource
   # GET /recepciones_activos
   # GET /recepciones_activos.json
   def index
