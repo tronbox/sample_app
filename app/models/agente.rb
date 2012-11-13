@@ -9,10 +9,11 @@ class Agente < ActiveRecord::Base
   
   protected
   def valida_dependencias    
-    cuantos = OrdenReparacion.where("agente_id" => self.id)
-    if cuantos.count>0
-      return false            
-    end
+    #cuantos = OrdenReparacion.where("agente_id" => self.id)
+    #if cuantos.count>0
+    if OrdenReparacion.where("agente_id" => self.id).count>0 or RecepcionActivo.where("agente_id" => self.id).count>0 
+      return false                
+    end            
   end
   
   def valida_responsable_for_nave

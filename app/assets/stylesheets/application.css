@@ -16,4 +16,6 @@
  *= require jquery.ui.core
  *= require jquery.ui.theme
  *= require timepicker
+ *= require select2
+ *= require jquery-minicolors
  */

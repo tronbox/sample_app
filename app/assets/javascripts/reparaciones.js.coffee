@@ -45,3 +45,5 @@ jQuery ->
       $('td:eq(3)', nRow).addClass('pasos')
       selecciona_reparacion(nRow)
 
+jQuery ->
+  $("#combo_nave").select2(); 

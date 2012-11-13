@@ -21,3 +21,5 @@
 //= require bootstrap-timepicker
 //= require bootstrap-datepicker/locales/bootstrap-datepicker.es
 //= require autocomplete-rails
+//= require select2
+//= require jquery-minicolors

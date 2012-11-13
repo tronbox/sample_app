@@ -5,17 +5,17 @@
   			<div class="row">
   				<div class="span12 prepend">
     				<div class="span11 controls-row">        
-        				<div class="span2"> 
+        				<div class="span2">         					
         					<div class="field">         					
 				    			<%= f.label :agente %>						   	
-							   	<%= f.select :agente_id, Agente.all.collect{|a| [a.nombre, a.id ]}, {}, {:class => "span2"} %>
+							   	<%= f.select :agente_id, Agente.all.collect{|a| [a.nombre, a.id ]}, {}, {:id => "combo_agente"} %>
 						   	</div>
 			  			</div>
   					      				
   						<div class="span2">
     						<div class="field">
     							<%= f.label :vehículo %>    						
-    							<%= f.select :vehiculo_id, Vehiculo.all.collect{|v| [v.linea, v.id ]}, {}, {:class => "span2"} %>
+    							<%= f.select :vehiculo_id, Vehiculo.all.collect{|v| [v.linea, v.id ]}, {}, {:id => "combo_vehiculo"} %>
     						</div>
   						</div>
 						<div class="span3">

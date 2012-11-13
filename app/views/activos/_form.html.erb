@@ -23,7 +23,7 @@
 	  <div class="control-group">
 	    <%= f.label :area_id, :class => 'control-label' %>
 		<div class="controls">
-	    	<%= f.select :area_id, Area.all.map { |area| [area.descripcion, area.id] },  {}, :class => 'select' %>
+	    	<%= f.select :area_id, Area.all.map { |area| [area.descripcion, area.id] }, {}, {:id => "combo_area"} %>
 	  	</div>
 	  </div>
 	  <div class="control-group">

@@ -95,7 +95,7 @@
 						  <div class="span2">
 						    <%= f.label :combustible, :class => 'control-label' %>
 						    <div class="controls">			    											
-								<%= f.select :combustible, options_for_select([["GASOLINA", "Gasolina"], ["DIESEL", "Diesel"], ["GAS", "Gas"] ], "Gasolina"), {}, {:class => "span2"} %>
+								<%= f.select :combustible, options_for_select([["GASOLINA", "Gasolina"], ["DIESEL", "Diesel"], ["GAS", "Gas"] ], "Gasolina"), {}, {:id => "combo_combustible"} %>
 						    	<!--<%= f.text_field :combustible, :class => 'text_field' %>-->
 						    </div>
 						  </div>

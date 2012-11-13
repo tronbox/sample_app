@@ -19,14 +19,14 @@
 	  <div class="control-group">
 	    <%= f.label :pasos, :class => 'control-label' %>
 		<div class="controls">
-	    	<%= f.text_area :pasos, :class => 'text_field' %>
+	    	<%= f.text_area :pasos, :class => "span4 oxlarge"  %>
 	    </div>
 	  </div>
 	
 	  <div class="control-group">
 	    <%= f.label :nave_id, :class => 'control-label' %>
 		<div class="controls">
-	    	<%= f.select :nave_id, Nave.all.map {|nave| [nave.nombre, nave.id] }, {}, :class => 'select' %>
+	    	<%= f.select :nave_id, Nave.all.map {|nave| [nave.nombre, nave.id] }, {}, {:id => "combo_nave"} %>
 	    </div>
 	  </div>
 	

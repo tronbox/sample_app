@@ -1,6 +1,6 @@
 source 'https://rubygems.org'
 
-gem 'rails', '3.2.6'
+gem 'rails', '3.2.8'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
@@ -36,6 +36,8 @@ gem 'rghost_barcode'
 gem 'rails3-jquery-autocomplete'
 gem 'thinreports'
 gem 'paperclip', '~> 3.3.0' 
+gem "select2-rails", "~> 3.2.1"
+gem "jquery-minicolors-rails", "~> 0.0.1"
 #gem 'bootstrap-sass', '~> 2.0.4.0'
 gem 'anjlab-bootstrap-rails', :require => 'bootstrap-rails',
   :git => 'git://github.com/anjlab/bootstrap-rails.git'

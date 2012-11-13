@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*- 
 class RecepcionesActivosController < ApplicationController
   load_and_authorize_resource
   # GET /recepciones_activos
@@ -46,7 +47,7 @@ class RecepcionesActivosController < ApplicationController
 
     respond_to do |format|
       if @recepcion_activo.save
-        format.html { redirect_to @recepcion_activo, notice: 'Recepcion activo was successfully created.' }
+        format.html { redirect_to @recepcion_activo, notice: 'La recepcion del activo se ha creado con éxito.' }
         format.json { render json: @recepcion_activo, status: :created, location: @recepcion_activo }
       else
         format.html { render action: "new" }
@@ -62,7 +63,7 @@ class RecepcionesActivosController < ApplicationController
 
     respond_to do |format|
       if @recepcion_activo.update_attributes(params[:recepcion_activo])
-        format.html { redirect_to @recepcion_activo, notice: 'Recepcion activo was successfully updated.' }
+        format.html { redirect_to @recepcion_activo, notice: 'La recepcion del activo se ha actualizado correctamente.' }
         format.json { head :no_content }
       else
         format.html { render action: "edit" }

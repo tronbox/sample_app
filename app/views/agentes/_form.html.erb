@@ -33,7 +33,7 @@
 			<div class="control-group">
 			    <%= f.label :nave_id, :class => 'control-label' %>
 			    <div class="controls">
-			    	<%= f.select :nave_id, Nave.all.collect{|n| [n.nombre, n.id ]}, :class => 'select' %>
+			    	<%= f.select :nave_id, Nave.all.collect{|n| [n.nombre, n.id ]}, {}, {:id => "combo_nave"} %>
 			    </div>
 			</div>
 			    

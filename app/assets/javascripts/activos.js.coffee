@@ -46,3 +46,5 @@ jQuery ->
       $('td:eq(3)', nRow).addClass('area_activo')
       selecciona_activo(nRow)
 
+jQuery ->
+  $("#combo_area").select2(); 
