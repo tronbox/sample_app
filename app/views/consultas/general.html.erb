@@ -8,7 +8,7 @@
 			<div class="row">									    				            								          		 
 				<div class="field span11" align="right">
 					<%= label_tag :formato %>										
-						<%= select_tag :format, options_for_select([["XLS", "xls"], ["PDF", "pdf"]], "pdf") %>					            	
+						<%= select_tag :format, options_for_select([["XLS", "xls"], ["PDF", "pdf"]], "pdf"), :id => "combo_formato" %>					            	
 				</div>										
 				<div class="field span11">
 					<legend>
@@ -49,7 +49,7 @@
 						<br /><%= radio_button_tag 'opcion_nave', 'Por Nave' %>Por Nave-->
 						<br />
 						<br />					
-						<%= select_tag :id_nave, options_from_collection_for_select(@naves, "id", "nombre") %>									    												  
+						<%= select_tag :id_nave, options_from_collection_for_select(@naves, "id", "nombre"), :id => "combo_nave" %>									    												  
 					</div>																																																																			 
 				</div>	    	
 				<div class="field span3">					          
@@ -61,7 +61,7 @@
 						<% end %>	
 						<br />	
 						<br />												    									    												   
-						<%= select_tag :id_area, options_from_collection_for_select(@areas, "id", "descripcion") %>												    												   
+						<%= select_tag :id_area, options_from_collection_for_select(@areas, "id", "descripcion"), :id => "combo_area" %>												    												   
 					</div>																																																										   								
 				</div>	
 				<div class="field span3">				          		
@@ -73,7 +73,7 @@
 							<% end %>
 							<br />
 							<br />														    									    												   
-							<%= select_tag :id_agente, options_from_collection_for_select(@agentes, "id", "nombre") %>												    												   
+							<%= select_tag :id_agente, options_from_collection_for_select(@agentes, "id", "nombre"), :id => "combo_agente" %>												    												   
 					</div>																																																																			   
 				</div>												     
 			</div>													

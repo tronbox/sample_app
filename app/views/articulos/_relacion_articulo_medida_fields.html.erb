@@ -1,9 +1,9 @@
 <tr class="fields">
   <td class="field">
-    <%= f.select :medida_id, Medida.all.map{|medida| [medida.descripcion, medida.id] }, {} %>
+    <%= f.select :medida_id, Medida.all.map{|medida| [medida.descripcion, medida.id] }, {}, {:class => "span3",:id => "combo_medida"} %>
   </td>
   <td class="field">
-    <%= f.number_field :unidades_por_empaque, :class => "input-small" %>
+    <%= f.number_field :unidades_por_empaque, :class => "span1" %>
   </td>
   <td>
     <%= link_to_remove 'Eliminar', f, :class => 'eliminar btn btn-danger' %>
