@@ -8,4 +8,7 @@ jQuery ->
     "sPaginationType": "bootstrap"
     
 jQuery ->
-  $("#combo_nave").select2(); 
+  $("#combo_nave").select2();
+  
+jQuery ->
+  $("#combo_usuario").select2();  

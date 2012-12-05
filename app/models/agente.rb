@@ -1,9 +1,10 @@
 class Agente < ActiveRecord::Base
   has_many :recepcion_activo
   belongs_to :nave
+  belongs_to :user
   validate :valida_responsable_for_nave
   validates :clave, :presence => true, :length => {:maximum => 20, :minimum => 3}, :uniqueness => { :message => "La clave ya existe!"  }
-  attr_accessible :clave, :nombre, :e_mail, :responsable, :nave_id
+  attr_accessible :clave, :nombre, :e_mail, :responsable, :nave_id,  :user_id
   
   before_destroy :valida_dependencias
   

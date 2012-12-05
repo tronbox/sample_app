@@ -25,5 +25,10 @@
   <%= @agente.nave.nombre %>
 </p>
 
+<p>
+  <b>Usuario:</b>
+  <%= @agente.user.email %>
+</p>
+
 <%= link_to 'Editar', edit_agente_path(@agente) %> |
 <%= link_to 'Listado', agentes_path %>
