@@ -4,6 +4,7 @@ class OrdenServicio < ActiveRecord::Base
   belongs_to :activo 
   #belongs_to :falla #quitar y ponr has_many
   belongs_to :series
+  belongs_to :user
   #belongs_to :estado
   
   has_many :orden_falla
@@ -22,9 +23,9 @@ class OrdenServicio < ActiveRecord::Base
   accepts_nested_attributes_for :orden_refaccion, :allow_destroy => true
   accepts_nested_attributes_for :orden_imagen, :allow_destroy => true
 
-  attr_accessible :descripcion, :fecha_entrega, :fecha_recepcion, :folio, :activo_id, :series_id, :status, :orden_falla_attributes, :orden_reparacion_attributes, :orden_refaccion_attributes, :orden_imagen_attributes
+  attr_accessible :descripcion, :fecha_entrega, :fecha_recepcion, :folio, :user_id, :activo_id, :series_id, :status, :orden_falla_attributes, :orden_reparacion_attributes, :orden_refaccion_attributes, :orden_imagen_attributes
 
-  validates :fecha_recepcion, :fecha_entrega, :activo_id, :series_id, :presence => true
+  validates :fecha_recepcion, :fecha_entrega, :user_id, :activo_id, :series_id, :presence => true
   validates_associated :orden_falla
   validates_associated :orden_reparacion
   
@@ -50,12 +51,13 @@ class OrdenServicio < ActiveRecord::Base
   end
 
   def self.get_orden_servicio_for_user user
-    ordenes_servicios = OrdenServicio.all
-    #if user.responsable_nave?
-    #  ordenes_servicios = OrdenServicio.where()
-    #else
-
-    #end
+    if user.admin?
+      ordenes_servicios = OrdenServicio.all
+    elsif user.responsable_nave?
+      ordenes_servicios = OrdenServicio.joins(:orden_reparacion => {:reparacion => {:nave => :agente}}).where(:agentes => {:id => user.agentes.first}) if user.agentes.first
+    else
+      ordenes_servicios = OrdenServicio.where(:user_id => user.id)
+    end
     ordenes_servicios
   end
 

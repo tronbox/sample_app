@@ -73,6 +73,7 @@ class OrdenesServiciosController < ApplicationController
   # POST /ordenes_servicios.json
   def create
     @orden_servicio = OrdenServicio.new(params[:orden_servicio])
+    @orden_servicio.user = current_user
     @activos = Activo.all
     @activo = Activo.new
 

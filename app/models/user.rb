@@ -1,5 +1,7 @@
 class User < ActiveRecord::Base
   belongs_to :rol
+  has_many :ordenes_servicios
+  has_many :agentes
 
   # Include default devise modules. Others available are:
   # :token_authenticatable, :confirmable,
