@@ -22,6 +22,13 @@
         <%= f.select :rol_id, Rol.all.map {|rol| [rol.nombre.capitalize, rol.id]} %>
       </div>
 
+	  <div class="control-group">
+		<%= f.label :agente_id, :class => 'control-label' %>
+		<div class="controls">
+			<%= f.select :agente_id, Agente.all.collect{|a| [a.nombre, a.id ]}, {}, {:id => "combo_usuario"} %>
+		</div>
+	  </div>
+			
       <div class="controls span3">
         <%= f.submit "Guardar", :class => "btn btn-primary" %>
       </div>

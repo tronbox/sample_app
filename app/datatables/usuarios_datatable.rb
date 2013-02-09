@@ -22,6 +22,7 @@ class UsuariosDatatable
       [
         h(usuario.email),
         h(usuario.rol.nombre.capitalize),
+        
         [
           link_to('Mostrar', usuario, :class => 'btn'), 
           link_to('Editar', @view.edit_user_path(usuario), :class => 'btn'), 

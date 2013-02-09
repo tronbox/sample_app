@@ -37,13 +37,7 @@
 			    </div>
 			</div>
 			    
-			<div class="control-group">
-			    <%= f.label :user_id, :class => 'control-label' %>
-			    <div class="controls">
-			    	<%= f.select :user_id, User.all.collect{|n| [n.email, n.id ]}, {}, {:id => "combo_usuario"} %>
-			    </div>
-			</div>
-			
+	
 			<div class="form-actions">
 			    <%= f.submit "Guardar", :class => "btn btn-primary" %>			    
 			</div>

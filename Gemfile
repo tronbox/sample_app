@@ -39,6 +39,7 @@ gem 'paperclip', '~> 3.3.0'
 gem "select2-rails", "~> 3.2.1"
 gem "jquery-minicolors-rails", "~> 0.0.1"
 #gem 'bootstrap-sass', '~> 2.0.4.0'
+gem 'rake', '~> 10.0.0'
 gem 'anjlab-bootstrap-rails', :require => 'bootstrap-rails',
   :git => 'git://github.com/anjlab/bootstrap-rails.git'
 

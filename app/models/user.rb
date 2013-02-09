@@ -1,16 +1,15 @@
 class User < ActiveRecord::Base
   belongs_to :rol
   has_many :ordenes_servicios
-  has_one :agente
-
+  belongs_to :agente
   # Include default devise modules. Others available are:
   # :token_authenticatable, :confirmable,
   # :lockable, :timeoutable and :omniauthable
   # :registerable,
   devise :database_authenticatable,:recoverable, :rememberable, :trackable, :validatable
-
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :email, :password, :password_confirmation, :remember_me, :rol_id 
+  attr_accessible :email, :password, :password_confirmation, :remember_me, :rol_id, :agente_id
+  validates_associated :agente 
   # attr_accessible :title, :body
   #
   def admin?

@@ -7,7 +7,7 @@ class AddReferencesUserToAgente < ActiveRecord::Migration
   end
 
   def down
-    remove_column :agentos, :user
+    remove_column :agentes, :user
     remove_index :agentes, :user_id
   end
 end
